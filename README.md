@@ -4,6 +4,7 @@ flutter run --flavor dev -t lib/main_dev.dart
 ### prod
 flutter run --flavor prod -t lib/main_prod.dart
 
+
 flutter analyze .
 
 ## 自動生成
