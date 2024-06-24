@@ -22,7 +22,6 @@
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		D335825EFCD6016CF66E3E84 /* devDebug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 6133CFDB0BFE7E46646D6F82 /* devDebug.xcconfig */; };
 		D77785B31A206E43AF1EC540 /* prodDebug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = AC2B6FEF22A7EC50B3644884 /* prodDebug.xcconfig */; };
-		E4A102383BF691464D63474B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 61F1AE935C5CBE8F9BA4A245 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +59,6 @@
 		576259D5EEBA862C6F1E4FC4 /* devLaunchScreen.storyboard */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.storyboard; name = devLaunchScreen.storyboard; path = Runner/devLaunchScreen.storyboard; sourceTree = "<group>"; };
 		5BEFA7C8BAC79CDBA43185D7 /* devProfile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = devProfile.xcconfig; path = Flutter/devProfile.xcconfig; sourceTree = "<group>"; };
 		6133CFDB0BFE7E46646D6F82 /* devDebug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = devDebug.xcconfig; path = Flutter/devDebug.xcconfig; sourceTree = "<group>"; };
-		61F1AE935C5CBE8F9BA4A245 /* GoogleService-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "Runner/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				331C8082294A63A400263BE5 /* RunnerTests */,
 				576259D5EEBA862C6F1E4FC4 /* devLaunchScreen.storyboard */,
 				4B7DF62D2C931F93C8F64F91 /* prodLaunchScreen.storyboard */,
-				61F1AE935C5CBE8F9BA4A245 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -251,7 +248,6 @@
 				1043B66E6F7FBA31B4677D34 /* prodRelease.xcconfig in Resources */,
 				4D8F6E522D2046698959C357 /* devLaunchScreen.storyboard in Resources */,
 				7756F25C3360464A4A87A23B /* prodLaunchScreen.storyboard in Resources */,
-				E4A102383BF691464D63474B /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -558,6 +554,90 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Profile;
+		};
+		26A2CE672C29A57D00EAB5B7 /* Debug-dev */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = Runner;
+			};
+			name = "Debug-dev";
+		};
+		26A2CE682C29A57D00EAB5B7 /* Profile-dev */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = Runner;
+			};
+			name = "Profile-dev";
+		};
+		26A2CE692C29A57D00EAB5B7 /* Release-dev */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = Runner;
+			};
+			name = "Release-dev";
+		};
+		26A2CE6A2C29A57D00EAB5B7 /* Debug-prod */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = Runner;
+			};
+			name = "Debug-prod";
+		};
+		26A2CE6B2C29A57D00EAB5B7 /* Profile-prod */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = Runner;
+			};
+			name = "Profile-prod";
+		};
+		26A2CE6C2C29A57D00EAB5B7 /* Release-prod */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = Runner;
+			};
+			name = "Release-prod";
+		};
+		26A2CE6D2C29A57D00EAB5B7 /* Debug-dev */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = RunnerTests;
+			};
+			name = "Debug-dev";
+		};
+		26A2CE6E2C29A57D00EAB5B7 /* Profile-dev */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = RunnerTests;
+			};
+			name = "Profile-dev";
+		};
+		26A2CE6F2C29A57D00EAB5B7 /* Release-dev */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = RunnerTests;
+			};
+			name = "Release-dev";
+		};
+		26A2CE702C29A57D00EAB5B7 /* Debug-prod */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = RunnerTests;
+			};
+			name = "Debug-prod";
+		};
+		26A2CE712C29A57D00EAB5B7 /* Profile-prod */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = RunnerTests;
+			};
+			name = "Profile-prod";
+		};
+		26A2CE722C29A57D00EAB5B7 /* Release-prod */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = RunnerTests;
+			};
+			name = "Release-prod";
 		};
 		331C8088294A63A400263BE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -1056,6 +1136,12 @@
 				331C8088294A63A400263BE5 /* Debug */,
 				331C8089294A63A400263BE5 /* Release */,
 				331C808A294A63A400263BE5 /* Profile */,
+				26A2CE6D2C29A57D00EAB5B7 /* Debug-dev */,
+				26A2CE6E2C29A57D00EAB5B7 /* Profile-dev */,
+				26A2CE6F2C29A57D00EAB5B7 /* Release-dev */,
+				26A2CE702C29A57D00EAB5B7 /* Debug-prod */,
+				26A2CE712C29A57D00EAB5B7 /* Profile-prod */,
+				26A2CE722C29A57D00EAB5B7 /* Release-prod */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1082,6 +1168,12 @@
 				97C147061CF9000F007C117D /* Debug */,
 				97C147071CF9000F007C117D /* Release */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
+				26A2CE672C29A57D00EAB5B7 /* Debug-dev */,
+				26A2CE682C29A57D00EAB5B7 /* Profile-dev */,
+				26A2CE692C29A57D00EAB5B7 /* Release-dev */,
+				26A2CE6A2C29A57D00EAB5B7 /* Debug-prod */,
+				26A2CE6B2C29A57D00EAB5B7 /* Profile-prod */,
+				26A2CE6C2C29A57D00EAB5B7 /* Release-prod */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
