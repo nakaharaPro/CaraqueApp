@@ -13,3 +13,5 @@ flutter pub run build_runner build --delete-conflicting-outputs
 
 ## Cloid Funcitons
 firebase deploy --only functions
+
+## セッション45
