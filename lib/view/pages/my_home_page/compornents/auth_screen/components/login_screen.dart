@@ -31,7 +31,7 @@ class _LoginScreenState extends State<LoginScreen> {
 //タイトル
   Widget titleWidget() {
     return const Text(
-      "ログイン",
+      "ログイン情報を入力してください",
       style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
     );
   }
@@ -106,7 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
         AuthController.to.onPositiveButtonPressed(); //ボタン押下処理（登録かサインイン）
       },
-      textValue: "新規登録",
+      textValue: "ログイン",
     );
   }
 }

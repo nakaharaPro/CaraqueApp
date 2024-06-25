@@ -1,7 +1,8 @@
+//サインアップ画面
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/view/abstract/auth_state.dart';
 import 'package:flutter/material.dart';
-
+//抽象クラスから継承
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
   @override
@@ -14,7 +15,7 @@ class _SignupScreenState extends AuthState<SignupScreen> {//抽象クラスの�
 @override
   Widget titleWidget() {
     return const Text(
-      "新規登録",
+      "新規登録の情報を入力してください",
       style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
     );
   }
@@ -23,10 +24,10 @@ class _SignupScreenState extends AuthState<SignupScreen> {//抽象クラスの�
 //モード切り替えテキストボタン
 @override
   Widget toggleLoginModeButton() {
-    const style = TextStyle(fontSize: 25.0);
+    const style = TextStyle(fontSize: 25.0,color: Colors.black,);
     return TextButton(
       onPressed: AuthController.to.onToggleLoginModeButtonPressed,
-      child: const Text("ログイン画面へ",style:style),
+      child: const Text("ログイン画面へ遷移",style:style),
       );
   }
 
