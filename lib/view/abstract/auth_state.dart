@@ -5,7 +5,6 @@ import 'package:caraqueprod/view/common/text_field_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-
 abstract class AuthState<T extends StatefulWidget> extends State<T>{//抽象クラスはジェネリクスにstatefulWidgetを継承すること
 
 final _formKey = GlobalKey<FormState>();//validateを使うときに必須

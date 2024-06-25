@@ -2,7 +2,7 @@
 import 'package:flutter/widgets.dart';
 
 class MaintenanceScreen extends StatelessWidget{
-const MaintenanceScreen({Key? key}) : super (key:key);
+const MaintenanceScreen({super.key});
 
 @override
   Widget build(BuildContext context) {

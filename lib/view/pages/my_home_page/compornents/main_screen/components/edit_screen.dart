@@ -8,7 +8,7 @@ import 'package:get/get.dart';
 
 
 class EditScreen extends StatefulWidget{
-  const EditScreen ({Key? key}) : super (key : key);
+  const EditScreen ({super.key});
   @override
   State<EditScreen> createState()  => _EditScreenState();
 }

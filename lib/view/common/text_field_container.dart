@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class TextFieldContainer extends StatelessWidget{
-  const TextFieldContainer ({Key? key,required this .child}) : super(key: key);
+  const TextFieldContainer ({super.key,required this .child});
 
 final Widget child;//TextFildContainerウィジェットでchildを指定をした中身を受けとる、コンストラクタから
 

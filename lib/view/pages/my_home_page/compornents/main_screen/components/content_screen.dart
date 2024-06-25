@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ContentScreen extends StatelessWidget{
-  const ContentScreen ({Key? key}) : super (key:key);
+  const ContentScreen ({super.key});
   @override
   Widget build(BuildContext context) {
   const style = TextStyle(fontSize: 30.0);

@@ -1,4 +1,5 @@
 import 'package:caraqueprod/controllers/auth_controller.dart';
+import 'package:caraqueprod/controllers/my_home_page_contoroller.dart';
 
 import 'package:caraqueprod/controllers/remote_config_contoroller.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/auth_screen.dart';
@@ -11,10 +12,10 @@ import 'package:get/get.dart';
 import '../../../flavors.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+  const MyHomePage({super.key});
   @override
   Widget build(BuildContext context) {
-
+    Get.put(MyHomePageContoroller());
     final authController = Get.put(AuthController());
     final remoteConfigContoroller = Get. put(RemoteConfigController());
     return Scaffold(

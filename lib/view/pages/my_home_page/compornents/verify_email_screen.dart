@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({Key? key}) : super(key: key);
+  const VerifyEmailScreen({super.key});
   @override
   Widget build(BuildContext context) {
     Get.put(VerifyEmailContoroller()); //コントローラーのonInitが発火
