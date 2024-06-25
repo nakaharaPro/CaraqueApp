@@ -1,3 +1,4 @@
+//ログイン画面
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/view/common/rounded_button.dart';
 import 'package:caraqueprod/view/common/text_field_container.dart';
@@ -11,7 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  //抽象クラスの継承
+
 
   final _formKey = GlobalKey<FormState>(); //validateを使うときに必須
 
