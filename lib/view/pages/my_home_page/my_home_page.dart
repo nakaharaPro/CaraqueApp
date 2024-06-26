@@ -17,7 +17,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(MyHomePageContoroller());
     final authController = Get.put(AuthController());
-    final remoteConfigContoroller = Get. put(RemoteConfigController());
+    final remoteConfigContoroller = Get.put(RemoteConfigController());
     return Scaffold(
       appBar: AppBar(
         title: Text(F.title),
@@ -27,11 +27,13 @@ class MyHomePage extends StatelessWidget {
         if(remoteConfigContoroller.rxIsMaintenenanceMode.value){
           return const MaintenanceScreen();//メンテナンス画面
         }else if(authUser ==  null){
-        return const AuthScreen();//認証画面
+        return const MainScreen();
+        //const AuthScreen();//認証画面
         }
         else if(!authUser.emailVerified){//emailVerifiedが行われていないなら(メール認証してたらtrueになる)
          return const VerifyEmailScreen();//メール認証画面
-        }else{
+        }
+        else{
           //rxAuthUserがnullじゃなくなったら
           return const MainScreen();
           }
