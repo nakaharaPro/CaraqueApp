@@ -21,6 +21,8 @@ dependencies:
   firebase_auth: ^4.10.1
   firebase_remote_config: ^4.2.4
   flutter_dotenv: ^5.0.2
+  google_fonts: ^6.2.1
+
 
 
 
@@ -37,8 +39,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-
-
+  fonts:
+    - family: Mincho
+      fonts:
+        - asset: fonts/SawarabiMincho-Regular.ttf
+    
 
 
 

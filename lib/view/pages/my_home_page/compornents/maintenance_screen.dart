@@ -8,6 +8,7 @@ const MaintenanceScreen({super.key});
   Widget build(BuildContext context) {
     
     return const Align(//配置位置を指定するウィジェット
+    
       alignment: Alignment.center,
       child:  Text("メンテナンス中です",style: TextStyle(fontSize: 25.0),),
     );

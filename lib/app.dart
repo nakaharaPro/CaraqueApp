@@ -15,6 +15,7 @@ class App extends StatelessWidget {
       title: F.title,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Mincho',//フォントファミリーの指定
       ),
       debugShowCheckedModeBanner: false,
       home: const MyHomePage(),
