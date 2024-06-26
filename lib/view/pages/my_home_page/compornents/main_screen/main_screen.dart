@@ -4,6 +4,7 @@ import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/comp
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/order_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_list_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 class MainScreen extends StatefulWidget {
@@ -35,15 +36,21 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       body: _screens[_selectedIndex],//画面配列からタップされたインデックスを指定して紐づく画面を表示
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: _omItemTapped,//タップされたアイコンのインデックスを取得
+        currentIndex: _selectedIndex,//アクティブなページ番号(インデックス)を指定
+        onTap: _omItemTapped,//タップされたアイコンのインデックスを取得（currentIndexとセット）
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
           BottomNavigationBarItem(icon: Icon(Icons.article), label: '注文'),
           BottomNavigationBarItem(icon: Icon(Icons.cake), label: '商品一覧'),
           BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: '会員情報'),
         ],
-        type: BottomNavigationBarType.fixed,
+        type: BottomNavigationBarType.fixed,//アイコンの下にラベルをつけるタイプ
+        backgroundColor: Colors.brown,
+        selectedIconTheme: const IconThemeData(color: Colors.orange),//選択されたアイコンの色
+        unselectedIconTheme: const IconThemeData(color: Colors.white),//選択されてないアイコンの色
+        selectedItemColor:  Colors.orange,//選択された文字の色
+        unselectedItemColor: Colors.white,//選択されてない文字の色
+
       ),
     );
   }

@@ -2,7 +2,6 @@ import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/my_home_page_contoroller.dart';
 
 import 'package:caraqueprod/controllers/remote_config_contoroller.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/auth_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/maintenance_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/verify_email_screen.dart';
@@ -27,7 +26,7 @@ class MyHomePage extends StatelessWidget {
         if(remoteConfigContoroller.rxIsMaintenenanceMode.value){
           return const MaintenanceScreen();//メンテナンス画面
         }else if(authUser ==  null){
-        return const MainScreen();
+        return const MainScreen();////////////////今これで確認している
         //const AuthScreen();//認証画面
         }
         else if(!authUser.emailVerified){//emailVerifiedが行われていないなら(メール認証してたらtrueになる)
