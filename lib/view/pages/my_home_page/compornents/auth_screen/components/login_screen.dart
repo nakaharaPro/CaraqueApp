@@ -7,29 +7,26 @@ import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
-   static const path = "/login";
+
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  
- 
-
   final _formKey = GlobalKey<FormState>(); //validateを使うときに必須
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    body:Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        titleWidget(),
-        _signupForm(),
-        _positiveButton(),
-        toggleLoginModeButton(),
-      ],
-    ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          titleWidget(),
+          _signupForm(),
+          _positiveButton(),
+          toggleLoginModeButton(),
+        ],
+      ),
     );
   }
 
@@ -102,7 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _positiveButton() {
     return RoundedButton(
       //自作ボタンデザインウィジェット
-      color:const Color.fromARGB(255, 113, 222, 252),
+      color: const Color.fromARGB(255, 113, 222, 252),
       onPressed: () {
         //バリデーショんを行う
         if (_formKey.currentState!.validate()) {

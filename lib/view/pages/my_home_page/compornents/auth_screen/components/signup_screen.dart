@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 //抽象クラスから継承
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
+
   @override
   State<SignupScreen> createState() => _SignupScreenState();
 }

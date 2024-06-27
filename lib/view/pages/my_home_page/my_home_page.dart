@@ -25,17 +25,10 @@ class MyHomePage extends StatelessWidget {
         final authUser = authController.rxAuthUser.value;
         if(remoteConfigContoroller.rxIsMaintenenanceMode.value){
           return const MaintenanceScreen();//メンテナンス画面
-        }else if(authUser ==  null){
+        }else{
         return const MainScreen();////////////////今これで確認している
         //const AuthScreen();//認証画面
         }
-        else if(!authUser.emailVerified){//emailVerifiedが行われていないなら(メール認証してたらtrueになる)
-         return const VerifyEmailScreen();//メール認証画面
-        }
-        else{
-          //rxAuthUserがnullじゃなくなったら
-          return const MainScreen();
-          }
       }),
     );
   }

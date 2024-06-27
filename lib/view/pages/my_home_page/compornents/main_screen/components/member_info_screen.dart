@@ -1,4 +1,5 @@
-
+import 'package:caraqueprod/controllers/auth_controller.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/auth_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +16,7 @@ class MemberInfoScreen extends StatelessWidget {
         children: [
           _titleWidget(),
           _loginButton(),
-          _signupButton(),
+          _logout(),
         ],
       ),
     );
@@ -33,18 +34,19 @@ class MemberInfoScreen extends StatelessWidget {
   Widget _loginButton() {
     return ElevatedButton(
       onPressed: () {
-       Get.toNamed(LoginScreen.path);
+        Get.toNamed(AuthScreen.path);
       },
-      child: const Text("ログインページへ"),
+      child: const Text("会員登録・ログインページへ"),
     );
   }
 
-  Widget _signupButton() {
+  Widget _logout() {
+    final authController = AuthController.to;
     return ElevatedButton(
-      onPressed: () {
-       Get.toNamed(SignupScreen.path);
-      },
-      child: const Text("会員登録ページへ"),
+      onPressed: authController.onSignOutButtonPressed,
+      child: const Text(
+        "ログアウト",
+      ),
     );
   }
 }

@@ -1,7 +1,6 @@
-//サンプルのためのアカウントページ
+//サンプル使用のためのアカウントページ
 import 'package:flutter/material.dart';
 
-import '../common/basic_page.dart';
 
 class AccountPage extends StatelessWidget {
   const AccountPage({super.key});

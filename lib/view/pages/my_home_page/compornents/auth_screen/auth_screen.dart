@@ -7,16 +7,19 @@ import 'package:get/get.dart';
 
 class AuthScreen extends StatelessWidget{
   const AuthScreen({super.key});
+  static const path = "/auth_screen"; //パス
  
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<AuthController>();
-    return Obx((){
+    return Scaffold(
+      body: Obx((){
       if(controller.rxIsLoginMode.value){
           return const LoginScreen();//ログインモードならログイン画面出力
       }else{
         return const SignupScreen();//そうじゃないなら新規登録画面出力
       }
-    });
+    }),
+    );
   }
 }
