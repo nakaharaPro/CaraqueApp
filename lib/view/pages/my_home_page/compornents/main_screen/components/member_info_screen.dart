@@ -1,5 +1,7 @@
 //会員ページ
 
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
+
 import 'package:flutter/material.dart';
 
 class MemberInfoScreen extends StatelessWidget{
@@ -7,12 +9,31 @@ class MemberInfoScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-  return Scaffold(
-      appBar: AppBar(
-        title: const Text('会員情報'),
-      ),
-      body: const Center(
-          child: Text('会員ページ画面', style: TextStyle(fontSize: 32.0))),
+  return Column(
+       //mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        _titleWidget(),
+        _loginButton(context),
+ 
+      ],
     );
   }
+
+  //タイトル関数
+  Widget _titleWidget(){
+    return const Text("ユーザー情報を編集",style: TextStyle(fontSize: 25.0,fontWeight: FontWeight.bold),);
+  }
+
+
+Widget _loginButton(BuildContext context){
+  return ElevatedButton(
+    onPressed: (){
+          Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const LoginScreen()));
+  }
+  , 
+  child: const Text("会員登録ページへ"),
+  );
+}
+
 }
