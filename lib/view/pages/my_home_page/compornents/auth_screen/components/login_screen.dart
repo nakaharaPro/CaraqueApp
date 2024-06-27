@@ -7,18 +7,21 @@ import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+   static const path = "/login";
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
+  
+ 
 
   final _formKey = GlobalKey<FormState>(); //validateを使うときに必須
-
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Scaffold(
+    body:Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         titleWidget(),
@@ -26,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
         _positiveButton(),
         toggleLoginModeButton(),
       ],
+    ),
     );
   }
 
