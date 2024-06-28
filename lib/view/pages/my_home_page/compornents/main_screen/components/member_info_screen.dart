@@ -1,7 +1,6 @@
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/auth_screen.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

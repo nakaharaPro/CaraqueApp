@@ -1,12 +1,14 @@
 //ログイン画面
 import 'package:caraqueprod/controllers/auth_controller.dart';
-import 'package:caraqueprod/view/common/rounded_button.dart';
+
 import 'package:caraqueprod/view/common/text_field_container.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+  static const path = "/login";
 
 
   @override
@@ -86,20 +88,12 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-//モード切り替えテキストボタン
-  Widget toggleLoginModeButton() {
-    const style = TextStyle(
-        fontSize: 25.0, color: Colors.black, fontWeight: FontWeight.bold);
-    return TextButton(
-      onPressed: AuthController.to.onToggleLoginModeButtonPressed,
-      child: const Text("新規登録画面へ移動", style: style),
-    );
-  }
-
   Widget _positiveButton() {
-    return RoundedButton(
-      //自作ボタンデザインウィジェット
-      color: const Color.fromARGB(255, 113, 222, 252),
+    const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
+    return ElevatedButton(
+  style: ElevatedButton.styleFrom(
+    foregroundColor: Colors.black, backgroundColor: Colors.brown,
+  ),
       onPressed: () {
         //バリデーショんを行う
         if (_formKey.currentState!.validate()) {
@@ -108,7 +102,23 @@ class _LoginScreenState extends State<LoginScreen> {
         }
         AuthController.to.onPositiveButtonPressed(); //ボタン押下処理（登録かサインイン）
       },
-      textValue: "ログイン",
+      child: const Text('新規会員登録',style: style,),
     );
+  }
+
+//モード切り替えテキストボタン
+
+
+  Widget toggleLoginModeButton() {
+    const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
+  return ElevatedButton(
+  style: ElevatedButton.styleFrom(
+    foregroundColor: Colors.black, backgroundColor: Colors.brown,
+  ),
+  onPressed: () {
+    Get.toNamed(SignupScreen.path);
+  },
+  child: const Text('新規会員登録へ',style: style,),
+);
   }
 }

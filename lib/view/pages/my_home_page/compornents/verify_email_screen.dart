@@ -6,6 +6,9 @@ import 'package:get/get.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key});
+  static const path = "/verify_email";
+
+  
   @override
   Widget build(BuildContext context) {
     Get.put(VerifyEmailContoroller()); //コントローラーのonInitが発火
