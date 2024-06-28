@@ -3,6 +3,7 @@ import 'package:caraqueprod/controllers/auth_controller.dart';
 
 import 'package:caraqueprod/view/common/text_field_container.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
           titleWidget(),
           _signupForm(),
           _positiveButton(),
-          toggleLoginModeButton(),
+          _toggleLoginModeButton(),
+          _homeButton(),
         ],
       ),
     );
@@ -107,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
 //新規会員登録画面
-  Widget toggleLoginModeButton() {
+  Widget _toggleLoginModeButton() {
     const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
   return ElevatedButton(
   style: ElevatedButton.styleFrom(
@@ -121,16 +123,20 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
 
-  Widget homeButton() {
+  Widget _homeButton() {
     const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
-  return ElevatedButton(
+  return ElevatedButton.icon(
+  icon: const Icon(
+    Icons.home,
+    color: Colors.white,
+  ),
+  label: const Text('ホームへ',style: style,),
   style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 72, 97, 121),
+    foregroundColor: Colors.white, backgroundColor: const Color.fromARGB(255, 72, 97, 121)
   ),
   onPressed: () {
-    Get.toNamed(SignupScreen.path);
+    Get.toNamed(MainScreen.path);
   },
-  child: const Text('新規会員登録へ',style: style,),
 );
-  }
+}
 }
