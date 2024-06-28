@@ -11,7 +11,6 @@ class GetPages {
   static final List<GetPage> value = [
     GetPage(name: AccountPage.path, page: () => const AccountPage()),
     GetPage(name: MainScreen.path, page: () => const MainScreen()),
-    GetPage(name:AuthScreen.path, page: () => const AuthScreen()),
     GetPage(name:VerifyEmailScreen.path, page: () => const VerifyEmailScreen()),
     GetPage(name:SignupScreen.path, page:() => const SignupScreen()),
     GetPage(name:LoginScreen.path, page:() => const LoginScreen()),

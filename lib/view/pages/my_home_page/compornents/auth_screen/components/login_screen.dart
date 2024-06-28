@@ -11,7 +11,6 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
   static const path = "/login";
 
-
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
@@ -91,11 +90,15 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _positiveButton() {
-    const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
+    const style = TextStyle(
+        fontSize: 25.0,
+        color: Color.fromARGB(255, 255, 255, 255),
+        fontWeight: FontWeight.bold);
     return ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 72, 97, 121),
-  ),
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 72, 97, 121),
+      ),
       onPressed: () {
         //バリデーショんを行う
         if (_formKey.currentState!.validate()) {
@@ -104,39 +107,54 @@ class _LoginScreenState extends State<LoginScreen> {
         }
         AuthController.to.onPositiveButtonPressed(); //ボタン押下処理（登録かサインイン）
       },
-      child: const Text('ログイン',style: style,),
+      child: const Text(
+        'ログイン',
+        style: style,
+      ),
     );
   }
 
 //新規会員登録画面
   Widget _toggleLoginModeButton() {
-    const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
-  return ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 72, 97, 121),
-  ),
-  onPressed: () {
-    Get.toNamed(SignupScreen.path);
-  },
-  child: const Text('新規会員登録へ',style: style,),
-);
+    const style = TextStyle(
+        fontSize: 25.0,
+        color: Color.fromARGB(255, 255, 255, 255),
+        fontWeight: FontWeight.bold);
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 72, 97, 121),
+      ),
+      onPressed: () {
+        Get.toNamed(SignupScreen.path);
+      },
+      child: const Text(
+        '新規会員登録へ',
+        style: style,
+      ),
+    );
   }
 
-
   Widget _homeButton() {
-    const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
-  return ElevatedButton.icon(
-  icon: const Icon(
-    Icons.home,
-    color: Colors.white,
-  ),
-  label: const Text('ホームへ',style: style,),
-  style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.white, backgroundColor: const Color.fromARGB(255, 72, 97, 121)
-  ),
-  onPressed: () {
-    Get.toNamed(MainScreen.path);
-  },
-);
-}
+    const style = TextStyle(
+        fontSize: 25.0,
+        color: Color.fromARGB(255, 255, 255, 255),
+        fontWeight: FontWeight.bold);
+    return ElevatedButton.icon(
+      icon: const Icon(
+        Icons.home,
+        color: Colors.white,
+      ),
+      label: const Text(
+        'ホームに戻る',
+        style: style,
+      ),
+      style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: const Color.fromARGB(255, 72, 97, 121)),
+      onPressed: () {
+        Get.back();
+      },
+    );
+  }
 }

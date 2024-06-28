@@ -8,8 +8,6 @@ import 'package:caraqueprod/view/pages/my_home_page/compornents/verify_email_scr
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../flavors.dart';
-
 class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
   @override
@@ -18,9 +16,6 @@ class MyHomePage extends StatelessWidget {
     final authController = Get.put(AuthController());
     final remoteConfigContoroller = Get.put(RemoteConfigController());
     return Scaffold(
-      appBar: AppBar(
-        title: Text(F.title),
-      ),
       body: Obx((){
         final authUser = authController.rxAuthUser.value;
         if(remoteConfigContoroller.rxIsMaintenenanceMode.value){

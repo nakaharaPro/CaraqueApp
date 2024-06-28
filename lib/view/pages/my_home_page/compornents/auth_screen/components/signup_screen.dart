@@ -3,9 +3,11 @@ import 'package:caraqueprod/controllers/auth_controller.dart';
 
 import 'package:caraqueprod/view/common/text_field_container.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/verify_email_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 //抽象クラスから継承
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -16,7 +18,6 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-
   final _formKey = GlobalKey<FormState>(); //validateを使うときに必須
   @override
   Widget build(BuildContext context) {
@@ -28,12 +29,11 @@ class _SignupScreenState extends State<SignupScreen> {
           _signupForm(),
           _positiveButton(),
           toggleLoginModeButton(),
+          _homeButton(),
         ],
       ),
     );
   }
-
-
 
   Widget titleWidget() {
     return const Text(
@@ -41,7 +41,6 @@ class _SignupScreenState extends State<SignupScreen> {
       style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
     );
   }
-  
 
   //入力フォーム関数
   Widget _signupForm() {
@@ -91,13 +90,16 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-
-   Widget _positiveButton() {
-    const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
+  Widget _positiveButton() {
+    const style = TextStyle(
+        fontSize: 25.0,
+        color: Color.fromARGB(255, 255, 255, 255),
+        fontWeight: FontWeight.bold);
     return ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 216, 91, 45),
-  ),
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 216, 91, 45),
+      ),
       onPressed: () {
         //バリデーショんを行う
         if (_formKey.currentState!.validate()) {
@@ -107,27 +109,54 @@ class _SignupScreenState extends State<SignupScreen> {
         AuthController.to.onPositiveButtonPressed(); //ボタン押下処理（登録かサインイン）
         Get.toNamed(VerifyEmailScreen.path);
       },
-      child: const Text('新規会員登録',style: style,),
+      child: const Text(
+        '新規会員登録',
+        style: style,
+      ),
     );
   }
 
 //モード切り替えテキストボタン
-
-
   Widget toggleLoginModeButton() {
-    const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
-  return ElevatedButton(
-  style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 216, 91, 45),
-  ),
-  onPressed: () {
-    Get.toNamed(LoginScreen.path);
-  },
-  child: const Text('ログイン画面へ',style: style,),
-);
+    const style = TextStyle(
+        fontSize: 25.0,
+        color: Color.fromARGB(255, 255, 255, 255),
+        fontWeight: FontWeight.bold);
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        foregroundColor: Colors.black,
+        backgroundColor: const Color.fromARGB(255, 216, 91, 45),
+      ),
+      onPressed: () {
+        Get.toNamed(LoginScreen.path);
+      },
+      child: const Text(
+        'ログイン画面へ',
+        style: style,
+      ),
+    );
   }
 
-
-  
-
+  Widget _homeButton() {
+    const style = TextStyle(
+        fontSize: 25.0,
+        color: Color.fromARGB(255, 255, 255, 255),
+        fontWeight: FontWeight.bold);
+    return ElevatedButton.icon(
+      icon: const Icon(
+        Icons.home,
+        color: Colors.white,
+      ),
+      label: const Text(
+        'ホームに戻る',
+        style: style,
+      ),
+      style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.white,
+          backgroundColor: const Color.fromARGB(255, 72, 97, 121)),
+      onPressed: () {
+       Get.back();
+      },
+    );
+  }
 }

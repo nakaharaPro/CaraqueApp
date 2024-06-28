@@ -46,7 +46,7 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: '会員情報'),
         ],
         type: BottomNavigationBarType.fixed,//アイコンの下にラベルをつけるタイプ
-        backgroundColor: Colors.brown,
+        backgroundColor: const Color.fromARGB(255, 72, 97, 121),
         selectedIconTheme: const IconThemeData(color: Colors.orange),//選択されたアイコンの色
         unselectedIconTheme: const IconThemeData(color: Colors.white),//選択されてないアイコンの色
         selectedItemColor:  Colors.orange,//選択された文字の色

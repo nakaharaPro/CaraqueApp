@@ -1,5 +1,6 @@
 import 'package:caraqueprod/controllers/auth_controller.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/auth_screen.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,13 +11,19 @@ class MemberInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        //mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _titleWidget(),
-          _loginButton(),
-          _logout(),
-        ],
+      appBar: AppBar(
+        title:const Text("会員情報")
+        ),
+      body: Center(
+        child: Column(
+          //mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _titleWidget(),
+            _loginButton(),
+            _signUpButton(),
+            _logout(),
+          ],
+        ),
       ),
     );
   }
@@ -33,9 +40,19 @@ class MemberInfoScreen extends StatelessWidget {
   Widget _loginButton() {
     return ElevatedButton(
       onPressed: () {
-        Get.toNamed(AuthScreen.path);
+        Get.toNamed(LoginScreen.path);
       },
-      child: const Text("会員登録・ログインページへ"),
+      child: const Text("ログインを行う"),
+    );
+  }
+
+  // サインアップボタン関数
+  Widget _signUpButton() {
+    return ElevatedButton(
+      onPressed: () {
+        Get.toNamed(SignupScreen.path);
+      },
+      child: const Text("新規会員登録を行う"),
     );
   }
 
