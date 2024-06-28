@@ -96,7 +96,7 @@ class _SignupScreenState extends State<SignupScreen> {
     const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
     return ElevatedButton(
   style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.black, backgroundColor: Colors.brown,
+    foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 216, 91, 45),
   ),
       onPressed: () {
         //バリデーショんを行う
@@ -118,7 +118,7 @@ class _SignupScreenState extends State<SignupScreen> {
     const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
   return ElevatedButton(
   style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.black, backgroundColor: Colors.brown,
+    foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 216, 91, 45),
   ),
   onPressed: () {
     Get.toNamed(LoginScreen.path);

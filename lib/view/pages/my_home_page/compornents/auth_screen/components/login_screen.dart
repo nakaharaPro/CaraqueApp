@@ -92,7 +92,7 @@ class _LoginScreenState extends State<LoginScreen> {
     const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
     return ElevatedButton(
   style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.black, backgroundColor: Colors.brown,
+    foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 72, 97, 121),
   ),
       onPressed: () {
         //バリデーショんを行う
@@ -102,18 +102,30 @@ class _LoginScreenState extends State<LoginScreen> {
         }
         AuthController.to.onPositiveButtonPressed(); //ボタン押下処理（登録かサインイン）
       },
-      child: const Text('新規会員登録',style: style,),
+      child: const Text('ログイン',style: style,),
     );
   }
 
-//モード切り替えテキストボタン
-
-
+//新規会員登録画面
   Widget toggleLoginModeButton() {
     const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
   return ElevatedButton(
   style: ElevatedButton.styleFrom(
-    foregroundColor: Colors.black, backgroundColor: Colors.brown,
+    foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 72, 97, 121),
+  ),
+  onPressed: () {
+    Get.toNamed(SignupScreen.path);
+  },
+  child: const Text('新規会員登録へ',style: style,),
+);
+  }
+
+
+  Widget homeButton() {
+    const style = TextStyle(fontSize: 25.0,color: Color.fromARGB(255, 255, 255, 255),fontWeight: FontWeight.bold);
+  return ElevatedButton(
+  style: ElevatedButton.styleFrom(
+    foregroundColor: Colors.black, backgroundColor: const Color.fromARGB(255, 72, 97, 121),
   ),
   onPressed: () {
     Get.toNamed(SignupScreen.path);
