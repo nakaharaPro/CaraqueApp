@@ -5,7 +5,7 @@ import 'package:caraqueprod/view/pages/my_home_page/compornents/verify_email_scr
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-//抽象クラスから継承
+
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
   static const path = "/signup";
@@ -55,7 +55,7 @@ class _SignupScreenState extends State<SignupScreen> {
   //
   Widget _reAuthMag() {
     final controller = AuthController.to;
-    const style = TextStyle(fontSize: 20.0, color: Colors.red);
+    const style = TextStyle(fontSize: 15.0, color: Colors.red);
     return Obx(() {
       if (controller.reMailAuth.value) {
         return const Text(
@@ -117,7 +117,7 @@ class _SignupScreenState extends State<SignupScreen> {
           //バリデーションを行ったあと、入力文字列情報を変数に保存する
           _formKey.currentState!.save(); //WidgetのonSaved処理が走る
         }
-        AuthController.to.onSignupButtonPressed(); //ボタン押下処理
+        AuthController.to.onSignupButtonPressed(); //メール認証実行
         Get.toNamed(VerifyEmailScreen.path);
       },
       child: const Text(

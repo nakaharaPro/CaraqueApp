@@ -32,7 +32,7 @@ class AuthController extends GetxController {
     if (GetUtils.isEmail(email) && password.length >= 8) {
       //ログインモードならサインイン処理、そうでなければ登録処理
           await _createUserWithEmailAndPassword();
-          verifyEmailContoroller.sendEmailVerification();
+          verifyEmailContoroller.sendEmailVerification();//firebaseAuthからアドレスを取得してメール送信
     }
   }
 //ログインボタン押下処理
@@ -55,9 +55,8 @@ class AuthController extends GetxController {
         email.trim(), password.trim());
     result.when(success: (res) {
       rxAuthUser.value = res;
-      UiHelper.showFlutterToast("");
     }, failure: () {
-      UiHelper.showFlutterToast("sippai");
+      UiHelper.showFlutterToast("入力情報に誤りがあります");
     });
   }
 
