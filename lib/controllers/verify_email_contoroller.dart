@@ -12,16 +12,12 @@ class VerifyEmailContoroller extends GetxController{
    static VerifyEmailContoroller get to => Get.find<VerifyEmailContoroller>(); //クラスメソッド
   Timer? timer;
 
-  @override
-  void onInit() async {//コントローラーが呼び出された時に1度だけ処理される
-  final user = AuthController.to.rxAuthUser.value;//認証情報
-  if(user == null) return;//認証状態じゃなければ処理終了
-  await _sendEmailVerification(user);
-    super.onInit();
-  }
 
 //認証メールの送信処理
-  Future<void> _sendEmailVerification(User user) async{
+  Future<void> sendEmailVerification() async{
+    final user = AuthController.to.rxAuthUser.value;//認証情報
+     if(user == null) return;//認証状態じゃなければ処理終了
+    
     final repository = AuthRepository();
     final result = await repository.sendEmailVerification(user);
     result.when(success: (_){
@@ -32,7 +28,7 @@ class VerifyEmailContoroller extends GetxController{
     });
   }
 
-//メール認証ステータす更新
+//メール認証ステータス更新
   void _startTimer(User user){//rxAuthUserのステータスを変更するため引数あり
     timer = Timer.periodic(
       const Duration(seconds: 1),//タイマーが1秒ごとに起動

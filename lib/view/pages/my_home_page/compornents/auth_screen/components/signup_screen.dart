@@ -1,6 +1,5 @@
 //サインアップ画面
 import 'package:caraqueprod/controllers/auth_controller.dart';
-
 import 'package:caraqueprod/view/common/text_field_container.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/verify_email_screen.dart';
 import 'package:flutter/material.dart';
@@ -102,8 +101,10 @@ class _SignupScreenState extends State<SignupScreen> {
         if (_formKey.currentState!.validate()) {
           //バリデーションを行ったあと、入力文字列情報を変数に保存する
           _formKey.currentState!.save(); //WidgetのonSaved処理が走る
+        
+        
         }
-        AuthController.to.onSignupButtonPressed(); //ボタン押下処理（登録かサインイン）
+        AuthController.to.onSignupButtonPressed(); //ボタン押下処理
         Get.toNamed(VerifyEmailScreen.path);
       },
       child: const Text(

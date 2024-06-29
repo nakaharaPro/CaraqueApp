@@ -1,3 +1,4 @@
+import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
 import 'package:caraqueprod/repository/auth_repository.dart';
 import 'package:caraqueprod/ui_core/ui_helper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -6,7 +7,7 @@ import 'package:get/get.dart';
 
 class AuthController extends GetxController {
   static AuthController get to => Get.find<AuthController>(); //クラスメソッド
-  
+  final verifyEmailContoroller = VerifyEmailContoroller.to;
   final rxAuthUser = Rx<User?>(FirebaseAuth.instance.currentUser); //ログインを情報を初期値にすることで最初はnullになる、ログインしたらここにUser情報が代入される
   //final rxIsLoginMode = false.obs; //obsは元からRx<bool>の型が定義されている。つまりこの記載は rxIsLoginMode = Rx<bool>(false)と同等
   String email = "";
@@ -30,6 +31,7 @@ class AuthController extends GetxController {
     if (GetUtils.isEmail(email) && password.length >= 8) {
       //ログインモードならサインイン処理、そうでなければ登録処理
           await _createUserWithEmailAndPassword();
+          //verifyEmailContoroller.sendEmailVerification();
     }
   }
 

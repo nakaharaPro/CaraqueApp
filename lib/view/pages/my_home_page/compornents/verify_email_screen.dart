@@ -1,4 +1,5 @@
 //メール認証画面
+import 'package:caraqueprod/constant/send_emailcheck_massage.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +13,10 @@ class VerifyEmailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(VerifyEmailContoroller()); //コントローラーのonInitが発火
 
-    return Scaffold(
-      body: SingleChildScrollView(
-        //画面からはみ出たらスクロールできるウィジェット
-        child: Column(
+    return SafeArea(
+      child: Scaffold(
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _emailPageTitle(),
             _maillCheckButton(),
@@ -26,11 +27,10 @@ class VerifyEmailScreen extends StatelessWidget {
   }
 
   Widget _emailPageTitle() {
-    const style = TextStyle(fontSize: 30.0);
+    const style = TextStyle(fontSize: 20.0);
     return const Center(
       child: Text(
-        '''確認メールを送信しました。メールボックスよりメールの内容からリンクを押下して認証を行ってください。
-        認証が完了したら、下の完了ボタンをタップしてください。''',
+        SendEmailcheckMassage.sendEmailcheckMassage, //文章
         style: style,
       ),
     );
@@ -39,13 +39,15 @@ class VerifyEmailScreen extends StatelessWidget {
   Widget _maillCheckButton() {
     final authController = AuthController.to;
     return ElevatedButton(
-      onPressed:(){
-        if(authController.rxAuthUser.value!.emailVerified){
+      onPressed: () {
+        if (authController.rxAuthUser.value!.emailVerified) {
+          //メール認証ができてたら
           debugPrint("メール認証完了");
-        Get.back();
-        }
-        else{
+          Get.back();
+          Get.back();
+        } else {
           debugPrint("あかん");
+          Get.back();
         }
       },
       child: const Text(
