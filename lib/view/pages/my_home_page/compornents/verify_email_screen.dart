@@ -37,9 +37,17 @@ class VerifyEmailScreen extends StatelessWidget {
   }
 
   Widget _maillCheckButton() {
-    final authController = Get.find<AuthController>();
+    final authController = AuthController.to;
     return ElevatedButton(
-      onPressed: authController.onSignOutButtonPressed,
+      onPressed:(){
+        if(authController.rxAuthUser.value!.emailVerified){
+          debugPrint("メール認証完了");
+        Get.back();
+        }
+        else{
+          debugPrint("あかん");
+        }
+      },
       child: const Text(
         "完了",
       ),

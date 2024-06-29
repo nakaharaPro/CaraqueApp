@@ -9,6 +9,7 @@ import 'package:get/get.dart';
 
 
 class VerifyEmailContoroller extends GetxController{
+   static VerifyEmailContoroller get to => Get.find<VerifyEmailContoroller>(); //クラスメソッド
   Timer? timer;
 
   @override
