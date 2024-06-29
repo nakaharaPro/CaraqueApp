@@ -31,7 +31,7 @@ class AuthController extends GetxController {
     if (GetUtils.isEmail(email) && password.length >= 8) {
       //ログインモードならサインイン処理、そうでなければ登録処理
           await _createUserWithEmailAndPassword();
-          //verifyEmailContoroller.sendEmailVerification();
+          verifyEmailContoroller.sendEmailVerification();
     }
   }
 
