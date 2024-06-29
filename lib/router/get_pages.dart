@@ -1,6 +1,5 @@
 //画面リンクパス一覧
 import 'package:caraqueprod/view/pages/account_page.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/auth_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';

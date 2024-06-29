@@ -3,7 +3,6 @@ import 'package:caraqueprod/controllers/auth_controller.dart';
 
 import 'package:caraqueprod/view/common/text_field_container.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
           titleWidget(),
           _signupForm(),
           _positiveButton(),
-          _toggleLoginModeButton(),
+          _loginOrSignupScreen(),
           _homeButton(),
         ],
       ),
@@ -97,7 +96,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.black,
-        backgroundColor: const Color.fromARGB(255, 72, 97, 121),
+        backgroundColor: const Color.fromARGB(255, 216, 91, 45),
       ),
       onPressed: () {
         //バリデーショんを行う
@@ -105,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
           //バリデーションを行ったあと、入力文字列情報を変数に保存する
           _formKey.currentState!.save(); //WidgetのonSaved処理が走る
         }
-        AuthController.to.onPositiveButtonPressed(); //ボタン押下処理（登録かサインイン）
+        AuthController.to.onLoginButtonPressed(); //ボタン押下処理（登録かサインイン）
       },
       child: const Text(
         'ログイン',
@@ -115,7 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
 //新規会員登録画面
-  Widget _toggleLoginModeButton() {
+  Widget _loginOrSignupScreen() {
     const style = TextStyle(
         fontSize: 25.0,
         color: Color.fromARGB(255, 255, 255, 255),
@@ -123,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.black,
-        backgroundColor: const Color.fromARGB(255, 72, 97, 121),
+        backgroundColor: const Color.fromARGB(255, 216, 91, 45),
       ),
       onPressed: () {
         Get.toNamed(SignupScreen.path);

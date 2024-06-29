@@ -8,7 +8,7 @@ class AuthController extends GetxController {
   static AuthController get to => Get.find<AuthController>(); //クラスメソッド
   
   final rxAuthUser = Rx<User?>(FirebaseAuth.instance.currentUser); //ログインを情報を初期値にすることで最初はnullになる、ログインしたらここにUser情報が代入される
-  final rxIsLoginMode = false.obs; //obsは元からRx<bool>の型が定義されている。つまりこの記載は rxIsLoginMode = Rx<bool>(false)と同等
+  //final rxIsLoginMode = false.obs; //obsは元からRx<bool>の型が定義されている。つまりこの記載は rxIsLoginMode = Rx<bool>(false)と同等
   String email = "";
   String password = "";
 
@@ -25,13 +25,20 @@ class AuthController extends GetxController {
     debugPrint(password);
   }
 
-//送信ボタン押下処理
-  void onPositiveButtonPressed() async {
+//新規会員登録ボタン押下処理
+  void onSignupButtonPressed() async {
     if (GetUtils.isEmail(email) && password.length >= 8) {
       //ログインモードならサインイン処理、そうでなければ登録処理
-      rxIsLoginMode.value
-          ? await _signInWithEmailAndPassword()
-          : _createUserWithEmailAndPassword();
+          await _createUserWithEmailAndPassword();
+    }
+  }
+
+//ログインボタン押下処理
+  void onLoginButtonPressed() async {
+    if (GetUtils.isEmail(email) && password.length >= 8) {
+      //ログインモードならサインイン処理、そうでなければ登録処理
+      await _signInWithEmailAndPassword();
+     
     }
   }
 
@@ -81,11 +88,4 @@ class AuthController extends GetxController {
       UiHelper.showFlutterToast("ログアウトに失敗しました");
     });
   }
-
-
-
-//モードの切り替え
-  void onToggleLoginModeButtonPressed() => _toggleIsLoginMode();
-  void _toggleIsLoginMode() =>
-      rxIsLoginMode.value = !rxIsLoginMode.value; //値が反転する
 }

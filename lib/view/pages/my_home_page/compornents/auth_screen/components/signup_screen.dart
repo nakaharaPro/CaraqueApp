@@ -3,7 +3,6 @@ import 'package:caraqueprod/controllers/auth_controller.dart';
 
 import 'package:caraqueprod/view/common/text_field_container.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/verify_email_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,7 +27,7 @@ class _SignupScreenState extends State<SignupScreen> {
           titleWidget(),
           _signupForm(),
           _positiveButton(),
-          toggleLoginModeButton(),
+          _loginOrSignupScreen(),
           _homeButton(),
         ],
       ),
@@ -106,7 +105,7 @@ class _SignupScreenState extends State<SignupScreen> {
           //バリデーションを行ったあと、入力文字列情報を変数に保存する
           _formKey.currentState!.save(); //WidgetのonSaved処理が走る
         }
-        AuthController.to.onPositiveButtonPressed(); //ボタン押下処理（登録かサインイン）
+        AuthController.to.onSignupButtonPressed(); //ボタン押下処理（登録かサインイン）
         Get.toNamed(VerifyEmailScreen.path);
       },
       child: const Text(
@@ -116,8 +115,8 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-//モード切り替えテキストボタン
-  Widget toggleLoginModeButton() {
+//ログイン、サインアップ切り替えテキストボタン
+  Widget _loginOrSignupScreen() {
     const style = TextStyle(
         fontSize: 25.0,
         color: Color.fromARGB(255, 255, 255, 255),

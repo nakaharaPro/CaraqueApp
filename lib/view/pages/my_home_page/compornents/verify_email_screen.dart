@@ -8,19 +8,19 @@ class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key});
   static const path = "/verify_email";
 
-  
   @override
   Widget build(BuildContext context) {
     Get.put(VerifyEmailContoroller()); //コントローラーのonInitが発火
-   
 
-    return SingleChildScrollView(
-      //画面からはみ出たらスクロールできるウィジェット
-      child: Column(
-        children: [
-          _emailPageTitle(),
-          _logout(),
-        ],
+    return Scaffold(
+      body: SingleChildScrollView(
+        //画面からはみ出たらスクロールできるウィジェット
+        child: Column(
+          children: [
+            _emailPageTitle(),
+            _logout(),
+          ],
+        ),
       ),
     );
   }
@@ -36,7 +36,7 @@ class VerifyEmailScreen extends StatelessWidget {
   }
 
   Widget _logout() {
-     final authController = Get.find<AuthController>();
+    final authController = Get.find<AuthController>();
     return ElevatedButton(
       onPressed: authController.onSignOutButtonPressed,
       child: const Text(
