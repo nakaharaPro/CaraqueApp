@@ -2,7 +2,6 @@
 import 'package:caraqueprod/controllers/auth_controller.dart';
 
 import 'package:caraqueprod/view/common/text_field_container.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +24,6 @@ class _LoginScreenState extends State<LoginScreen> {
           titleWidget(),
           _signupForm(),
           _positiveButton(),
-          _loginOrSignupScreen(),
           _homeButton(),
         ],
       ),
@@ -113,26 +111,6 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-//新規会員登録画面
-  Widget _loginOrSignupScreen() {
-    const style = TextStyle(
-        fontSize: 25.0,
-        color: Color.fromARGB(255, 255, 255, 255),
-        fontWeight: FontWeight.bold);
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.black,
-        backgroundColor: const Color.fromARGB(255, 216, 91, 45),
-      ),
-      onPressed: () {
-        Get.toNamed(SignupScreen.path);
-      },
-      child: const Text(
-        '新規会員登録へ',
-        style: style,
-      ),
-    );
-  }
 
   Widget _homeButton() {
     const style = TextStyle(

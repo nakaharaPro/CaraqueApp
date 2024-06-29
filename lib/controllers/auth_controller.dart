@@ -69,9 +69,6 @@ class AuthController extends GetxController {
     });
   }
 
-
-
-
 //サインアウト
   void onSignOutButtonPressed() async {
     _signOut();
