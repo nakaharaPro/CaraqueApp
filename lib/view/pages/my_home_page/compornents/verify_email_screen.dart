@@ -2,6 +2,7 @@
 import 'package:caraqueprod/constant/send_emailcheck_massage.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
+import 'package:caraqueprod/ui_core/ui_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -42,11 +43,17 @@ class VerifyEmailScreen extends StatelessWidget {
       onPressed: () {
         if (authController.rxAuthUser.value!.emailVerified) {
           //メール認証ができてたら
-          debugPrint("メール認証完了");
+          UiHelper.showFlutterToast("新規会員登録が完了しました。");
+          if(authController.reMailAuth.value){
+             authController.reMailAuth.value = !authController.reMailAuth.value;
+          }
           Get.back();
-          Get.back();
+          Get.back();//ホーム画面へ遷移
         } else {
-          debugPrint("あかん");
+          UiHelper.showFlutterToast("認証が確認できませんでした。");
+          authController.reMailAuth.value = !authController.reMailAuth.value;
+          var log = authController.reMailAuth.value;
+          debugPrint("ログ：$log");
           Get.back();
         }
       },

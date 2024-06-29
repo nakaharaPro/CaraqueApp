@@ -22,7 +22,7 @@ class _SignupScreenState extends State<SignupScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          titleWidget(),
+          _titleWidget(),
           _signupForm(),
           _positiveButton(),
           _homeButton(),
@@ -31,9 +31,9 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  Widget titleWidget() {
+  Widget _titleWidget() {
     return const Text(
-      "新規登録の情報を入力してください",
+      "新規登録",
       style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
     );
   }
@@ -44,11 +44,28 @@ class _SignupScreenState extends State<SignupScreen> {
       key: _formKey, //validateを使う時にはkeyにGrobal<formstate>を設定しなければならない
       child: Column(
         children: [
+          _reAuthMag(),
           _emailTextField(),
           _passwordTextField(),
         ],
       ),
     );
+  }
+
+  //
+  Widget _reAuthMag() {
+    final controller = AuthController.to;
+    const style = TextStyle(fontSize: 20.0, color: Colors.red);
+    return Obx(() {
+      if (controller.reMailAuth.value) {
+        return const Text(
+          "※メールアドレスを使用可能なものに変更してください。",
+          style: style,
+        );
+      } else {
+        return const Text("");
+      }
+    });
   }
 
   //emailを入力する関数
@@ -88,9 +105,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   Widget _positiveButton() {
     const style = TextStyle(
-        fontSize: 25.0,
-        color: Color.fromARGB(255, 255, 255, 255),
-        fontWeight: FontWeight.bold);
+        fontSize: 25.0, color: Colors.white, fontWeight: FontWeight.bold);
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.black,
@@ -101,26 +116,20 @@ class _SignupScreenState extends State<SignupScreen> {
         if (_formKey.currentState!.validate()) {
           //バリデーションを行ったあと、入力文字列情報を変数に保存する
           _formKey.currentState!.save(); //WidgetのonSaved処理が走る
-        
-        
         }
         AuthController.to.onSignupButtonPressed(); //ボタン押下処理
         Get.toNamed(VerifyEmailScreen.path);
       },
       child: const Text(
-        '新規会員登録',
+        '登録',
         style: style,
       ),
     );
   }
 
-
-
   Widget _homeButton() {
     const style = TextStyle(
-        fontSize: 25.0,
-        color: Color.fromARGB(255, 255, 255, 255),
-        fontWeight: FontWeight.bold);
+        fontSize: 25.0, color: Colors.white, fontWeight: FontWeight.bold);
     return ElevatedButton.icon(
       icon: const Icon(
         Icons.home,
@@ -134,7 +143,7 @@ class _SignupScreenState extends State<SignupScreen> {
           foregroundColor: Colors.white,
           backgroundColor: const Color.fromARGB(255, 72, 97, 121)),
       onPressed: () {
-       Get.back();
+        Get.back();
       },
     );
   }

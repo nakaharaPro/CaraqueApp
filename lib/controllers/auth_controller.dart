@@ -8,8 +8,9 @@ import 'package:get/get.dart';
 class AuthController extends GetxController {
   static AuthController get to => Get.find<AuthController>(); //クラスメソッド
   final verifyEmailContoroller = VerifyEmailContoroller.to;
-  final rxAuthUser = Rx<User?>(FirebaseAuth.instance.currentUser); //ログインを情報を初期値にすることで最初はnullになる、ログインしたらここにUser情報が代入される
-  //final rxIsLoginMode = false.obs; //obsは元からRx<bool>の型が定義されている。つまりこの記載は rxIsLoginMode = Rx<bool>(false)と同等
+  final rxAuthUser = Rx<User?>(FirebaseAuth.instance.currentUser); 
+  final reMailAuth = false.obs; //メール認証有無
+  //obsは元からRx<bool>の型が定義されている。つまりこの記載は rxIsLoginMode = Rx<bool>(false)と同等
   String email = "";
   String password = "";
 
@@ -34,7 +35,6 @@ class AuthController extends GetxController {
           verifyEmailContoroller.sendEmailVerification();
     }
   }
-
 //ログインボタン押下処理
   void onLoginButtonPressed() async {
     if (GetUtils.isEmail(email) && password.length >= 8) {
@@ -43,6 +43,10 @@ class AuthController extends GetxController {
      
     }
   }
+  
+
+
+
 
 //認証ユーザーの登録
   Future<void> _createUserWithEmailAndPassword() async {
@@ -51,9 +55,9 @@ class AuthController extends GetxController {
         email.trim(), password.trim());
     result.when(success: (res) {
       rxAuthUser.value = res;
-      UiHelper.showFlutterToast("新規登録が成功しました");
+      UiHelper.showFlutterToast("");
     }, failure: () {
-      UiHelper.showFlutterToast("新規登録が成功しました");
+      UiHelper.showFlutterToast("sippai");
     });
   }
 
@@ -87,4 +91,9 @@ class AuthController extends GetxController {
       UiHelper.showFlutterToast("ログアウトに失敗しました");
     });
   }
+
+//boolステータスの変更
+  void changeEmailAuthState() =>
+      reMailAuth.value = !reMailAuth.value; //trueとfalseの反転
 }
+
