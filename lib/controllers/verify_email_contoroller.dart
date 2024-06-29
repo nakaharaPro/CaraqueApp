@@ -17,14 +17,13 @@ class VerifyEmailContoroller extends GetxController{
   Future<void> sendEmailVerification() async{
     final user = AuthController.to.rxAuthUser.value;//認証情報
      if(user == null) return;//認証状態じゃなければ処理終了
-    
     final repository = AuthRepository();
     final result = await repository.sendEmailVerification(user);
     result.when(success: (_){
       _startTimer(user);
-      UiHelper.showFlutterToast("メールが送信されました");
+      UiHelper.showFlutterToast("認証メールが送信されました");
     }, failure: (){
-      UiHelper.showFlutterToast("メールの送信に失敗しました");
+      UiHelper.showFlutterToast("認証メールの送信に失敗しました");
     });
   }
 

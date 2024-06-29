@@ -1,9 +1,11 @@
 //ログイン画面
+import 'package:caraqueprod/constant/animation_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 
 import 'package:caraqueprod/view/common/text_field_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lottie/lottie.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -18,14 +20,17 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      body: SafeArea(
+        child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           titleWidget(),
+          _animation(),
           _signupForm(),
           _positiveButton(),
           _homeButton(),
         ],
+      ),
       ),
     );
   }
@@ -35,6 +40,17 @@ class _LoginScreenState extends State<LoginScreen> {
     return const Text(
       "ログイン情報を入力してください",
       style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+    );
+  }
+
+//アニメーション
+  Widget _animation() {
+    return Center(
+      child: Lottie.asset(
+      coffeeBreak,//アニメーションjsonリンク
+        width: 350,
+        height: 200,
+      ),
     );
   }
 
@@ -75,7 +91,7 @@ class _LoginScreenState extends State<LoginScreen> {
       //自作デザインウィジェット
       child: TextFormField(
         obscureText: true, //パスワードを隠す
-        decoration: const InputDecoration(hintText: "パスワード"), //ヒントテキスト
+        decoration: const InputDecoration(hintText: "パスワード ※8桁以上"), //ヒントテキスト
         onSaved: controller
             .setPassword, //onSavedは(value)が省略できるため、このメソッドの引数にはフォーム入力値がvalueとして渡る
         validator: (value) {
@@ -88,9 +104,8 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _positiveButton() {
     const style = TextStyle(
-        fontSize: 25.0,
-        color: Color.fromARGB(255, 255, 255, 255),
-        fontWeight: FontWeight.bold);
+        fontSize: 25.0, color: Colors.white, fontWeight: FontWeight.bold);
+
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         foregroundColor: Colors.black,
@@ -103,6 +118,7 @@ class _LoginScreenState extends State<LoginScreen> {
           _formKey.currentState!.save(); //WidgetのonSaved処理が走る
         }
         AuthController.to.onLoginButtonPressed(); //ボタン押下処理（登録かサインイン）
+        Get.back();
       },
       child: const Text(
         'ログイン',
@@ -111,12 +127,11 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-
+//ホームボタン
   Widget _homeButton() {
     const style = TextStyle(
-        fontSize: 25.0,
-        color: Color.fromARGB(255, 255, 255, 255),
-        fontWeight: FontWeight.bold);
+        fontSize: 25.0, color: Colors.white, fontWeight: FontWeight.bold);
+
     return ElevatedButton.icon(
       icon: const Icon(
         Icons.home,

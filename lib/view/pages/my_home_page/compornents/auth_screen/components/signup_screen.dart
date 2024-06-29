@@ -92,7 +92,7 @@ class _SignupScreenState extends State<SignupScreen> {
       //自作デザインウィジェット
       child: TextFormField(
         obscureText: true, //パスワードを隠す
-        decoration: const InputDecoration(hintText: "パスワード"), //ヒントテキスト
+        decoration: const InputDecoration(hintText: "パスワード ※8桁以上"), //ヒントテキスト
         onSaved: controller
             .setPassword, //onSavedは(value)が省略できるため、このメソッドの引数にはフォーム入力値がvalueとして渡る
         validator: (value) {

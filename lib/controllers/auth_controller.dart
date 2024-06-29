@@ -54,7 +54,7 @@ class AuthController extends GetxController {
     final result = await repository.createUserWidthEmailAndPassword(
         email.trim(), password.trim());
     result.when(success: (res) {
-      rxAuthUser.value = res;
+      rxAuthUser.value = res;//情報更新
     }, failure: () {
       UiHelper.showFlutterToast("入力情報に誤りがあります");
     });
@@ -67,7 +67,7 @@ class AuthController extends GetxController {
     final result = await repository.signInWithEmailAndPassword(
         email.trim(), password.trim());
     result.when(success: (res) {
-      rxAuthUser.value = res;
+      rxAuthUser.value = res;//情報更新
       UiHelper.showFlutterToast("ログインが成功しました");
     }, failure: () {
       UiHelper.showFlutterToast("ログインが失敗しました");

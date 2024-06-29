@@ -1,0 +1,1 @@
+const coffeeBreak = 'assets/lotties/loginAnimation.json';

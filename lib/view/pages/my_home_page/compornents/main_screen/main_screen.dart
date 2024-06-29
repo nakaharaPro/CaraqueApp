@@ -1,11 +1,10 @@
-//ナビゲーションバー及びmain画面
+import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/home_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/order_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_list_screen.dart';
 import 'package:flutter/material.dart';
-
-
+import 'package:get/get.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -26,53 +25,65 @@ class _MainScreenState extends State<MainScreen> {
 
   int _selectedIndex = 0;
 
-  void _omItemTapped(int index) {
+  void _onItemTapped(int index) {
     setState(() {
-      _selectedIndex = index;//タップされたインデックス代入
+      _selectedIndex = index; //タップされたインデックス代入
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final authController = AuthController.to;
+      const style = TextStyle(
+        fontWeight: FontWeight.bold);
     return Scaffold(
-      body: _screens[_selectedIndex],//画面配列からタップされたインデックスを指定して紐づく画面を表示
+      appBar: AppBar(
+        actions: <Widget>[
+          Obx(() {
+            return ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                foregroundColor: authController.rxAuthUser.value != null
+                    ? Colors.white
+                    : Colors.black,
+                backgroundColor: authController.rxAuthUser.value != null
+                    ? Colors.green
+                    : Colors.grey,
+                shape: const StadiumBorder(),
+              ),
+              child: Text(
+                  authController.rxAuthUser.value != null ? 'ログイン中' : '未ログイン',style: style,),
+              onPressed: () {
+                //処理なし
+              },
+            );
+          }),
+          //追加したかったらコメント消す
+          // IconButton(
+          //   onPressed: () {},
+          //   icon: const Icon(Icons.more_vert),
+          // ),
+        ],
+      ),
+      body: _screens[_selectedIndex], //画面配列からタップされたインデックスを指定して紐づく画面を表示
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,//アクティブなページ番号(インデックス)を指定
-        onTap: _omItemTapped,//タップされたアイコンのインデックスを取得（currentIndexとセット）
+        currentIndex: _selectedIndex, //アクティブなページ番号(インデックス)を指定
+        onTap: _onItemTapped, //タップされたアイコンのインデックスを取得（currentIndexとセット）
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
           BottomNavigationBarItem(icon: Icon(Icons.article), label: '注文'),
           BottomNavigationBarItem(icon: Icon(Icons.cake), label: '商品一覧'),
-          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: '会員情報'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle), label: '会員情報'),
         ],
-        type: BottomNavigationBarType.fixed,//アイコンの下にラベルをつけるタイプ
+        type: BottomNavigationBarType.fixed, //アイコンの下にラベルをつけるタイプ
         backgroundColor: const Color.fromARGB(255, 72, 97, 121),
-        selectedIconTheme: const IconThemeData(color: Colors.orange),//選択されたアイコンの色
-        unselectedIconTheme: const IconThemeData(color: Colors.white),//選択されてないアイコンの色
-        selectedItemColor:  Colors.orange,//選択された文字の色
-        unselectedItemColor: Colors.white,//選択されてない文字の色
-
+        selectedIconTheme:
+            const IconThemeData(color: Colors.orange), //選択されたアイコンの色
+        unselectedIconTheme:
+            const IconThemeData(color: Colors.white), //選択されてないアイコンの色
+        selectedItemColor: Colors.orange, //選択された文字の色
+        unselectedItemColor: Colors.white, //選択されてない文字の色
       ),
     );
   }
 }
-
-
-
-
-
-
-
-    // return Obx(() {
-    //   final publicUser = controller.rxPublicUser.value;
-    //   if(publicUser == null){
-    //     return const CircularProgressIndicator();//クルクル回るやつ
-    //   }else{
-    //     return publicUser.name.isEmpty ? const EditScreen() : const ContentScreen();//firebaseのnameフィールドの有無で出力画面を変える
-    //   }
-    //   });
-
-   
-
-
-   
