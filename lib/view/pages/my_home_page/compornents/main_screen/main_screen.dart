@@ -35,6 +35,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     final authController = AuthController.to;
       const style = TextStyle(
+        fontSize: 12.0,
         fontWeight: FontWeight.bold);
     return Scaffold(
       appBar: AppBar(

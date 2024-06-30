@@ -24,7 +24,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          titleWidget(),
+          _titleWidget(),
           _animation(),
           _signupForm(),
           _positiveButton(),
@@ -36,10 +36,12 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
 //タイトル
-  Widget titleWidget() {
+  Widget _titleWidget() {
     return const Text(
-      "ログイン情報を入力してください",
-      style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+      "Login",
+      style: TextStyle(fontSize:25.0, shadows: [
+    Shadow(offset: Offset(5, 5), blurRadius: 10, color: Colors.grey)//ofsetはx軸、blurRadiusはぼかし
+  ]),
     );
   }
 
@@ -103,14 +105,12 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _positiveButton() {
-    const style = TextStyle(
-        fontSize: 25.0, color: Colors.white, fontWeight: FontWeight.bold);
-
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.black,
-        backgroundColor: const Color.fromARGB(255, 216, 91, 45),
-      ),
+       const style = TextStyle(
+        fontSize: 20.0, color: Colors.black);
+    return OutlinedButton(
+  style: OutlinedButton.styleFrom(
+    foregroundColor: Colors.black,
+  ),
       onPressed: () {
         //バリデーショんを行う
         if (_formKey.currentState!.validate()) {
@@ -121,7 +121,7 @@ class _LoginScreenState extends State<LoginScreen> {
         Get.back();
       },
       child: const Text(
-        'ログイン',
+        'Login',
         style: style,
       ),
     );

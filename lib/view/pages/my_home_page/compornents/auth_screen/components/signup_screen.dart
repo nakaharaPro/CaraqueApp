@@ -1,10 +1,11 @@
 //サインアップ画面
+import 'package:caraqueprod/constant/animation_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/view/common/text_field_container.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/verify_email_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'package:lottie/lottie.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -23,6 +24,7 @@ class _SignupScreenState extends State<SignupScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           _titleWidget(),
+          _animation(),
           _signupForm(),
           _positiveButton(),
           _homeButton(),
@@ -33,8 +35,21 @@ class _SignupScreenState extends State<SignupScreen> {
 
   Widget _titleWidget() {
     return const Text(
-      "新規登録",
-      style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+      "Signup",
+      style: TextStyle(fontSize: 25.0, shadows: [
+        Shadow(offset: Offset(5, 5), blurRadius: 10, color: Colors.grey)
+      ]),
+    );
+  }
+
+  //アニメーション
+  Widget _animation() {
+    return Center(
+      child: Lottie.asset(
+        coffeeBreak, //アニメーションjsonリンク
+        width: 350,
+        height: 200,
+      ),
     );
   }
 
@@ -105,23 +120,23 @@ class _SignupScreenState extends State<SignupScreen> {
 
   Widget _positiveButton() {
     const style = TextStyle(
-        fontSize: 25.0, color: Colors.white, fontWeight: FontWeight.bold);
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.black,
-        backgroundColor: const Color.fromARGB(255, 216, 91, 45),
-      ),
+        fontSize: 20.0, color: Colors.black);
+    return OutlinedButton(
+  style: OutlinedButton.styleFrom(
+    foregroundColor: Colors.black,
+  ),
       onPressed: () {
         //バリデーショんを行う
         if (_formKey.currentState!.validate()) {
           //バリデーションを行ったあと、入力文字列情報を変数に保存する
           _formKey.currentState!.save(); //WidgetのonSaved処理が走る
-        }
         AuthController.to.onSignupButtonPressed(); //メール認証実行
         Get.toNamed(VerifyEmailScreen.path);
+        }
+      
       },
       child: const Text(
-        '登録',
+        'Registration',
         style: style,
       ),
     );
