@@ -16,7 +16,13 @@ class MyHomePage extends StatelessWidget {
     Get.put(VerifyEmailContoroller());
     Get.put(AuthController());
     final remoteConfigContoroller = Get.put(RemoteConfigController());
+      
     return Scaffold(
+      appBar: AppBar(
+       centerTitle: true,
+        title: const Text("Caraque",style: TextStyle(fontSize:25.0)),
+        toolbarHeight: 23.0,//AppBarの高さ
+      ),
       body: Obx((){
         if(remoteConfigContoroller.rxIsMaintenenanceMode.value){
           return const MaintenanceScreen();//メンテナンス画面
