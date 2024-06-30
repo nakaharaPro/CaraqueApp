@@ -25,7 +25,7 @@ class CardConst extends StatelessWidget {
                 AspectRatio(
                   aspectRatio: 16 / 9,
                   child: Ink.image(
-                    image: AssetImage(assetImageURL),
+                    image: AssetImage(assetImageURL),//画像URL
                     fit: BoxFit.cover,
                     child: InkWell(
                       onTap: () {}, // 画像をタップしたときの動作
@@ -37,11 +37,11 @@ class CardConst extends StatelessWidget {
                   right: 16,
                   left: 16,
                   child: Text(
-                    contentText,
+                    contentText, //商品名
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
-                      fontSize: 10,
+                      fontSize: 15,
                     ),
                   ),
                 ),
@@ -50,7 +50,7 @@ class CardConst extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(16).copyWith(bottom: 0),
               child: Text(
-                descriptionText,
+                descriptionText,//商品説明
                 overflow: TextOverflow.ellipsis,
                 maxLines: 3,
                 style: const TextStyle(fontSize: 16),
