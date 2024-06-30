@@ -23,7 +23,10 @@ dependencies:
   firebase_remote_config: ^4.2.4
   flutter_dotenv: ^5.0.2
   google_fonts: ^6.2.1
-  lottie: ^3.1.2
+  lottie: ^3.1.2 #アニメーション
+  carousel_slider: ^4.0.0 #スライダー
+  smooth_page_indicator: ^0.3.0-nullsafety.0 #スライダーの丸
+  flutter_staggered_animations: ^1.1.1 #ウィジェットアニメーション
 
 
 
@@ -43,6 +46,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/lotties/
+    - assets/images/
 
   fonts:
     - family: Mincho
