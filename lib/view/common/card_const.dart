@@ -6,11 +6,12 @@ class CardConst extends StatelessWidget {
     required this.assetImageURL,
     required this.contentText,
     required this.descriptionText,
+    //ここにカードを押下した時に個別商品ページに飛ばしたい
   });
 
-  final String assetImageURL;//画像URL
-  final String contentText;//商品名
-  final String descriptionText;//商品説明
+  final String assetImageURL; //画像URL
+  final String contentText; //商品名
+  final String descriptionText; //商品説明
 
   @override
   Widget build(BuildContext context) => Card(
@@ -23,39 +24,45 @@ class CardConst extends StatelessWidget {
             Stack(
               children: [
                 AspectRatio(
-                  aspectRatio: 16 / 9,
+                  aspectRatio: 16 / 16, //画像比率 下にメッセージを配置する場合は16/9
                   child: Ink.image(
-                    image: AssetImage(assetImageURL),//画像URL
+                    image: AssetImage(assetImageURL), //画像URL
                     fit: BoxFit.cover,
                     child: InkWell(
-                      onTap: () {}, // 画像をタップしたときの動作
+                      onTap: () {
+                        // 画像をタップしたときの動作
+                      },
                     ),
                   ),
                 ),
                 Positioned(
-                  bottom: 16,
-                  right: 16,
-                  left: 16,
-                  child: Text(
-                    contentText, //商品名
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                      fontSize: 15,
+                  // widget を任意に重ねて配置する
+                  bottom: 16, // Stackの下から子の下部までの距離
+                  right: 16, // Stackの右端から子の右端までの距離
+                  left: 16, // Stackの左端から子の左端までの距離
+                  child: Container(//コンテナ
+                    color: Colors.white.withOpacity(0.5), // 背景色を設定
+                    child: Text(
+                      contentText, // 商品名
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                        fontSize: 15,
+                      ),
                     ),
                   ),
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(16).copyWith(bottom: 0),
-              child: Text(
-                descriptionText,//商品説明
-                overflow: TextOverflow.ellipsis,
-                maxLines: 3,
-                style: const TextStyle(fontSize: 16),
-              ),
-            ),
+            // Padding(
+            //   padding: const EdgeInsets.all(16).copyWith(bottom: 0),
+            //   child: Text(
+            //     descriptionText,//商品説明
+            //     overflow: TextOverflow.ellipsis,
+            //     maxLines: 1,//表示行数
+            //     style: const TextStyle(fontSize: 16),
+            //   ),
+            // ),
           ],
         ),
       );

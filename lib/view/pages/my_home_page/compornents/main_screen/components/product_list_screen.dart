@@ -8,28 +8,33 @@ class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     int columnCount = 2; //列数変数
-    List<Widget> numberList = [
+    List<Widget> contentsList = [
       contentCard(context),
       contentCard2(context),
       contentCard3(context),
     ];
 
     return Scaffold(
+         appBar: AppBar(
+       centerTitle: true,
+        title: const Text("商品一覧",style: TextStyle(fontSize:20.0)),
+        toolbarHeight: 25.0,//AppBarの高さ
+      ),
       body: AnimationLimiter(
         child: GridView.count(
           crossAxisCount: columnCount, // 列数
           children: List.generate(
-            numberList.length,
+            contentsList.length,//下の処理長さ回数処理?
             (int index) {
               return AnimationConfiguration.staggeredGrid(
                 position: index,
-                duration: const Duration(milliseconds: 1000),
+                duration: const Duration(milliseconds: 1000),//モーション時間
                 columnCount: columnCount,
                 child: ScaleAnimation(
                   child: FadeInAnimation(
                     child: Container(
-                      color: Colors.pink,
-                      child: Center(child: numberList[index]),
+                      color: Colors.white,//グリッドの枠線色
+                      child: Center(child: contentsList[index]),
                     ),
                   ),
                 ),

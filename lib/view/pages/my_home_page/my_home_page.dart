@@ -21,7 +21,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
        centerTitle: true,
         title: const Text("Caraque",style: TextStyle(fontSize:25.0)),
-        toolbarHeight: 23.0,//AppBarの高さ
+        toolbarHeight: 25.0,//AppBarの高さ
       ),
       body: Obx((){
         if(remoteConfigContoroller.rxIsMaintenenanceMode.value){
