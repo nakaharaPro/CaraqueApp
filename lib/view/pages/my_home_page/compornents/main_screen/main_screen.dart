@@ -65,6 +65,8 @@ class _MainScreenState extends State<MainScreen> {
           // ),
         ],
       ),
+
+
       body: _screens[_selectedIndex], //画面配列からタップされたインデックスを指定して紐づく画面を表示
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex, //アクティブなページ番号(インデックス)を指定
@@ -79,11 +81,11 @@ class _MainScreenState extends State<MainScreen> {
         type: BottomNavigationBarType.fixed, //アイコンの下にラベルをつけるタイプ
         backgroundColor: const Color.fromARGB(255, 72, 97, 121),
         selectedIconTheme:
-            const IconThemeData(color: Colors.orange), //選択されたアイコンの色
+            const IconThemeData(color: Colors.white), //選択されたアイコンの色
         unselectedIconTheme:
-            const IconThemeData(color: Colors.white), //選択されてないアイコンの色
-        selectedItemColor: Colors.orange, //選択された文字の色
-        unselectedItemColor: Colors.white, //選択されてない文字の色
+            const IconThemeData(color:  Color.fromARGB(255, 186, 185, 185)), //選択されてないアイコンの色
+        selectedItemColor: Colors.white, //選択された文字の色
+        unselectedItemColor: const Color.fromARGB(255, 186, 185, 185), //選択されてない文字の色
       ),
     );
   }

@@ -1,8 +1,10 @@
+//会員ページ
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
 
 class MemberInfoScreen extends StatelessWidget {
@@ -11,22 +13,33 @@ class MemberInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:const Text("会員情報")
-        ),
-      body: Center(
-        child: Column(
-          //mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _titleWidget(),
-            _loginButton(),
-            _signUpButton(),
-            _logout(),
-          ],
+      body: SingleChildScrollView(
+        //画面外ならスクロール可能
+        child: AnimationLimiter(
+          //アニメーションウィジェット
+          child: Column(
+            children: AnimationConfiguration.toStaggeredList(
+              //カラムのアニメーション
+              duration: const Duration(milliseconds: 1000), //アニメーション速度
+              childAnimationBuilder: (widget) => SlideAnimation(
+                horizontalOffset: 10.0, //コンテンツをどれくらいの幅スライドさせるか(マイナス値なら左からスライド)
+                child: FadeInAnimation(
+                  child: widget,
+                ),
+              ),
+              children: [
+                _titleWidget(),
+                _loginButton(),
+                _signUpButton(),
+                _logout(),
+              ],
+            ),
+          ),
         ),
       ),
     );
   }
+  
 
   // タイトル関数
   Widget _titleWidget() {
