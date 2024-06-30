@@ -1,6 +1,7 @@
 // ホーム画面
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -25,19 +26,33 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ホーム画面'),
-      ),
-      body: Center(
-        child: Column(
-          children: [
-            slider(),
-          ],
+      body: SingleChildScrollView(//画面外ならスクロール可能
+        child: AnimationLimiter(//アニメーションウィジェット
+          child: Column(
+            children: AnimationConfiguration.toStaggeredList(//カラムのアニメーション
+              duration: const Duration(milliseconds:1000),//アニメーション速度
+              childAnimationBuilder: (widget) => SlideAnimation(
+                horizontalOffset: 10.0,//コンテンツをどれくらいの幅スライドさせるか(マイナス値なら左からスライド)
+                child: FadeInAnimation(
+                  child: widget,
+                ),
+              ),
+              children: [
+                slider(),
+                ],
+            ),
+          ),
         ),
       ),
     );
   }
 
+
+
+
+
+
+//写真スライダーウィジェット
   Widget slider() {
     return Column(
       children: [
@@ -46,7 +61,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 300,
             initialPage: 0,//最初に表示する写真のインデックス
             autoPlay: true,//自動再生
-            autoPlayInterval: const Duration(seconds: 7),//自動再生の時間間隔
+            autoPlayInterval: const Duration(seconds: 4),//自動再生の時間間隔
             viewportFraction: 1,//各写真の幅の割合1~0.2
             enlargeCenterPage: true, //画像が変わる時に中心の画像を拡大して、そのほかの画像を縮小する。
             onPageChanged: (index, reason) {
