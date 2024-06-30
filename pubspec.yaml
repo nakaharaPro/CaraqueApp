@@ -26,7 +26,8 @@ dependencies:
   lottie: ^3.1.2 #アニメーション
   carousel_slider: ^4.0.0 #スライダー
   smooth_page_indicator: ^0.3.0-nullsafety.0 #スライダーの丸
-  flutter_staggered_animations: ^1.1.1 #ウィジェットアニメーション
+  flutter_staggered_animations: ^1.1.1 #ウィジェットパッケージ
+  ff_navigation_bar: ^0.1.5 #ナビゲーターパッケージ
 
 
 

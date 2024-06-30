@@ -22,15 +22,15 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _titleWidget(),
-          _animation(),
-          _signupForm(),
-          _positiveButton(),
-          _homeButton(),
-        ],
-      ),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _titleWidget(),
+            _animation(),
+            _signupForm(),
+            _positiveButton(),
+            _homeButton(),
+          ],
+        ),
       ),
     );
   }
@@ -39,9 +39,12 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _titleWidget() {
     return const Text(
       "Login",
-      style: TextStyle(fontSize:25.0, shadows: [
-    Shadow(offset: Offset(5, 5), blurRadius: 10, color: Colors.grey)//ofsetはx軸、blurRadiusはぼかし
-  ]),
+      style: TextStyle(fontSize: 25.0, shadows: [
+        Shadow(
+            offset: Offset(5, 5),
+            blurRadius: 10,
+            color: Colors.grey) //ofsetはx軸、blurRadiusはぼかし
+      ]),
     );
   }
 
@@ -49,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _animation() {
     return Center(
       child: Lottie.asset(
-      coffeeBreak,//アニメーションjsonリンク
+        coffeeBreak, //アニメーションjsonリンク
         width: 350,
         height: 200,
       ),
@@ -105,20 +108,19 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   Widget _positiveButton() {
-       const style = TextStyle(
-        fontSize: 20.0, color: Colors.black);
+    const style = TextStyle(fontSize: 20.0, color: Colors.black);
     return OutlinedButton(
-  style: OutlinedButton.styleFrom(
-    foregroundColor: Colors.black,
-  ),
+      style: OutlinedButton.styleFrom(
+        foregroundColor: Colors.black,
+      ),
       onPressed: () {
         //バリデーショんを行う
         if (_formKey.currentState!.validate()) {
           //バリデーションを行ったあと、入力文字列情報を変数に保存する
           _formKey.currentState!.save(); //WidgetのonSaved処理が走る
+          AuthController.to.onLoginButtonPressed(); //ボタン押下処理（登録かサインイン）
+          Get.back();
         }
-        AuthController.to.onLoginButtonPressed(); //ボタン押下処理（登録かサインイン）
-        Get.back();
       },
       child: const Text(
         'Login',

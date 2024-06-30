@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
+//スライダー画像
 class _HomeScreenState extends State<HomeScreen> {
   final List<String> images = [
     "assets/images/caraque1.jpg",
@@ -22,6 +23,8 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
   
   int activeIndex = 0;
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               children: [
                 slider(),
+                
                 ],
             ),
           ),
@@ -52,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
-//写真スライダーウィジェット
+//写真スライダー
   Widget slider() {
     return Column(
       children: [
