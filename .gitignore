@@ -10,8 +10,6 @@
 .svn/
 migrate_working_dir/
 lib/gen
-ios/Runner
-android/app
 
 # IntelliJ related
 *.iml
