@@ -27,8 +27,6 @@ dependencies:
   carousel_slider: ^4.0.0 #スライダー
   smooth_page_indicator: ^0.3.0-nullsafety.0 #スライダーの丸
   flutter_staggered_animations: ^1.1.1 #ウィジェットパッケージ
-  google_maps_flutter: ^2.1.8 #googleMap
-  geolocator: ^9.0.0  # googleMap
 
 
 
