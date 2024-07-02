@@ -22,7 +22,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
        centerTitle: true,
         title: const Text("Caraque",style: TextStyle(fontSize:25.0,color: Colors.white)),
-        toolbarHeight: 30.0,//AppBarの高さ
+        toolbarHeight: 50.0,//AppBarの高さ
         backgroundColor:ColorsConst.ColorGrey,//色
       ),
       body: Obx((){
