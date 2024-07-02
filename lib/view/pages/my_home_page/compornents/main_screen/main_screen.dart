@@ -1,3 +1,4 @@
+import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/home_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
@@ -38,33 +39,34 @@ class _MainScreenState extends State<MainScreen> {
         fontSize: 12.0,
         fontWeight: FontWeight.bold);
     return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          Obx(() {
-            return ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                foregroundColor: authController.rxAuthUser.value != null
-                    ? Colors.white
-                    : Colors.black,
-                backgroundColor: authController.rxAuthUser.value != null
-                    ? Colors.green
-                    : Colors.grey,
-                shape: const StadiumBorder(),
-              ),
-              child: Text(
-                  authController.rxAuthUser.value != null ? 'ログイン中' : '未ログイン',style: style,),
-              onPressed: () {
-                //処理なし
-              },
-            );
-          }),
-          //追加したかったらコメント消す
-          // IconButton(
-          //   onPressed: () {},
-          //   icon: const Icon(Icons.more_vert),
-          // ),
-        ],
-      ),
+      //ログインアイコンの制御
+      // appBar: AppBar(
+      //   actions: <Widget>[
+      //     Obx(() {
+      //       return ElevatedButton(
+      //         style: ElevatedButton.styleFrom(
+      //           foregroundColor: authController.rxAuthUser.value != null
+      //               ? Colors.white
+      //               : Colors.black,
+      //           backgroundColor: authController.rxAuthUser.value != null
+      //               ? Colors.green
+      //               : Colors.grey,
+      //           shape: const StadiumBorder(),
+      //         ),
+      //         child: Text(
+      //             authController.rxAuthUser.value != null ? 'ログイン中' : '未ログイン',style: style,),
+      //         onPressed: () {
+      //           //処理なし
+      //         },
+      //       );
+      //     }),
+      //     //追加したかったらコメント消す
+      //     // IconButton(
+      //     //   onPressed: () {},
+      //     //   icon: const Icon(Icons.more_vert),
+      //     // ),
+      //   ],
+      // ),
 
 
       body: _screens[_selectedIndex], //画面配列からタップされたインデックスを指定して紐づく画面を表示
@@ -79,7 +81,7 @@ class _MainScreenState extends State<MainScreen> {
               icon: Icon(Icons.account_circle), label: '会員情報'),
         ],
         type: BottomNavigationBarType.fixed, //アイコンの下にラベルをつけるタイプ
-        backgroundColor: const Color.fromARGB(255, 72, 97, 121),
+        backgroundColor: ColorsConst.ColorGrey,
         selectedIconTheme:
             const IconThemeData(color: Colors.white), //選択されたアイコンの色
         unselectedIconTheme:

@@ -1,3 +1,4 @@
+import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/my_home_page_contoroller.dart';
 
@@ -20,8 +21,9 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
        centerTitle: true,
-        title: const Text("Caraque",style: TextStyle(fontSize:25.0)),
-        toolbarHeight: 25.0,//AppBarの高さ
+        title: const Text("Caraque",style: TextStyle(fontSize:25.0,color: Colors.white)),
+        toolbarHeight: 30.0,//AppBarの高さ
+        backgroundColor:ColorsConst.ColorGrey,//色
       ),
       body: Obx((){
         if(remoteConfigContoroller.rxIsMaintenenanceMode.value){
