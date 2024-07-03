@@ -20,9 +20,9 @@ class CardConst extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Card(
-        clipBehavior: Clip.antiAlias,
+        clipBehavior: Clip.antiAlias,//外枠
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(4),//画像部の角丸
         ),
         child: Column(
           children: [
