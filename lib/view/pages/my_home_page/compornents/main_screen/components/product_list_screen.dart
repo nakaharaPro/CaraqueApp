@@ -1,4 +1,5 @@
 import 'package:caraqueprod/view/common/card_const.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_%20Individual/product_individual_1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
@@ -49,17 +50,21 @@ class ProductListScreen extends StatelessWidget {
   Widget contentCard(BuildContext context) => const CardConst(
       assetImageURL: 'assets/images/caraque1.jpg',
       contentText: "商品",
-      descriptionText: "商品説明");
+      descriptionText: "商品説明",
+      page: ProductIndividual1(),
+  );
   Widget contentCard2(BuildContext context) => const CardConst(
         assetImageURL: 'assets/images/caraque2.jpg',
         contentText: 'Cats rule the world!',
         descriptionText:
             'The cat is the only domesticated species in the family Felidae and is often referred to as the domestic cat to distinguish it from the wild members of the family.',
+            page: ProductIndividual1(),
       );
   Widget contentCard3(BuildContext context) => const CardConst(
         assetImageURL: 'assets/images/caraque3.jpg',
         contentText: 'Cats rule the world!',
         descriptionText:
             'The cat is the only domesticated species in the family Felidae and is often referred to as the domestic cat to distinguish it from the wild members of the family.',
+        page: ProductIndividual1(),
       );
 }

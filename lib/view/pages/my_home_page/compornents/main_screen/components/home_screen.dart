@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _topHome(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height,///////これはなんだ。stackがこれを記入することで表示できるようになった
+      height: MediaQuery.of(context).size.height,//画面の高さいっぱい
 
       child: const TopHomePage(),//topPage
     );

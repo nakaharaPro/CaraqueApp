@@ -13,5 +13,6 @@ class GetPages {
     GetPage(name:VerifyEmailScreen.path, page: () => const VerifyEmailScreen()),
     GetPage(name:SignupScreen.path, page:() => const SignupScreen()),
     GetPage(name:LoginScreen.path, page:() => const LoginScreen()),
+
   ];
 }

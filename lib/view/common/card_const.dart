@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class CardConst extends StatelessWidget {
   const CardConst({
@@ -6,12 +7,16 @@ class CardConst extends StatelessWidget {
     required this.assetImageURL,
     required this.contentText,
     required this.descriptionText,
+    required this.page, 
+    
+    
     //ここにカードを押下した時に個別商品ページに飛ばしたい
   });
 
   final String assetImageURL; //画像URL
   final String contentText; //商品名
   final String descriptionText; //商品説明
+  final StatelessWidget page;//遷移ページパス
 
   @override
   Widget build(BuildContext context) => Card(
@@ -30,7 +35,7 @@ class CardConst extends StatelessWidget {
                     fit: BoxFit.cover,
                     child: InkWell(
                       onTap: () {
-                        // 画像をタップしたときの動作
+                        Get.to(page);//押下された時の画面遷移
                       },
                     ),
                   ),
