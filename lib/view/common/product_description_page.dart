@@ -3,11 +3,12 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:like_button/like_button.dart';
 
 class ProductDescriptionPage extends StatefulWidget {
+  //メンバ変数
   final String imagePath;
   final String titleName;
   final String description;
 
-  // コンストラクター
+  // コンストラクタ
   const ProductDescriptionPage({
     super.key,
     required this.imagePath,
@@ -25,7 +26,7 @@ class _PageState extends State<ProductDescriptionPage> {
 
   Future<bool> onLikeButtonTapped(bool isLiked) async {
     setState(() {
-      this.isLiked = !isLiked;//bool値を変更する
+      this.isLiked = !isLiked; // bool値を変更する
       count++;
     });
     debugPrint("$count");
@@ -78,39 +79,60 @@ class _PageState extends State<ProductDescriptionPage> {
                 ),
               ),
               children: [
-                Row(
+                Stack(
                   children: [
-                    Text(
-                      widget.titleName, // 商品名
-                      style: const TextStyle(
-                        fontSize: 30.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+
+                          //////
+                          Row(
+                            mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween, //両端に配置
+                            children: [
+                              //商品名ゾーン
+                              Text(
+                                widget.titleName, // 商品名
+                                style: const TextStyle(
+                                  fontSize: 30.0,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                                textAlign: TextAlign.left, // 左よせ
+                              ),
+                              //ライクボタンゾーン
+                              LikeButton(
+                                size: 30.0,
+                                isLiked: isLiked, // bool値
+                                onTap: onLikeButtonTapped,
+                                likeBuilder: (bool isLiked) {
+                                  return Icon(
+                                    Icons.favorite,
+                                    color:
+                                        isLiked ? Colors.orange : Colors.grey,
+                                    size: 30.0,
+                                  );
+                                },
+                              ),
+                            ],
+                          ),
+                          //////
+
+                          //商品説明ゾーン
+                          Text(
+                            widget.description, // 商品説明
+                            style: const TextStyle(
+                              fontSize: 15.0,
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.left, // 左よせ
+                          ),
+                        ],
                       ),
-                      textAlign: TextAlign.left, // 左よせ
-                    ),
-                    LikeButton(
-                      size: 30.0,
-                      isLiked: isLiked,//bool値
-                      onTap: onLikeButtonTapped,
-                      likeBuilder: (bool isLiked) {
-                        return Icon(
-                          Icons.favorite,
-                          color: isLiked ? Colors.orange : Colors.grey,
-                          size: 30.0,
-                        );
-                      },
                     ),
                   ],
-                ),
-                Text(
-                  widget.description, // 商品説明
-                  style: const TextStyle(
-                    fontSize: 15.0,
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.left, // 左よせ
                 ),
               ],
             ),

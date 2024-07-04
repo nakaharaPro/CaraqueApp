@@ -1,5 +1,5 @@
 import 'package:caraqueprod/constant/colors_const.dart';
-import 'package:caraqueprod/controllers/auth_controller.dart';
+
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/home_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/order_screen.dart';
@@ -33,10 +33,10 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final authController = AuthController.to;
-      const style = TextStyle(
-        fontSize: 12.0,
-        fontWeight: FontWeight.bold);
+    // final authController = AuthController.to;
+    //   const style = TextStyle(
+        // fontSize: 12.0,
+        // fontWeight: FontWeight.bold);
     return Scaffold(
       //ログインアイコンの制御
       // appBar: AppBar(
