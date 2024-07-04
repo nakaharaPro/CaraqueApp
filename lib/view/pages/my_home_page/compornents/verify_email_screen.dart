@@ -1,5 +1,5 @@
 //メール認証画面
-import 'package:caraqueprod/constant/send_emailcheck_massage.dart';
+import 'package:caraqueprod/constant/massage_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
 import 'package:caraqueprod/ui_core/ui_helper.dart';
@@ -31,7 +31,7 @@ class VerifyEmailScreen extends StatelessWidget {
     const style = TextStyle(fontSize: 20.0);
     return const Center(
       child: Text(
-        SendEmailcheckMassage.sendEmailcheckMassage, //文章
+        MessageConst.sendEmailcheckMassage, //文章
         style: style,
       ),
     );

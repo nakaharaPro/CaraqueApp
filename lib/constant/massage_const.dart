@@ -1,4 +1,4 @@
-class SendEmailcheckMassage {
+class MessageConst {
   static const sendEmailcheckMassage = 
   '''確認メールを送信しました。
         
@@ -8,7 +8,7 @@ class SendEmailcheckMassage {
 
 
 
-static const productDiscription = 
+static const productDiscription1 = 
   '''
         
 メールボックスよりメールの内容からリンクを押下して認証を行ってください。

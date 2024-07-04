@@ -8,9 +8,6 @@ class CardConst extends StatelessWidget {
     required this.contentText,
     required this.descriptionText,
     required this.page, 
-    
-    
-    //ここにカードを押下した時に個別商品ページに飛ばしたい
   });
 
   final String assetImageURL; //画像URL

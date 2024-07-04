@@ -1,5 +1,5 @@
 // ホーム画面
-import 'package:caraqueprod/view/pages/my_home_page/compornents/const_pages/top_home_page.dart';
+import 'package:caraqueprod/view/common/top_home_page.dart';
 import 'package:flutter/material.dart';
 
 

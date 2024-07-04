@@ -32,8 +32,8 @@ class ProductIndividual1 extends StatelessWidget {
 
             //表示内容
             const productDescriptionPage(
-                image: 'assets/images/caraque1.jpg',
-                title: "商品名１",
+                image: 'assets/images/caraque2.jpg',
+                title: "商品名2",
                 description: MessageConst.productDiscription1)
           ],
         ),
