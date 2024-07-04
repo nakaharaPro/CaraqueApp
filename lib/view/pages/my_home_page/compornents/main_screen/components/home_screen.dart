@@ -22,7 +22,7 @@ class HomeScreen extends StatelessWidget {
 
   Widget _topHome(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height,//画面の高さいっぱい
+      height: MediaQuery.of(context).size.height,//ディスプレイのheightを高さに設定
 
       child: const TopHomePage(),//topPage
     );
