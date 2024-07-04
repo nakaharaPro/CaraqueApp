@@ -1,11 +1,11 @@
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/constant/massage_const.dart';
-import 'package:caraqueprod/view/common/%20product_description_page.dart';
+import 'package:caraqueprod/view/common/product_description_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProductIndividual1 extends StatelessWidget {
-  const ProductIndividual1({super.key});
+class ProductIndividual2 extends StatelessWidget {
+  const ProductIndividual2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,9 @@ class ProductIndividual1 extends StatelessWidget {
             ),
 
             //表示内容
-            const productDescriptionPage(
-                image: 'assets/images/caraque2.jpg',
-                title: "商品名2",
+            const ProductDescriptionPage(
+                imagePath: 'assets/images/caraque2.jpg',
+                titleName: "商品名2",
                 description: MessageConst.productDiscription1)
           ],
         ),

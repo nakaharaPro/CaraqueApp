@@ -1,6 +1,6 @@
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/constant/massage_const.dart';
-import 'package:caraqueprod/view/common/%20product_description_page.dart';
+import 'package:caraqueprod/view/common/product_description_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -31,9 +31,9 @@ class ProductIndividual1 extends StatelessWidget {
             ),
 
             //表示内容
-            const productDescriptionPage(
-                image: 'assets/images/caraque1.jpg',
-                title: "商品名１",
+            const ProductDescriptionPage(
+                imagePath: 'assets/images/caraque1.jpg',
+                titleName: "商品名１",
                 description: MessageConst.productDiscription1)
           ],
         ),

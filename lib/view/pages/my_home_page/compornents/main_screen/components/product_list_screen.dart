@@ -1,5 +1,6 @@
 import 'package:caraqueprod/view/common/card_const.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_%20Individual/product_individual_1.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_%20Individual/product_individual_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
@@ -58,7 +59,7 @@ class ProductListScreen extends StatelessWidget {
         contentText: 'Cats rule the world!',
         descriptionText:
             'The cat is the only domesticated species in the family Felidae and is often referred to as the domestic cat to distinguish it from the wild members of the family.',
-            page: ProductIndividual1(),
+            page: ProductIndividual2(),
       );
   Widget contentCard3(BuildContext context) => const CardConst(
         assetImageURL: 'assets/images/caraque3.jpg',
