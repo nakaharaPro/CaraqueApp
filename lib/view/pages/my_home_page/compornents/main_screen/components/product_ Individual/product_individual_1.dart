@@ -6,8 +6,8 @@ import 'package:caraqueprod/view/common/product_description_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ProductIndividual1 extends StatelessWidget {
-  const ProductIndividual1({super.key});
+class ProductIndividual2 extends StatelessWidget {
+  const ProductIndividual2({super.key});
 
 
 
