@@ -1,9 +1,11 @@
+import 'package:caraqueprod/MapState/page_statet.dart';
+import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:like_button/like_button.dart';
 
 class ProductDescriptionPage extends StatefulWidget {
-  //メンバ変数
+  // メンバ変数
   final String imagePath;
   final String titleName;
   final String description;
@@ -21,15 +23,24 @@ class ProductDescriptionPage extends StatefulWidget {
 }
 
 class _PageState extends State<ProductDescriptionPage> {
-  bool isLiked =false;
-  int count = 0;
 
+  late bool isLiked;//初期化を遅らせinitStateの段階で初期化を行なっている
+  late LSDMap pagestate;//初期化を遅らせinitStateの段階で初期化を行なっている
+
+  @override
+  void initState() {
+    super.initState();
+    pagestate = PageState.productState;
+    isLiked = pagestate['page1'] ?? false;
+  }
+
+//ライクボタン押下処理
   Future<bool> onLikeButtonTapped(bool isLiked) async {
     setState(() {
       this.isLiked = !isLiked; // bool値を変更する
-      count++;
+      pagestate['page1'] = this.isLiked;
     });
-    debugPrint("$count");
+    debugPrint("Page State: $pagestate");
     return !isLiked;
   }
 
@@ -37,7 +48,6 @@ class _PageState extends State<ProductDescriptionPage> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size; // 画面の高さ取得
     final double heightSize = size.height * 0.5;
-
     return Column(
       children: [
         SizedBox(
@@ -64,7 +74,6 @@ class _PageState extends State<ProductDescriptionPage> {
             ],
           ),
         ),
-
         // Columnアニメーション
         AnimationLimiter(
           child: Column(
@@ -85,13 +94,11 @@ class _PageState extends State<ProductDescriptionPage> {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-
-                          //////
                           Row(
                             mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween, //両端に配置
+                                MainAxisAlignment.spaceBetween, // 両端に配置
                             children: [
-                              //商品名ゾーン
+                              // 商品名ゾーン
                               Text(
                                 widget.titleName, // 商品名
                                 style: const TextStyle(
@@ -101,7 +108,7 @@ class _PageState extends State<ProductDescriptionPage> {
                                 ),
                                 textAlign: TextAlign.left, // 左よせ
                               ),
-                              //ライクボタンゾーン
+                              // ライクボタンゾーン
                               LikeButton(
                                 size: 30.0,
                                 isLiked: isLiked, // bool値
@@ -111,15 +118,14 @@ class _PageState extends State<ProductDescriptionPage> {
                                     Icons.favorite,
                                     color:
                                         isLiked ? Colors.orange : Colors.grey,
-                                    size: 30.0,
+                                    size: 40.0,
                                   );
                                 },
+                                padding:  const EdgeInsets.only(right: 10.0),
                               ),
                             ],
                           ),
-                          //////
-
-                          //商品説明ゾーン
+                          // 商品説明ゾーン
                           Text(
                             widget.description, // 商品説明
                             style: const TextStyle(

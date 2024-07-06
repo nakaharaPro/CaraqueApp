@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
+typedef LSDMap = List<Map<String,dynamic>>;
 typedef SDMap = Map<String, dynamic>;
 typedef QSnapshot = QuerySnapshot<SDMap>; // QuerySnapshot<Map<String,dynamic>>
 typedef MapQuery = Query<SDMap>; // Query<Map<String,dynamic>>
