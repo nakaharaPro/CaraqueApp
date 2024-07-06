@@ -21,7 +21,7 @@ class ProductDescriptionPage extends StatefulWidget {
 }
 
 class _PageState extends State<ProductDescriptionPage> {
-  bool isLiked = false;
+  bool isLiked =false;
   int count = 0;
 
   Future<bool> onLikeButtonTapped(bool isLiked) async {

@@ -51,6 +51,8 @@ class _NeonButtonState extends State<NeonButton> with SingleTickerProviderStateM
     super.dispose();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -61,10 +63,10 @@ class _NeonButtonState extends State<NeonButton> with SingleTickerProviderStateM
           height: 78,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(39),
-            border: Border.all(
-              color: _colorAnimation.value!,
-              width: 4,
-            ),
+            // border: Border.all(
+            //   color: _colorAnimation.value!,//アニメーション効果適応
+            //   width: 4,
+            // ),
             boxShadow: [
               BoxShadow(
                 color: _colorAnimation.value!.withOpacity(0.6),
@@ -80,7 +82,7 @@ class _NeonButtonState extends State<NeonButton> with SingleTickerProviderStateM
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(39),
               ), backgroundColor: Colors.blue,
-              shadowColor: Colors.transparent,
+              //shadowColor: Colors.transparent,
             ),
             onPressed: () {},
             child: Text(
