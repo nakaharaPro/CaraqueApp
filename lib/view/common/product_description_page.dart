@@ -1,4 +1,5 @@
-import 'package:caraqueprod/MapState/page_info.dart';
+//商品画面の抽象ウィジェット
+import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -33,18 +34,15 @@ class _PageState extends State<ProductDescriptionPage> {
     super.initState();
     pagestate = PageInfo.productState;
     productState = pagestate[0];
-    isLiked = productState['page1'] ?? false;
+    isLiked = productState['favoriteState'] ?? false;
   }
 
 //ライクボタン押下処理
   Future<bool> onLikeButtonTapped(bool isLiked) async {
     setState(() {
       this.isLiked = !isLiked; // bool値を変更する
-      productState['page1'] = this.isLiked;
-
-
+      productState['favoriteState'] = this.isLiked;
     });
-    debugPrint("Page State: $pagestate");
     return !isLiked;
   }
 

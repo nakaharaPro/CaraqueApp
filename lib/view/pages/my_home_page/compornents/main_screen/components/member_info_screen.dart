@@ -1,4 +1,4 @@
-//会員ページ
+//会員情報画面
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
@@ -12,6 +12,13 @@ class MemberInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
+
+
+
+
+
     return Scaffold(
       body: SingleChildScrollView(
         //画面外ならスクロール可能
@@ -32,6 +39,7 @@ class MemberInfoScreen extends StatelessWidget {
                 _loginButton(),
                 _signUpButton(),
                 _logout(),
+                _favoriteProducts(),
               ],
             ),
           ),
@@ -78,4 +86,21 @@ class MemberInfoScreen extends StatelessWidget {
       ),
     );
   }
+
+
+  Widget _favoriteProducts() {
+
+      const data = [
+      Text("item0"),Text("item1"),Text("item2"),Text("item3"),Text("item4"),
+    ];
+
+    return 
+    ListView(
+          children: data
+
+   
+    );
+
+  }
+
 }

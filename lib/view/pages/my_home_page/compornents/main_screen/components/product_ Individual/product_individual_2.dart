@@ -1,4 +1,4 @@
-import 'package:caraqueprod/MapState/page_info.dart';
+import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/constant/massage_const.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';

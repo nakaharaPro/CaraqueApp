@@ -6,13 +6,11 @@ class CardConst extends StatelessWidget {
     super.key,
     required this.assetImageURL,
     required this.contentText,
-    //required this.descriptionText,
     required this.page, 
   });
 
   final String assetImageURL; //画像URL
   final String contentText; //商品名
-  //final String descriptionText; //商品説明
   final StatelessWidget page;//遷移ページパス
 
   @override
