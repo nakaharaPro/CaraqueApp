@@ -1,4 +1,4 @@
-import 'package:caraqueprod/MapState/page_statet.dart';
+import 'package:caraqueprod/MapState/page_info.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -26,19 +26,23 @@ class _PageState extends State<ProductDescriptionPage> {
 
   late bool isLiked;//初期化を遅らせinitStateの段階で初期化を行なっている
   late LSDMap pagestate;//初期化を遅らせinitStateの段階で初期化を行なっている
+  late SDMap productState;
 
   @override
   void initState() {
     super.initState();
-    pagestate = PageState.productState;
-    isLiked = pagestate['page1'] ?? false;
+    pagestate = PageInfo.productState;
+    productState = pagestate[0];
+    isLiked = productState['page1'] ?? false;
   }
 
 //ライクボタン押下処理
   Future<bool> onLikeButtonTapped(bool isLiked) async {
     setState(() {
       this.isLiked = !isLiked; // bool値を変更する
-      pagestate['page1'] = this.isLiked;
+      productState['page1'] = this.isLiked;
+
+
     });
     debugPrint("Page State: $pagestate");
     return !isLiked;
@@ -65,7 +69,7 @@ class _PageState extends State<ProductDescriptionPage> {
                       bottomLeft: Radius.circular(40.0), // 左下角
                     ),
                     image: DecorationImage(
-                      image: AssetImage(widget.imagePath),
+                      image: AssetImage(widget.imagePath),//イメージパス
                       fit: BoxFit.cover,
                     ),
                   ),
