@@ -18,14 +18,13 @@ class MemberInfoScreen extends StatefulWidget {
 class _MemberInfoScreenState extends State<MemberInfoScreen> {
   late List<int> favoriteList; // お気に入り配列
   late LSDMap pageList; //
-  
 
   @override
   void initState() {
     super.initState();
-    pageList = PageInfo.productState;//page総数配列
-    favoriteList = [];//お気に入りリスト
-    //お気に入りがtrueのインデックスを配列に格納
+    pageList = PageInfo.productState; // page総数配列
+    favoriteList = []; // お気に入りリスト
+    // お気に入りがtrueのインデックスを配列に格納
     for (int i = 0; i < pageList.length; i++) {
       if (pageList[i]['favoriteState']) {
         favoriteList.add(i);
@@ -33,7 +32,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
     }
   }
 
-//ライクボタン押下でtureになれば配列格納、falseになれば
+  // ライクボタン押下でtrueになれば配列格納、falseになれば削除
   Future<bool> onLikeButtonTapped(bool isLiked, int index) async {
     setState(() {
       pageList[index]['favoriteState'] = !isLiked;
@@ -59,7 +58,8 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                   // カラムのアニメーション
                   duration: const Duration(milliseconds: 1000), // アニメーション速度
                   childAnimationBuilder: (widget) => SlideAnimation(
-                    horizontalOffset:10.0, // コンテンツをどれくらいの幅スライドさせるか(マイナス値なら左からスライド)
+                    horizontalOffset:
+                        10.0, // コンテンツをどれくらいの幅スライドさせるか(マイナス値なら左からスライド)
                     child: FadeInAnimation(
                       child: widget,
                     ),
@@ -70,19 +70,18 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                     _signUpButton(),
                     _logout(),
                     _favoriteTitleWidget(),
-                    
                   ],
                 ),
               ),
-
               // お気に入りリスト
               AnimationLimiter(
                 child: ListView.builder(
-                  physics: const NeverScrollableScrollPhysics(), // 内側のListViewのスクロールを無効にする
+                  physics:
+                      const NeverScrollableScrollPhysics(), // 内側のListViewのスクロールを無効にする
                   shrinkWrap: true, // 内側のListViewの高さをコンテンツに合わせる
                   itemCount: favoriteList.length, // リストアイテム個数分リストを作成
                   itemBuilder: (BuildContext context, int index) {
-                    int productIndex = favoriteList[index];//インデックス代入
+                    int productIndex = favoriteList[index]; // インデックス代入
                     return AnimationConfiguration.staggeredList(
                       position: index,
                       duration: const Duration(milliseconds: 1000),
@@ -100,7 +99,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                     );
                   },
                 ),
-              ),
+              )
             ],
           ),
         ),
@@ -118,21 +117,23 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
 
   // ログインボタン関数
   Widget _loginButton() {
-    return ElevatedButton(
+    return OutlinedButton.icon(
       onPressed: () {
         Get.toNamed(LoginScreen.path);
       },
-      child: const Text("ログインを行う"),
+      icon: const Icon(Icons.add),
+      label: const Text('登録する'),
     );
   }
 
   // サインアップボタン関数
   Widget _signUpButton() {
-    return ElevatedButton(
+    return OutlinedButton.icon(
       onPressed: () {
         Get.toNamed(SignupScreen.path);
       },
-      child: const Text("新規会員登録を行う"),
+      icon: const Icon(Icons.add),
+      label: const Text("新規会員登録"),
     );
   }
 
@@ -140,25 +141,24 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
     final authController = AuthController.to;
     return ElevatedButton(
       onPressed: authController.onSignOutButtonPressed,
-      child: const Text(
-        "ログアウト",
+      child: const Text("ログアウト"),
+    );
+  }
+
+  Widget _favoriteTitleWidget() {
+    return const Align(
+      alignment: Alignment.topLeft, // 左よせ
+      child: Text(
+        "お気に入り一覧",
+        style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+        textAlign: TextAlign.left,
       ),
     );
   }
 
-   Widget _favoriteTitleWidget() {
-    return const Align(
-    alignment: Alignment.topLeft,//左よせ
-    child:  Text(
-      "お気に入り一覧",
-      style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-      textAlign: TextAlign.left,
-     ),
-    );
-  }
-
-//お気に入りリスト
-  Widget _favoriteProducts(bool isLiked, String imagePath, String title, int index) {
+  // お気に入りリスト
+  Widget _favoriteProducts(
+      bool isLiked, String imagePath, String title, int index) {
     return Container(
       margin: const EdgeInsets.all(5.0),
       height: 80,
