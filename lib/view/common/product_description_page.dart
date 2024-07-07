@@ -1,6 +1,4 @@
-//商品画面の抽象ウィジェット
 import 'package:caraqueprod/pageInfo/page_info.dart';
-import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:like_button/like_button.dart';
@@ -10,6 +8,7 @@ class ProductDescriptionPage extends StatefulWidget {
   final String imagePath;
   final String titleName;
   final String description;
+  final int index;
 
   // コンストラクタ
   const ProductDescriptionPage({
@@ -17,31 +16,32 @@ class ProductDescriptionPage extends StatefulWidget {
     required this.imagePath,
     required this.titleName,
     required this.description,
+    required this.index,
   });
 
   @override
-  State<ProductDescriptionPage> createState() => _PageState();
+  State<ProductDescriptionPage> createState() => _ProductDescriptionPageState();
 }
 
-class _PageState extends State<ProductDescriptionPage> {
-
-  late bool isLiked;//初期化を遅らせinitStateの段階で初期化を行なっている
-  late LSDMap pagestate;//初期化を遅らせinitStateの段階で初期化を行なっている
-  late SDMap productState;
-
+class _ProductDescriptionPageState extends State<ProductDescriptionPage> {
+  late bool isLiked; // 初期化を遅らせinitStateの段階で初期化を行なっている
+  late List<Map<String, dynamic>> pageState; // 初期化を遅らせinitStateの段階で初期化を行なっている
+  late Map<String, dynamic> productState;
+  
   @override
   void initState() {
     super.initState();
-    pagestate = PageInfo.productState;
-    productState = pagestate[0];
+    pageState = PageInfo.productState;
+    productState = pageState[widget.index];
     isLiked = productState['favoriteState'] ?? false;
   }
 
-//ライクボタン押下処理
+// ライクボタン押下処理
   Future<bool> onLikeButtonTapped(bool isLiked) async {
     setState(() {
       this.isLiked = !isLiked; // bool値を変更する
       productState['favoriteState'] = this.isLiked;
+     print(productState);
     });
     return !isLiked;
   }
@@ -67,7 +67,7 @@ class _PageState extends State<ProductDescriptionPage> {
                       bottomLeft: Radius.circular(40.0), // 左下角
                     ),
                     image: DecorationImage(
-                      image: AssetImage(widget.imagePath),//イメージパス
+                      image: AssetImage(widget.imagePath), // イメージパス
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -118,12 +118,11 @@ class _PageState extends State<ProductDescriptionPage> {
                                 likeBuilder: (bool isLiked) {
                                   return Icon(
                                     Icons.favorite,
-                                    color:
-                                        isLiked ? Colors.orange : Colors.grey,
+                                    color: isLiked ? Colors.orange : Colors.grey,
                                     size: 40.0,
                                   );
                                 },
-                                padding:  const EdgeInsets.only(right: 10.0),
+                                padding: const EdgeInsets.only(right: 10.0),
                               ),
                             ],
                           ),

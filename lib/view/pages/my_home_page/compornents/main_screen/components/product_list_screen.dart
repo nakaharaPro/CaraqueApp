@@ -2,8 +2,7 @@
 import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:caraqueprod/view/common/card_const.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_%20Individual/product_individual_1.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_%20Individual/product_individual_2.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_%20Individual/product_individual.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
@@ -65,15 +64,15 @@ class ProductListScreen extends StatelessWidget {
   }
 
   Widget contentCard(BuildContext context, int index) {
+    
     LSDMap pagestate = PageInfo.productState; // 情報
     SDMap productState = pagestate[index];
     String title = productState['title'] ?? '';
     String imagePath = productState['imagePath'] ?? '';
-
     return CardConst(
       assetImageURL: imagePath,
       contentText: title,
-      page: const ProductIndividual1(),
+      page: ProductIndividual(index: index,),
     );
   }
 
@@ -82,24 +81,25 @@ class ProductListScreen extends StatelessWidget {
     SDMap productState = pagestate[index];
     String title = productState['title'] ?? '';
     String imagePath = productState['imagePath'] ?? '';
-
     return  CardConst(
       assetImageURL: imagePath,
       contentText: title,
-      page: const ProductIndividual2(),
+      page: ProductIndividual(index: index,),
     );
   }
+
 
   Widget contentCard3(BuildContext context, int index) {
     LSDMap pagestate = PageInfo.productState; // 情報
     SDMap productState = pagestate[index];
     String title = productState['title'] ?? '';
     String imagePath = productState['imagePath'] ?? '';
-
     return CardConst(
       assetImageURL: imagePath,
       contentText: title,
-      page: const ProductIndividual1(),
+      page: ProductIndividual(index: index,),
     );
   }
+
+
 }
