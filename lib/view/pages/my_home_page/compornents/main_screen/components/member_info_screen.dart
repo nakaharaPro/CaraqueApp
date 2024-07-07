@@ -1,8 +1,8 @@
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/pageInfo/page_info.dart';
+import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
@@ -17,14 +17,15 @@ class MemberInfoScreen extends StatefulWidget {
 
 class _MemberInfoScreenState extends State<MemberInfoScreen> {
   late List<int> favoriteList; // お気に入り配列
-  late List<Map<String, dynamic>> pageList; //
+  late LSDMap pageList; //
+  
 
   @override
   void initState() {
     super.initState();
-    favoriteList = [];
-    pageList = PageInfo.productState;
-
+    pageList = PageInfo.productState;//page総数配列
+    favoriteList = [];//お気に入りリスト
+    //お気に入りがtrueのインデックスを配列に格納
     for (int i = 0; i < pageList.length; i++) {
       if (pageList[i]['favoriteState']) {
         favoriteList.add(i);
@@ -32,6 +33,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
     }
   }
 
+//ライクボタン押下でtureになれば配列格納、falseになれば
   Future<bool> onLikeButtonTapped(bool isLiked, int index) async {
     setState(() {
       pageList[index]['favoriteState'] = !isLiked;
@@ -57,8 +59,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                   // カラムのアニメーション
                   duration: const Duration(milliseconds: 1000), // アニメーション速度
                   childAnimationBuilder: (widget) => SlideAnimation(
-                    horizontalOffset:
-                        10.0, // コンテンツをどれくらいの幅スライドさせるか(マイナス値なら左からスライド)
+                    horizontalOffset:10.0, // コンテンツをどれくらいの幅スライドさせるか(マイナス値なら左からスライド)
                     child: FadeInAnimation(
                       child: widget,
                     ),
@@ -68,6 +69,8 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                     _loginButton(),
                     _signUpButton(),
                     _logout(),
+                    _favoriteTitleWidget(),
+                    
                   ],
                 ),
               ),
@@ -77,9 +80,9 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                 child: ListView.builder(
                   physics: const NeverScrollableScrollPhysics(), // 内側のListViewのスクロールを無効にする
                   shrinkWrap: true, // 内側のListViewの高さをコンテンツに合わせる
-                  itemCount: favoriteList.length, // リストアイテム個数
+                  itemCount: favoriteList.length, // リストアイテム個数分リストを作成
                   itemBuilder: (BuildContext context, int index) {
-                    int productIndex = favoriteList[index];
+                    int productIndex = favoriteList[index];//インデックス代入
                     return AnimationConfiguration.staggeredList(
                       position: index,
                       duration: const Duration(milliseconds: 1000),
@@ -143,6 +146,18 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
     );
   }
 
+   Widget _favoriteTitleWidget() {
+    return const Align(
+    alignment: Alignment.topLeft,//左よせ
+    child:  Text(
+      "お気に入り一覧",
+      style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+      textAlign: TextAlign.left,
+     ),
+    );
+  }
+
+//お気に入りリスト
   Widget _favoriteProducts(bool isLiked, String imagePath, String title, int index) {
     return Container(
       margin: const EdgeInsets.all(5.0),
@@ -156,11 +171,16 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
           const Padding(padding: EdgeInsets.all(10.0)),
           Image.asset(
             imagePath,
-            height: 100, // 画像の高さ
+            height: 80, // 画像の高さ
             width: 100, // 画像の幅
+            errorBuilder: (context, error, stackTrace) {
+              return const Icon(Icons.image_not_supported, size: 60);
+            },
           ),
           const Padding(padding: EdgeInsets.all(10.0)),
-          Text(title),
+          Expanded(
+            child: Text(title),
+          ),
           const Expanded(child: SizedBox()), // 最大幅で空間を埋める
           LikeButton(
             size: 30.0,
