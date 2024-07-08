@@ -69,8 +69,10 @@ class AuthController extends GetxController {
     result.when(success: (res) {
       rxAuthUser.value = res;//情報更新
       UiHelper.showFlutterToast("ログインが成功しました");
+       Get.back();
     }, failure: () {
-      UiHelper.showFlutterToast("ログインが失敗しました");
+      UiHelper.showFlutterToast("アカウントが見つかりません。入力内容を見直してください");
+
     });
   }
 
@@ -86,6 +88,7 @@ class AuthController extends GetxController {
     result.when(success: (_) {
       rxAuthUser.value = null;
       UiHelper.showFlutterToast("ログアウトに成功しました");
+      
     }, failure: () {
       UiHelper.showFlutterToast("ログアウトに失敗しました");
     });

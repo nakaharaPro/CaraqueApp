@@ -25,8 +25,10 @@ class _SignupScreenState extends State<SignupScreen> {
         children: [
           _titleWidget(),
           _animation(),
+          _padding(),
           _signupForm(),
           _positiveButton(),
+          _padding(),
           _homeButton(),
         ],
       ),
@@ -48,7 +50,7 @@ class _SignupScreenState extends State<SignupScreen> {
       child: Lottie.asset(
         coffeeBreak, //アニメーションjsonリンク
         width: 350,
-        height: 200,
+        height: 170,
       ),
     );
   }
@@ -61,7 +63,9 @@ class _SignupScreenState extends State<SignupScreen> {
         children: [
           _reAuthMag(),
           _emailTextField(),
+          _padding(),
           _passwordTextField(),
+          _padding(),
         ],
       ),
     );
@@ -119,21 +123,19 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Widget _positiveButton() {
-    const style = TextStyle(
-        fontSize: 20.0, color: Colors.black);
+    const style = TextStyle(fontSize: 20.0, color: Colors.black);
     return OutlinedButton(
-  style: OutlinedButton.styleFrom(
-    foregroundColor: Colors.black,
-  ),
+      style: OutlinedButton.styleFrom(
+        foregroundColor: Colors.black,
+      ),
       onPressed: () {
         //バリデーショんを行う
         if (_formKey.currentState!.validate()) {
           //バリデーションを行ったあと、入力文字列情報を変数に保存する
           _formKey.currentState!.save(); //WidgetのonSaved処理が走る
-        AuthController.to.onSignupButtonPressed(); //メール認証実行
-        Get.toNamed(VerifyEmailScreen.path);
+          AuthController.to.onSignupButtonPressed(); //メール認証実行
+          Get.toNamed(VerifyEmailScreen.path);
         }
-      
       },
       child: const Text(
         'Registration',
@@ -143,23 +145,30 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   Widget _homeButton() {
-    const style = TextStyle(
-        fontSize: 25.0, color: Colors.white, fontWeight: FontWeight.bold);
+    const style = TextStyle(fontSize: 20.0, color: Colors.black);
     return ElevatedButton.icon(
       icon: const Icon(
         Icons.home,
-        color: Colors.white,
+        color: Colors.black,
       ),
+      onPressed: () {
+        Get.back();
+      },
       label: const Text(
         'ホームに戻る',
         style: style,
       ),
       style: ElevatedButton.styleFrom(
-          foregroundColor: Colors.white,
-          backgroundColor: const Color.fromARGB(255, 72, 97, 121)),
-      onPressed: () {
-        Get.back();
-      },
+        //ボタンスタイル
+        backgroundColor: Colors.transparent,
+        elevation: 0, //透明度
+        side: const BorderSide(color: Colors.black), //ボーダー
+      ),
     );
+  }
+
+  //パディング
+  Widget _padding() {
+    return const Padding(padding: EdgeInsets.all(5.0));
   }
 }

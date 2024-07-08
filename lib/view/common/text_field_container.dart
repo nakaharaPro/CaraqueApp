@@ -9,14 +9,13 @@ final Widget child;//TextFildContainerウィジェットでchildを指定をし�
 
   @override
   Widget build(BuildContext context) {
-    return Padding(padding: const EdgeInsets.all(16.0),
-    child: Container(
+    return
+       Container(
       decoration: BoxDecoration(
         border:Border.all(),//ボーダー
         borderRadius: BorderRadius.circular(8.0),
        ),
        child: child,//childの中身をCintainerウィジェットのchildに指定
-      ),
     );
   }
 }

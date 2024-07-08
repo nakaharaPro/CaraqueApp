@@ -65,11 +65,16 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                     ),
                   ),
                   children: [
-          
+                    Row(         
+                      children: [ 
                     _loginButton(),
                     _signUpButton(),
-                    _logout(),
+                      ],
+                    ),
+
+                  _logout(),
                     _favoriteTitleWidget(),
+
                   ],
                 ),
               ),
@@ -115,8 +120,9 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
       onPressed: () {
         Get.toNamed(LoginScreen.path);
       },
+      
       icon: const Icon(Icons.add),
-      label: const Text('ログイン'),
+      label: const Text('ログイン',selectionColor: Colors.black,),
     );
   }
 
