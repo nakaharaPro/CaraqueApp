@@ -65,7 +65,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                     ),
                   ),
                   children: [
-                    _titleWidget(),
+          
                     _loginButton(),
                     _signUpButton(),
                     _logout(),
@@ -107,13 +107,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
     );
   }
 
-  // タイトル関数
-  Widget _titleWidget() {
-    return const Text(
-      "ユーザー情報を編集",
-      style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
-    );
-  }
+  
 
   // ログインボタン関数
   Widget _loginButton() {
@@ -122,7 +116,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
         Get.toNamed(LoginScreen.path);
       },
       icon: const Icon(Icons.add),
-      label: const Text('登録する'),
+      label: const Text('ログイン'),
     );
   }
 
