@@ -1,3 +1,4 @@
+import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
@@ -48,6 +49,11 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+       appBar: AppBar(
+        title: const Text("会員情報",style: TextStyle(fontSize:25.0,color: Colors.white),textAlign: TextAlign.left),
+        toolbarHeight: 40.0,//AppBarの高さ
+        backgroundColor:ColorsConst.ColorGrey,//色
+      ),
       body: SingleChildScrollView(
         // 画面外ならスクロール可能
         child: AnimationLimiter(

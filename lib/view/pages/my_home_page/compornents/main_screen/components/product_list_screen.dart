@@ -1,10 +1,10 @@
 //商品一覧画面
+import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:caraqueprod/view/common/card_const.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_%20Individual/product_individual.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class ProductListScreen extends StatelessWidget {
@@ -27,11 +27,9 @@ class ProductListScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const  Text("商品一覧", style: TextStyle(fontSize: 20.0,color: Colors.white),
-        textAlign: TextAlign.left,
-        ),
-        toolbarHeight: 50.0, // AppBarの高さ
-        backgroundColor: Colors.grey,
+        title: const Text("商品一覧",style: TextStyle(fontSize:25.0,color: Colors.white),textAlign: TextAlign.left),
+        toolbarHeight: 40.0,//AppBarの高さ
+        backgroundColor:ColorsConst.ColorGrey,//色
       ),
       body: AnimationLimiter(
         child: GridView.count(

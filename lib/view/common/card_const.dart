@@ -1,3 +1,5 @@
+//商品一覧パネル
+import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -37,17 +39,18 @@ class CardConst extends StatelessWidget {
                 ),
                 Positioned(
                   // widget を任意に重ねて配置する
-                  bottom: 16, // Stackの下から子の下部までの距離
-                  right: 16, // Stackの右端から子の右端までの距離
-                  left: 16, // Stackの左端から子の左端までの距離
+                  bottom: 0, // Stackの下から子の下部までの距離
+                  right: 0, // Stackの右端から子の右端までの距離
+                  left: 0, // Stackの左端から子の左端までの距離
+                  height: 30.0,
                   child: Container(//コンテナ
-                    color: Colors.white.withOpacity(0.5), // 背景色を設定
+                    color: ColorsConst.ColorGrey.withOpacity(0.5), // 背景色を設定
                     child: Text(
                       contentText, // 商品名
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                        fontSize: 15,
+                        color: Colors.white,
+                        fontSize: 18,
                       ),
                     ),
                   ),

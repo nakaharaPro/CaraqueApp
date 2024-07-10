@@ -1,4 +1,4 @@
-//商品詳細ページの大元
+//商品詳細ページ
 import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/constant/massage_const.dart';

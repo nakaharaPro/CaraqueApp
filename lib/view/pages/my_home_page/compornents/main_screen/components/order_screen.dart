@@ -1,23 +1,14 @@
+import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:flutter/material.dart';
 
-class OrderScreen extends StatelessWidget {
+class OrderScreen extends StatefulWidget {
   const OrderScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: OrderPage(),
-    );
-  }
-}
-
-class OrderPage extends StatefulWidget {
   @override
   _OrderPageState createState() => _OrderPageState();
 }
 
-class _OrderPageState extends State<OrderPage> {
+class _OrderPageState extends State<OrderScreen> {
   final List<String> products = ['生デコホール', '生チョコホール', '栗チョコホール', 'パリパリショコラ'];
   final Map<String, Map<String, int>> quantities = {};
   final List<String> sizes = ['小', '中', '大'];
@@ -33,8 +24,10 @@ class _OrderPageState extends State<OrderPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('ホールケーキ注文'),
+   appBar: AppBar(
+        title: const Text("ホールケーキ注文",style: TextStyle(fontSize:25.0,color: Colors.white),textAlign: TextAlign.left),
+        toolbarHeight: 40.0,//AppBarの高さ
+        backgroundColor:ColorsConst.ColorGrey,//色
       ),
       body: ListView.builder(
         itemCount: products.length,
