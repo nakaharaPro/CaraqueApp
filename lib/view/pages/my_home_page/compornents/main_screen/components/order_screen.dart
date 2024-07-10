@@ -11,7 +11,7 @@ class OrderScreen extends StatefulWidget {
 class _OrderPageState extends State<OrderScreen> {
   final List<String> products = ['生デコホール', '生チョコホール', '栗チョコホール', 'パリパリショコラ'];
   final Map<String, Map<String, int>> quantities = {};
-  final List<String> sizes = ['小', '中', '大'];
+  final List<String> sizes = ['12cm', '15cm', '18cm','21cm', '24cm'];
 
   @override
   void initState() {

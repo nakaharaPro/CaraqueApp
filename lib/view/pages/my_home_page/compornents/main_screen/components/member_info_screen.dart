@@ -36,11 +36,11 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
   // ライクボタン押下でtrueになれば配列格納、falseになれば削除
   Future<bool> onLikeButtonTapped(bool isLiked, int index) async {
     setState(() {
-      pageList[index]['favoriteState'] = !isLiked;
+      pageList[index]['favoriteState'] = !isLiked; //const配列のbool値変更
       if (pageList[index]['favoriteState']) {
-        favoriteList.add(index);
+        favoriteList.add(index); //お気に入りリスト追加
       } else {
-        favoriteList.remove(index);
+        favoriteList.remove(index); //お気に入りリスト削除
       }
     });
     return !isLiked;
@@ -49,10 +49,12 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-        title: const Text("会員情報",style: TextStyle(fontSize:25.0,color: Colors.white),textAlign: TextAlign.left),
-        toolbarHeight: 40.0,//AppBarの高さ
-        backgroundColor:ColorsConst.ColorGrey,//色
+      appBar: AppBar(
+        title: const Text("会員情報",
+            style: TextStyle(fontSize: 25.0, color: Colors.white),
+            textAlign: TextAlign.left),
+        toolbarHeight: 40.0, //AppBarの高さ
+        backgroundColor: ColorsConst.ColorGrey, //色
       ),
       body: SingleChildScrollView(
         // 画面外ならスクロール可能
@@ -71,16 +73,19 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                     ),
                   ),
                   children: [
-                    Row(         
-                      children: [ 
-                    _loginButton(),
-                    _signUpButton(),
+                    Row(
+                      children: [
+                        _signUpButton(),
+                        Obx(() {
+                          if (AuthController.to.rxAuthUser.value == null) {
+                            return _loginButton();
+                          } else {
+                            return _logout();
+                          }
+                        }),
                       ],
                     ),
-
-                  _logout(),
                     _favoriteTitleWidget(),
-
                   ],
                 ),
               ),
@@ -118,17 +123,17 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
     );
   }
 
-  
-
   // ログインボタン関数
   Widget _loginButton() {
     return OutlinedButton.icon(
       onPressed: () {
         Get.toNamed(LoginScreen.path);
       },
-      
       icon: const Icon(Icons.add),
-      label: const Text('ログイン',selectionColor: Colors.black,),
+      label: const Text(
+        'ログイン',
+        selectionColor: Colors.black,
+      ),
     );
   }
 
