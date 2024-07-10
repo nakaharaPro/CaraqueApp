@@ -17,7 +17,7 @@ class _OrderPageState extends State<OrderScreen> {
   void initState() {
     super.initState();
     for (var product in products) {
-      quantities[product] = {'小': 0, '中': 0, '大': 0};
+      quantities[product] = {'12cm': 0, '15cm': 0, '18cm': 0,'21cm': 0,'24cm': 0};
     }
   }
 
@@ -34,7 +34,7 @@ class _OrderPageState extends State<OrderScreen> {
         itemBuilder: (context, index) {
           return ExpansionTile(
             title: Text(products[index]),
-            children: sizes.map((size) {
+            children: sizes.map((size) {//mapはsized配列から1つ1つ要素を取り出し(size)に渡して処理する
               return ListTile(
                 title: Text(size),
                 trailing: Row(
