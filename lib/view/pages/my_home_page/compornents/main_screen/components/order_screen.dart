@@ -30,9 +30,9 @@ class _OrderPageState extends State<OrderScreen> {
         backgroundColor:ColorsConst.ColorGrey,//色
       ),
       body: ListView.builder(
-        itemCount: products.length,
+        itemCount: products.length,//商品名レングス
         itemBuilder: (context, index) {
-          return ExpansionTile(
+          return ExpansionTile(//開閉
             title: Text(products[index]),
             children: sizes.map((size) {//mapはsized配列から1つ1つ要素を取り出し(size)に渡して処理する
               return ListTile(
