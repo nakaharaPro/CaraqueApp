@@ -16,7 +16,7 @@ class _OrderPageState extends State<OrderScreen> {
   @override
   void initState() {
     super.initState();
-    for (var product in products) {
+    for (var product in products) {//productsリストから1つずつproductに入れ、length分繰り返し
       quantities[product] = {'12cm': 0, '15cm': 0, '18cm': 0,'21cm': 0,'24cm': 0};
     }
   }
@@ -38,12 +38,12 @@ class _OrderPageState extends State<OrderScreen> {
               return ListTile(
                 title: Text(size),
                 trailing: Row(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: MainAxisSize.min,//右端に配置
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.remove),
+                      icon: const Icon(Icons.remove),//マイナスボタン
                       onPressed: () {
-                        setState(() {
+                        setState(() {//マイナス処理
                           if (quantities[products[index]]![size]! > 0) {
                             quantities[products[index]]![size] =
                                 quantities[products[index]]![size]! - 1;
@@ -51,11 +51,12 @@ class _OrderPageState extends State<OrderScreen> {
                         });
                       },
                     ),
-                    Text(quantities[products[index]]![size]!.toString()),
+                    Text(quantities[products[index]]![size]!.toString()),//カウント
+
                     IconButton(
                       icon: const Icon(Icons.add),
                       onPressed: () {
-                        setState(() {
+                        setState(() {//プラス処理
                           quantities[products[index]]![size] =
                               quantities[products[index]]![size]! + 1;
                         });
