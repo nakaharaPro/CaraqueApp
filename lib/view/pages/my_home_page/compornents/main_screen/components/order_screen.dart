@@ -65,7 +65,7 @@ class _OrderPageState extends State<OrderScreen> {
                   ],
                 ),
               );
-            }).toList(),
+            }).toList(),//ListTitleのMapをListに格納する[Map,Map,Map]
           );
         },
       ),
@@ -75,7 +75,7 @@ class _OrderPageState extends State<OrderScreen> {
           child: ElevatedButton(
             child: const Text('注文する'),
             onPressed: () {
-              showDialog(
+              showDialog(//ダイアログ表示
                 context: context,
                 builder: (context) => AlertDialog(
                   title: const Text('注文内容'),
@@ -83,7 +83,6 @@ class _OrderPageState extends State<OrderScreen> {
                     mainAxisSize: MainAxisSize.min,
                     children: quantities.entries.map((entry) {
                       return Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(entry.key),
                           Column(
@@ -101,7 +100,8 @@ class _OrderPageState extends State<OrderScreen> {
                     TextButton(
                       child: const Text('OK'),
                       onPressed: () {
-                        Navigator.of(context).pop(); // ポップアップを閉じる
+                        //コントローラーに入力値を格納して計算を行い、別画面へ合計金額、注文内容を記載したメールを両者に飛ばす
+                        Navigator.of(context).pop(); // ダイアログを閉じる
                       },
                     ),
                   ],
