@@ -1,4 +1,5 @@
 import 'package:caraqueprod/constant/colors_const.dart';
+import 'package:caraqueprod/constant/hole_products_discription.dart';
 import 'package:caraqueprod/controllers/order_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -11,6 +12,7 @@ class OrderScreen extends StatefulWidget {
 
 class _OrderPageState extends State<OrderScreen> {
   final List<String> products = ['生デコホール', '生チョコホール', '栗チョコホール', 'パリパリショコラ'];
+  final List<String> holeDiscription = HoleProductsDiscription.holeProductDescription;
   final Map<String, Map<String, int>> quantities = {};
   final List<String> sizes = ['12cm', '15cm', '18cm','21cm', '24cm'];
 
@@ -25,7 +27,7 @@ class _OrderPageState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     final orderController = OrderController.to;
-    int totalAmount=0;
+    var totalAmount;
 
     return Scaffold(
    appBar: AppBar(
@@ -37,7 +39,12 @@ class _OrderPageState extends State<OrderScreen> {
         itemCount: products.length,//商品名レングス
         itemBuilder: (context, index) {
           return ExpansionTile(//開閉
-            title: Text(products[index]),
+            title:Column(
+              children: [
+             Text(products[index],style: const TextStyle(fontSize: 20.0 ,fontWeight: FontWeight.bold),),
+             Text(holeDiscription[index],style: const TextStyle(fontSize: 10.0)),
+              ],
+            ),
             children: sizes.map((size) {//mapはsized配列から1つ1つ要素を取り出し(size)に渡して処理する
               return ListTile(
                 title: Text(size),
@@ -107,7 +114,8 @@ class _OrderPageState extends State<OrderScreen> {
                         //コントローラーに入力値を格納して計算を行い、別画面へ合計金額、注文内容を記載したメールを両者に飛ばす
                         orderController.quantities =  quantities;
                         print(orderController.quantities);
-                        totalAmount = orderController.amountCalculation() as int;
+                        totalAmount = orderController.amountCalculation();
+                        print('合計金額  $totalAmount');
                         
                         Navigator.of(context).pop(); // ダイアログを閉じる
                       },
