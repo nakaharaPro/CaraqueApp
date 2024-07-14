@@ -115,7 +115,7 @@ class _OrderPageState extends State<OrderScreen> {
             onPressed: () {
               buyContentsInfo =
                   orderController.buyInfo(contentsInfo); //注文したリストの作成
-              totalAmount = orderController.amountCalculation(); //合計金額計算
+              totalAmount = orderController.amountCalculation(buyContentsInfo); //合計金額計算
               outputTotalAmount = formatter.format(totalAmount); //円フォーマット
 
               if (buyContentsInfo.isEmpty) {
