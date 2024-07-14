@@ -13,20 +13,21 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderPageState extends State<OrderScreen> {
+  final formatter = NumberFormat("#,###"); //円フォーマット
   final List<String> products = ['生デコホール', '生チョコホール', '栗チョコホール', 'パリパリショコラ'];
   final List<String> holeDiscription =
       HoleProductsDiscription.holeProductDescription; //商品説明
-  final Map<String, Map<String, int>> quantities = {};
+  final Map<String, Map<String, int>> contentsInfo = {};
   final List<String> sizes = ['12cm', '15cm', '18cm', '21cm', '24cm'];
-  final formatter = NumberFormat("#,###");
 
+  Map<String, Map<String, int>> buyContentsInfo = {}; //購入商品情報
 
   @override
   void initState() {
     super.initState();
     for (var product in products) {
       //productsリストから1つずつproductに入れ、length分繰り返し
-      quantities[product] = {
+      contentsInfo[product] = {
         '12cm': 0,
         '15cm': 0,
         '18cm': 0,
@@ -78,23 +79,24 @@ class _OrderPageState extends State<OrderScreen> {
                       onPressed: () {
                         setState(() {
                           //マイナス処理
-                          if (quantities[products[index]]![size]! > 0) {
-                            quantities[products[index]]![size] =
-                                quantities[products[index]]![size]! - 1;
+                          if (contentsInfo[products[index]]![size]! > 0) {
+                            contentsInfo[products[index]]![size] =
+                                contentsInfo[products[index]]![size]! - 1;
                           }
                         });
                       },
                     ),
 
-                    Text(quantities[products[index]]![size]!.toString()), //カウント
+                    Text(contentsInfo[products[index]]![size]!
+                        .toString()), //カウント
 
                     IconButton(
                       icon: const Icon(Icons.add),
                       onPressed: () {
                         setState(() {
                           //プラス処理
-                          quantities[products[index]]![size] =
-                              quantities[products[index]]![size]! + 1;
+                          contentsInfo[products[index]]![size] =
+                              contentsInfo[products[index]]![size]! + 1;
                         });
                       },
                     ),
@@ -109,48 +111,65 @@ class _OrderPageState extends State<OrderScreen> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            child:const Text('注文する'),
-
+            child: const Text('注文する'),
             onPressed: () {
-              orderController.quantities = quantities;
-              totalAmount = orderController.amountCalculation();//合計金額計算
-              outputTotalAmount = formatter.format(totalAmount);
-              //合計金額の処理
-              showDialog(
-                //ダイアログ表示
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: const Text('注文内容'),
-                  content: Text('合計金額 : ¥$outputTotalAmount'),
-                  // content: Column(
-                  //   mainAxisSize: MainAxisSize.min,
-                  //   children: quantities.entries.map((entry) {
-                  //     return Column(
-                  //       children: [
-                  //         Text(entry.key),
-                  //         Column(
-                  //           crossAxisAlignment: CrossAxisAlignment.start,
-                  //           children: entry.value.entries
-                  //               .map((sizeEntry) => Text(
-                  //                   '${sizeEntry.key}: ${sizeEntry.value}'))
-                  //               .toList(),
-                  //         ),
-                  //       ],
-                  //     );
-                  //   }).toList(),
-                  // ),
-                  actions: [
-                    TextButton(
-                      child: const Text('OK'),
-                      onPressed: () {
-                        //コントローラーに入力値を格納して計算を行い、別画面へ合計金額、注文内容を記載したメールを両者に飛ばす
+              buyContentsInfo =
+                  orderController.buyInfo(contentsInfo); //注文したリストの作成
+              totalAmount = orderController.amountCalculation(); //合計金額計算
+              outputTotalAmount = formatter.format(totalAmount); //円フォーマット
 
-                        Navigator.of(context).pop(); // ダイアログを閉じる
-                      },
+              if (buyContentsInfo.isEmpty) {
+                showDialog(
+                  //ダイアログ表示
+                  context: context,
+                  builder: (context) => const AlertDialog(
+                    content: Text("商品を選択してください"),
+                  ),
+                );
+              } else {
+                //合計金額の処理
+                showDialog(
+                  //ダイアログ表示
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('注文内容'),
+                    content: Column(
+                      children: [
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: buyContentsInfo.entries.map((entry) {
+                            return Column(
+                              children: [
+                                Text(entry.key),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: entry.value.entries
+                                      .map((sizeEntry) => Text(
+                                          '${sizeEntry.key}: ${sizeEntry.value}'))
+                                      .toList(),
+                                ),
+                              ],
+                            );
+                          }).toList(),
+                        ),
+                        //商品リストここまで
+                        const Padding(padding: EdgeInsets.all(10.0)),
+                        Text('合計金額 : ¥$outputTotalAmount'),
+                      ],
                     ),
-                  ],
-                ),
-              );
+                    actions: [
+                      TextButton(
+                        child: const Text('OK'),
+                        onPressed: () {
+                          //コントローラーに入力値を格納して計算を行い、別画面へ合計金額、注文内容を記載したメールを両者に飛ばす
+
+                          Navigator.of(context).pop(); // ダイアログを閉じる
+                        },
+                      ),
+                    ],
+                  ),
+                );
+              }
             },
           ),
         ),
