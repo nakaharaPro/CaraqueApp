@@ -1,6 +1,7 @@
 
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/my_home_page_contoroller.dart';
+import 'package:caraqueprod/controllers/order_controller.dart';
 
 import 'package:caraqueprod/controllers/remote_config_contoroller.dart';
 import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
@@ -17,6 +18,7 @@ class MyHomePage extends StatelessWidget {
     Get.put(MyHomePageContoroller());
     Get.put(VerifyEmailContoroller());
     Get.put(AuthController());
+    Get.put(OrderController());
     final remoteConfigContoroller = Get.put(RemoteConfigController());
       
     return Scaffold(

@@ -1,4 +1,5 @@
 import 'package:caraqueprod/constant/colors_const.dart';
+import 'package:caraqueprod/controllers/order_controller.dart';
 import 'package:flutter/material.dart';
 
 class OrderScreen extends StatefulWidget {
@@ -23,6 +24,9 @@ class _OrderPageState extends State<OrderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final orderController = OrderController.to;
+    int totalAmount=0;
+
     return Scaffold(
    appBar: AppBar(
         title: const Text("ホールケーキ注文",style: TextStyle(fontSize:25.0,color: Colors.white),textAlign: TextAlign.left),
@@ -101,6 +105,10 @@ class _OrderPageState extends State<OrderScreen> {
                       child: const Text('OK'),
                       onPressed: () {
                         //コントローラーに入力値を格納して計算を行い、別画面へ合計金額、注文内容を記載したメールを両者に飛ばす
+                        orderController.quantities =  quantities;
+                        print(orderController.quantities);
+                        totalAmount = orderController.amountCalculation() as int;
+                        
                         Navigator.of(context).pop(); // ダイアログを閉じる
                       },
                     ),
