@@ -167,7 +167,6 @@ class _OrderPageState extends State<OrderScreen> {
                         Text('合計金額 : ¥$outputTotalAmount',style: const TextStyle(fontWeight: FontWeight.bold),),
                         const Padding(padding: EdgeInsets.all(10.0)),
                         const Text('注文には事前にログイン(新規会員登録)が必要となります。',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),),
-                      
                       ],
                     ),
                     actions: [

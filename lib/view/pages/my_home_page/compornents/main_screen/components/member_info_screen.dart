@@ -91,30 +91,32 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
               ),
               // お気に入りリスト
               AnimationLimiter(
-                child: ListView.builder(
-                  physics:
-                      const NeverScrollableScrollPhysics(), // 内側のListViewのスクロールを無効にする
-                  shrinkWrap: true, // 内側のListViewの高さをコンテンツに合わせる
-                  itemCount: favoriteList.length, // リストアイテム個数分リストを作成
-                  itemBuilder: (BuildContext context, int index) {
-                    int productIndex = favoriteList[index]; // インデックス代入
-                    return AnimationConfiguration.staggeredList(
-                      position: index,
-                      duration: const Duration(milliseconds: 1000),
-                      child: SlideAnimation(
-                        verticalOffset: 50.0,
-                        child: FadeInAnimation(
-                          child: _favoriteProducts(
-                            pageList[productIndex]['favoriteState'] ?? false,
-                            pageList[productIndex]['imagePath'] ?? '',
-                            pageList[productIndex]['title'] ?? '',
-                            productIndex,
-                          ),
-                        ),
+                child: favoriteList.isEmpty
+                    ? _favoriteNone()//お気に入りリストが登録なければ
+                    : ListView.builder(//お気に入りリストの登録があれば
+                        physics:
+                            const NeverScrollableScrollPhysics(), // 内側のListViewのスクロールを無効にする
+                        shrinkWrap: true, // 内側のListViewの高さをコンテンツに合わせる
+                        itemCount: favoriteList.length, // リストアイテム個数分リストを作成
+                        itemBuilder: (BuildContext context, int index) {
+                          int productIndex = favoriteList[index]; // インデックス代入
+                          return AnimationConfiguration.staggeredList(
+                            position: index,
+                            duration: const Duration(milliseconds: 1000),
+                            child: SlideAnimation(
+                              verticalOffset: 50.0,
+                              child: FadeInAnimation(
+                                child: _favoriteProducts(
+                                  pageList[productIndex]['favoriteState'] ?? false,
+                                  pageList[productIndex]['imagePath'] ?? '',
+                                  pageList[productIndex]['title'] ?? '',
+                                  productIndex,
+                                ),
+                              ),
+                            ),
+                          );
+                        },
                       ),
-                    );
-                  },
-                ),
               )
             ],
           ),
@@ -163,6 +165,20 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
         "お気に入り一覧",
         style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
         textAlign: TextAlign.left,
+      ),
+    );
+  }
+
+  // お気に入りが登録されていない場合のウィジェット
+  Widget _favoriteNone() {
+    return const Align(
+      alignment: Alignment.center, // 中央寄せ
+      child: Padding(
+        padding: EdgeInsets.all(20.0),
+        child: Text(
+          "お気に入り登録されていません",
+          style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+        ),
       ),
     );
   }

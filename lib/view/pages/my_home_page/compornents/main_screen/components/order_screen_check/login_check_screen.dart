@@ -1,6 +1,5 @@
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/order_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/order_screen_check/order_sendmail/order_sendmail_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
