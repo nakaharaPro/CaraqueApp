@@ -17,6 +17,8 @@ class _OrderPageState extends State<OrderScreen> {
   final List<String> products = ['生デコホール', '生チョコホール', '栗チョコホール', 'パリパリショコラ'];
   final List<String> holeDiscription =
       HoleProductsDiscription.holeProductDescription; //商品説明
+  final List<String> amountList = HoleProductsDiscription.amountList;//価格リスト
+    
   final Map<String, Map<String, int>> contentsInfo = {};
   final List<String> sizes = ['12cm', '15cm', '18cm', '21cm', '24cm'];
 
@@ -61,14 +63,19 @@ class _OrderPageState extends State<OrderScreen> {
                 Text(
                   products[index],
                   style: const TextStyle(
-                      fontSize: 20.0, fontWeight: FontWeight.bold),
-                ),
+                      fontSize: 20.0, fontWeight: FontWeight.bold)
+                      ),
                 Text(holeDiscription[index],
+                    style: const TextStyle(fontSize: 10.0)
+                    ),
+                Text(amountList[index],
                     style: const TextStyle(fontSize: 10.0)),
+
+
               ],
             ),
+            //プルダウンの中身
             children: sizes.map((size) {
-              //mapはsized配列から1つ1つ要素を取り出し(size)に渡して処理する
               return ListTile(
                 title: Text(size),
                 trailing: Row(
@@ -113,11 +120,11 @@ class _OrderPageState extends State<OrderScreen> {
           child: ElevatedButton(
             child: const Text('注文する'),
             onPressed: () {
-              buyContentsInfo =
-                  orderController.buyInfo(contentsInfo); //注文したリストの作成
+              buyContentsInfo = orderController.buyInfo(contentsInfo); //注文したリストの作成
               totalAmount = orderController.amountCalculation(buyContentsInfo); //合計金額計算
               outputTotalAmount = formatter.format(totalAmount); //円フォーマット
 
+              //タイアログ表示
               if (buyContentsInfo.isEmpty) {
                 showDialog(
                   //ダイアログ表示
@@ -140,7 +147,9 @@ class _OrderPageState extends State<OrderScreen> {
                           children: buyContentsInfo.entries.map((entry) {
                             return Column(
                               children: [
+                                //購入商品名
                                 Text(entry.key),
+                                //購入リスト
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: entry.value.entries

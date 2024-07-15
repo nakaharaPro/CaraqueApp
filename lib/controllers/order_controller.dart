@@ -82,22 +82,24 @@ class OrderController extends GetxController {
           value.forEach((sizekey, quantityvalue) {
             //keyサイズ　valueに個数
             if (sizekey == '12cm') {
-              totalAmount = totalAmount + quantityvalue * 2450;
+              totalAmount = totalAmount + quantityvalue * 2150;
             }
             if (sizekey == '15cm') {
-              totalAmount = totalAmount + quantityvalue * 3700;
+              totalAmount = totalAmount + quantityvalue * 3350;
             }
             if (sizekey == '18cm') {
-              totalAmount = totalAmount + quantityvalue * 4700;
+              totalAmount = totalAmount + quantityvalue * 4300;
             }
             if (sizekey == '21cm') {
-              totalAmount = totalAmount + quantityvalue * 6150;
+              totalAmount = totalAmount + quantityvalue * 5500;
             }
             if (sizekey == '24cm') {
-              totalAmount = totalAmount + quantityvalue * 7400;
+              totalAmount = totalAmount + quantityvalue * 6700;
             }
           });
         }
+
+        
       });
     }
 
