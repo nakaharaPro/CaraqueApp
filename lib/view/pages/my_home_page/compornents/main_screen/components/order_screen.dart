@@ -1,6 +1,7 @@
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/constant/hole_products_discription.dart';
 import 'package:caraqueprod/controllers/order_controller.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/order_screen_check/login_check_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -163,17 +164,30 @@ class _OrderPageState extends State<OrderScreen> {
                         ),
                         //商品リストここまで
                         const Padding(padding: EdgeInsets.all(10.0)),
-                        Text('合計金額 : ¥$outputTotalAmount'),
+                        Text('合計金額 : ¥$outputTotalAmount',style: const TextStyle(fontWeight: FontWeight.bold),),
+                        const Padding(padding: EdgeInsets.all(10.0)),
+                        const Text('注文には事前にログイン(新規会員登録)が必要となります。',style: TextStyle(fontWeight: FontWeight.bold,color: Colors.red),),
+                      
                       ],
                     ),
                     actions: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                        child: const Text('戻る'),
+                        onPressed: () {
+                          Navigator.of(context).pop(); // ダイアログを閉じる
+                        },
+                      ),
                       TextButton(
                         child: const Text('OK'),
                         onPressed: () {
-                          //コントローラーに入力値を格納して計算を行い、別画面へ合計金額、注文内容を記載したメールを両者に飛ばす
-
                           Navigator.of(context).pop(); // ダイアログを閉じる
+                          Get.toNamed(LoginCheckScreen.path);
                         },
+                      ),
+                        ],
                       ),
                     ],
                   ),

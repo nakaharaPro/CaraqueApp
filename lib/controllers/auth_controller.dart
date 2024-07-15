@@ -10,7 +10,8 @@ class AuthController extends GetxController {
   final verifyEmailContoroller = VerifyEmailContoroller.to;
   final rxAuthUser = Rx<User?>(FirebaseAuth.instance.currentUser); 
   final reMailAuth = false.obs; //メール認証有無
-  //obsは元からRx<bool>の型が定義されている。つまりこの記載は rxIsLoginMode = Rx<bool>(false)と同等
+  //obsは元からRx<bool>の型が定義されている。つまりこの記載は rxMailAuth = Rx<bool>(false)と同等
+
   String email = "";
   String password = "";
 
