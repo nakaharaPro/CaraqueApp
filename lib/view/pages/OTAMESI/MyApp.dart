@@ -1,81 +1,106 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_email_sender/flutter_email_sender.dart';
 
-void main() {
-  runApp(MyApp());
-}
+class MailApp extends StatelessWidget {
+  const MailApp({Key? key}) : super(key: key);
 
-enum Weather {
-  sunny,
-  cloudy,
-  rainy,
-  snowy,
-}
-
-class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: WeatherScreen(),
+    return const MaterialApp(
+      home: MailScreen(),
     );
   }
 }
 
-class WeatherScreen extends StatefulWidget {
+class MailScreen extends StatefulWidget {
+  const MailScreen({Key? key}) : super(key: key);
+
   @override
-  _WeatherScreenState createState() => _WeatherScreenState();
+  State<MailScreen> createState() => _MailScreenState();
 }
 
-class _WeatherScreenState extends State<WeatherScreen> {
-  Weather _currentWeather = Weather.sunny;//初期値
+class _MailScreenState extends State<MailScreen> {
+  late TextEditingController _emailController;
+  late TextEditingController _bodyController;
+  late TextEditingController _subjectController;
+  late TextEditingController _ccController;
+  late TextEditingController _bccController;
 
-  void _updateWeather(Weather weather) {
-    setState(() {
-      _currentWeather = weather;
-    });
+  @override
+  void initState() {
+    super.initState();
+    _emailController = TextEditingController();
+    _bodyController = TextEditingController();
+    _subjectController = TextEditingController();
+    _ccController = TextEditingController();
+    _bccController = TextEditingController();
   }
 
-  String _getWeatherMessage() {
-    switch (_currentWeather) {
-      case Weather.sunny:
-        return 'It\'s sunny!';
-      case Weather.cloudy:
-        return 'It\'s cloudy!';
-      case Weather.rainy:
-        return 'It\'s rainy!';
-      case Weather.snowy:
-        return 'It\'s snowy!';
-      default:
-        return 'Unknown weather';
-    }
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _bodyController.dispose();
+    _subjectController.dispose();
+    _ccController.dispose();
+    _bccController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Weather App'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children:[
-            Text(
-              _getWeatherMessage(),
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 20),
-            Wrap(
-              spacing: 10,
-              children: Weather.values.map((weather) {
-                return ElevatedButton(
-                  onPressed: () => _updateWeather(weather),
-                  child: Text(weather.toString().split('.').last),
-                );
-              }).toList(),
-            ),
-          ],
+      appBar: AppBar(title: Text('メール送信')),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Column(
+            children: [
+              const SizedBox(height: 40),
+              TextFormField(
+                controller: _emailController,
+                decoration: InputDecoration(hintText: '宛先'),
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: _ccController,
+                decoration: InputDecoration(hintText: 'cc'),
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: _bccController,
+                decoration: InputDecoration(hintText: 'bcc'),
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: _subjectController,
+                decoration: InputDecoration(hintText: '件名'),
+              ),
+              const SizedBox(height: 20),
+              TextFormField(
+                controller: _bodyController,
+                decoration: InputDecoration(hintText: '本文'),
+              ),
+              const SizedBox(height: 20),
+              ElevatedButton(onPressed: _sendEmail, child: Text('送信する')),
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );
+  }
+
+  Future<void> _sendEmail() async {
+    final email = Email(
+      body: _bodyController.text,
+      subject: _subjectController.text,
+      recipients: [_emailController.text],
+      cc: [_ccController.text],
+      bcc: [_bccController.text],
+      isHTML: false,
+    );
+
+    await FlutterEmailSender.send(email);
   }
 }
