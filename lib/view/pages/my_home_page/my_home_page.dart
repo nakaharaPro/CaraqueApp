@@ -32,7 +32,8 @@ class MyHomePage extends StatelessWidget {
         if(remoteConfigContoroller.rxIsMaintenenanceMode.value){
           return const MaintenanceScreen();//メンテナンス画面
         }else{
-        return  //MailApp();
+        return
+        //MailApp();
         const MainScreen();
         }
       }),
