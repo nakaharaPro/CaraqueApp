@@ -27,7 +27,7 @@ class _ProductDescriptionPageState extends State<ProductDescriptionPage> {
   late bool isLiked; // 初期化を遅らせinitStateの段階で初期化を行なっている
   late List<Map<String, dynamic>> pageState; // 初期化を遅らせinitStateの段階で初期化を行なっている
   late Map<String, dynamic> productState;
-  
+
   @override
   void initState() {
     super.initState();
@@ -41,7 +41,6 @@ class _ProductDescriptionPageState extends State<ProductDescriptionPage> {
     setState(() {
       this.isLiked = !isLiked; // bool値を変更する
       productState['favoriteState'] = this.isLiked;
-     print(productState);
     });
     return !isLiked;
   }
@@ -111,18 +110,27 @@ class _ProductDescriptionPageState extends State<ProductDescriptionPage> {
                                 textAlign: TextAlign.left, // 左よせ
                               ),
                               // ライクボタンゾーン
-                              LikeButton(
-                                size: 30.0,
-                                isLiked: isLiked, // bool値
-                                onTap: onLikeButtonTapped,
-                                likeBuilder: (bool isLiked) {
-                                  return Icon(
-                                    Icons.favorite,
-                                    color: isLiked ? Colors.orange : Colors.grey,
-                                    size: 40.0,
-                                  );
-                                },
-                                padding: const EdgeInsets.only(right: 10.0),
+                              Container(
+                                height: 60,
+                                width: 64,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Center( // Centerウィジェットを使用
+                                  child: LikeButton(
+                                    size: 50.0,
+                                    isLiked: isLiked, // bool値
+                                    onTap: onLikeButtonTapped,
+                                    likeBuilder: (bool isLiked) {
+                                      return Icon(
+                                        Icons.favorite,
+                                        color: isLiked ? Colors.orange : Colors.grey,
+                                        size: 40.0,
+                                      );
+                                    },
+                                  ),
+                                ),
                               ),
                             ],
                           ),
