@@ -27,10 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             _titleWidget(),
             _animation(),
-            _padding(),
             _signupForm(),
             _positiveButton(),
-            _padding(),
             _homeButton(),
           ],
         ),
@@ -69,9 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
       child: Column(
         children: [
           _emailTextField(),
-           _padding(),
           _passwordTextField(),
-          _padding(),
           
         ],
       ),
@@ -157,11 +153,6 @@ class _LoginScreenState extends State<LoginScreen> {
         side: const BorderSide(color: Colors.black), //ボーダー
       ),
     );
-  }
-
-//パディング
-  Widget _padding(){
-    return const Padding(padding: EdgeInsets.all(5.0));
   }
 
   

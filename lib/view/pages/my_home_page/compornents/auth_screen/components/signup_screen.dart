@@ -25,10 +25,8 @@ class _SignupScreenState extends State<SignupScreen> {
         children: [
           _titleWidget(),
           _animation(),
-          _padding(),
           _signupForm(),
           _positiveButton(),
-          _padding(),
           _homeButton(),
         ],
       ),
@@ -63,9 +61,9 @@ class _SignupScreenState extends State<SignupScreen> {
         children: [
           _reAuthMag(),
           _emailTextField(),
-          _padding(),
+       
           _passwordTextField(),
-          _padding(),
+         
         ],
       ),
     );
@@ -91,6 +89,7 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget _emailTextField() {
     final controller = AuthController.to;
     return TextFieldContainer(
+      
       //自作デザインウィジェット
       child: TextFormField(
         decoration: const InputDecoration(hintText: "メールアドレス"),
@@ -101,6 +100,7 @@ class _SignupScreenState extends State<SignupScreen> {
           return GetUtils.isEmail(value!) ? null : "正しいメールアドレスを入力してください";
         },
       ),
+   
     );
   }
 
@@ -109,6 +109,7 @@ class _SignupScreenState extends State<SignupScreen> {
     final controller = AuthController.to;
     return TextFieldContainer(
       //自作デザインウィジェット
+      
       child: TextFormField(
         obscureText: true, //パスワードを隠す
         decoration: const InputDecoration(hintText: "パスワード ※8桁以上"), //ヒントテキスト
@@ -165,10 +166,5 @@ class _SignupScreenState extends State<SignupScreen> {
         side: const BorderSide(color: Colors.black), //ボーダー
       ),
     );
-  }
-
-  //パディング
-  Widget _padding() {
-    return const Padding(padding: EdgeInsets.all(5.0));
   }
 }
