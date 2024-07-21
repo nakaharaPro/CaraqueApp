@@ -74,7 +74,10 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                   ),
                   children: [
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  
                       children: [
+
                         _signUpButton(),
                         Obx(() {
                           if (AuthController.to.rxAuthUser.value == null) {
@@ -92,8 +95,9 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
               // お気に入りリスト
               AnimationLimiter(
                 child: favoriteList.isEmpty
-                    ? _favoriteNone()//お気に入りリストが登録なければ
-                    : ListView.builder(//お気に入りリストの登録があれば
+                    ? _favoriteNone() //お気に入りリストが登録なければ
+                    : ListView.builder(
+                        //お気に入りリストの登録があれば
                         physics:
                             const NeverScrollableScrollPhysics(), // 内側のListViewのスクロールを無効にする
                         shrinkWrap: true, // 内側のListViewの高さをコンテンツに合わせる
@@ -107,7 +111,8 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                               verticalOffset: 50.0,
                               child: FadeInAnimation(
                                 child: _favoriteProducts(
-                                  pageList[productIndex]['favoriteState'] ?? false,
+                                  pageList[productIndex]['favoriteState'] ??
+                                      false,
                                   pageList[productIndex]['imagePath'] ?? '',
                                   pageList[productIndex]['title'] ?? '',
                                   productIndex,
@@ -128,35 +133,51 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
   // ログインボタン関数
   Widget _loginButton() {
     return OutlinedButton.icon(
+      style: OutlinedButton.styleFrom(
+        iconColor: ColorsConst.constColorOrange,
+        backgroundColor: ColorsConst.constColorGrey,
+      ),
       onPressed: () {
         Get.toNamed(LoginScreen.path);
       },
       icon: const Icon(Icons.add),
       label: const Text(
         'ログイン',
-        selectionColor: Colors.black,
+        style: TextStyle(color: Colors.white),
       ),
     );
   }
 
-  
-
   // サインアップボタン関数
   Widget _signUpButton() {
     return OutlinedButton.icon(
+      style: OutlinedButton.styleFrom(
+        padding: const EdgeInsets.all(10.0),
+        iconColor: ColorsConst.constColorOrange,
+        backgroundColor: ColorsConst.constColorGrey,
+      ),
       onPressed: () {
         Get.toNamed(SignupScreen.path);
       },
       icon: const Icon(Icons.add),
-      label: const Text("新規会員登録"),
+      label: const Text(
+        "新規会員登録",
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 
   Widget _logout() {
     final authController = AuthController.to;
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+          padding: const EdgeInsets.all(10.0),
+          backgroundColor: ColorsConst.constColorGrey),
       onPressed: authController.onSignOutButtonPressed,
-      child: const Text("ログアウト"),
+      child: const Text(
+        "ログアウト",
+        style: TextStyle(color: Colors.white),
+      ),
     );
   }
 
@@ -165,7 +186,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
       alignment: Alignment.topLeft, // 左よせ
       child: Text(
         "お気に入り一覧",
-        style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+        style: TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
         textAlign: TextAlign.left,
       ),
     );
