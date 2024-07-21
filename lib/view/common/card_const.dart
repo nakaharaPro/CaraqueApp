@@ -44,7 +44,7 @@ class CardConst extends StatelessWidget {
                   left: 0, // Stackの左端から子の左端までの距離
                   height: 30.0,
                   child: Container(//コンテナ
-                    color: ColorsConst.ColorGrey.withOpacity(0.5), // 背景色を設定
+                    color: ColorsConst.constColorGrey.withOpacity(0.5), // 背景色を設定
                     child: Text(
                       contentText, // 商品名
                       style: const TextStyle(

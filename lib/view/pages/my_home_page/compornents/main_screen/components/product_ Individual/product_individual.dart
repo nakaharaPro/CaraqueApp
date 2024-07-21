@@ -20,7 +20,7 @@ final int index;
   final String imagePath= productState['imagePath'] ?? '';
     return SafeArea(
       child: Scaffold(
-        backgroundColor: ColorsConst.ColorGrey,
+        backgroundColor: ColorsConst.constColorGrey,
         body: Column(
           children: [
             //戻るアイコン

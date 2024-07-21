@@ -54,7 +54,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
             style: TextStyle(fontSize: 25.0, color: Colors.white),
             textAlign: TextAlign.left),
         toolbarHeight: 40.0, //AppBarの高さ
-        backgroundColor: ColorsConst.ColorGrey, //色
+        backgroundColor: ColorsConst.constColorGrey, //色
       ),
       body: SingleChildScrollView(
         // 画面外ならスクロール可能

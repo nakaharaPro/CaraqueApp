@@ -52,7 +52,7 @@ class _OrderPageState extends State<OrderScreen> {
             style: TextStyle(fontSize: 25.0, color: Colors.white),
             textAlign: TextAlign.left),
         toolbarHeight: 40.0, //AppBarの高さ
-        backgroundColor: ColorsConst.ColorGrey, //色
+        backgroundColor: ColorsConst.constColorGrey, //色
       ),
       body: ListView.builder(
         itemCount: products.length, //商品名レングス
@@ -116,10 +116,15 @@ class _OrderPageState extends State<OrderScreen> {
         },
       ),
       bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: ElevatedButton(
-            child: const Text('注文する'),
+            
+            style:ElevatedButton.styleFrom(
+              backgroundColor: ColorsConst.constColorGrey,
+            ),
+            child: const Text('注文する',style: TextStyle(color: Colors.white,fontWeight:FontWeight.bold),),
             onPressed: () {
               buyContentsInfo = orderController.buyInfo(contentsInfo); //注文したリストの作成
               totalAmount = orderController.amountCalculation(buyContentsInfo); //合計金額計算
@@ -141,6 +146,7 @@ class _OrderPageState extends State<OrderScreen> {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text('注文内容'),
+                    
                     content: Column(
                       children: [
                         Column(

@@ -74,13 +74,13 @@ class _MainScreenState extends State<MainScreen> {
         onTap: _onItemTapped, //タップされたアイコンのインデックスを取得（currentIndexとセット）
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
-          BottomNavigationBarItem(icon: Icon(Icons.article), label: '注文'),
-          BottomNavigationBarItem(icon: Icon(Icons.cake), label: '商品一覧'),
+          BottomNavigationBarItem(icon: Icon(Icons.cake), label: '注文'),
+          BottomNavigationBarItem(icon: Icon(Icons.article), label: '商品一覧'),
           BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle), label: '会員情報'),
+          icon: Icon(Icons.account_circle), label: '会員情報'),
         ],
         type: BottomNavigationBarType.fixed, //アイコンの下にラベルをつけるタイプ
-        backgroundColor: ColorsConst.ColorGrey,
+        backgroundColor: ColorsConst.constColorGrey,
         selectedIconTheme:
             const IconThemeData(color: Colors.white), //選択されたアイコンの色
         unselectedIconTheme:

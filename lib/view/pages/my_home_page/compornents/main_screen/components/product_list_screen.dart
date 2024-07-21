@@ -29,7 +29,7 @@ class ProductListScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("商品一覧",style: TextStyle(fontSize:25.0,color: Colors.white),textAlign: TextAlign.left),
         toolbarHeight: 40.0,//AppBarの高さ
-        backgroundColor:ColorsConst.ColorGrey,//色
+        backgroundColor:ColorsConst.constColorGrey,//色
       ),
       body: AnimationLimiter(
         child: GridView.count(
