@@ -139,6 +139,8 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
     );
   }
 
+  
+
   // サインアップボタン関数
   Widget _signUpButton() {
     return OutlinedButton.icon(

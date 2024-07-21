@@ -17,6 +17,7 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>(); //validateを使うときに必須
+  final authController = AuthController.to;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,12 +80,11 @@ class _LoginScreenState extends State<LoginScreen> {
 
   //emailを入力する関数
   Widget _emailTextField() {
-    final controller = AuthController.to;
     return TextFieldContainer(
       //自作デザインウィジェット
       child: TextFormField(
         decoration: const InputDecoration(hintText: "メールアドレス"),
-        onSaved: controller
+        onSaved: authController
             .setEmail, //onSavedは(value)が省略できるため、このメソッドの引数にはフォーム入力値がvalueとして渡る
         validator: (value) {
           //valueには入力文字列が入る
@@ -96,13 +96,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
 //パスワードを入力する関数
   Widget _passwordTextField() {
-    final controller = AuthController.to;
     return TextFieldContainer(
       //自作デザインウィジェット
       child: TextFormField(
         obscureText: true, //パスワードを隠す
         decoration: const InputDecoration(hintText: "パスワード ※8桁以上"), //ヒントテキスト
-        onSaved: controller
+        onSaved: authController
             .setPassword, //onSavedは(value)が省略できるため、このメソッドの引数にはフォーム入力値がvalueとして渡る
         validator: (value) {
           //valueには入力文字列が入る
@@ -112,9 +111,9 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+//ログインボタン
   Widget _positiveButton() {
     const style = TextStyle(fontSize: 20.0, color: Colors.black);
-    final authController = AuthController.to;
     return OutlinedButton(
       style: OutlinedButton.styleFrom(
         foregroundColor: Colors.black,
@@ -125,6 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
           //バリデーションを行ったあと、入力文字列情報を変数に保存する
           _formKey.currentState!.save(); //WidgetのonSaved処理が走る
           authController.onLoginButtonPressed(); //ボタン押下処理（登録かサインイン）
+          
         }
       },
       child: const Text(
@@ -144,6 +144,7 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
       onPressed: () {
         Get.back();
+   
       },
       label: const Text(
         'ホームに戻る',
@@ -162,4 +163,10 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _padding(){
     return const Padding(padding: EdgeInsets.all(5.0));
   }
+
+  
 }
+
+
+
+

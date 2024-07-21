@@ -1,4 +1,5 @@
 //画面リンクパス一覧
+import 'package:caraqueprod/view/pages/OTAMESI/google_signin_screen.dart';
 import 'package:caraqueprod/view/pages/account_page.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
@@ -15,6 +16,8 @@ class GetPages {
     GetPage(name:SignupScreen.path, page:() => const SignupScreen()),
     GetPage(name:LoginScreen.path, page:() => const LoginScreen()),
     GetPage(name:LoginCheckScreen.path, page:() => const LoginCheckScreen()),
+
+    GetPage(name:GoogleSignInScreen.path, page:() => const GoogleSignInScreen()),
 
   ];
 }

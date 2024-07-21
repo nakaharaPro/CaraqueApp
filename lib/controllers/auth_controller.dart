@@ -44,7 +44,6 @@ class AuthController extends GetxController {
      
     }
   }
-  
 
 
 
@@ -97,6 +96,7 @@ class AuthController extends GetxController {
 
 //boolステータスの変更
   void changeEmailAuthState() =>
-      reMailAuth.value = !reMailAuth.value; //trueとfalseの反転
-}
+      reMailAuth.value = !reMailAuth.value;
 
+
+}
