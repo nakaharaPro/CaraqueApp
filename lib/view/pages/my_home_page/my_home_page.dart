@@ -4,9 +4,9 @@ import 'package:caraqueprod/controllers/my_home_page_contoroller.dart';
 import 'package:caraqueprod/controllers/order_controller.dart';
 
 import 'package:caraqueprod/controllers/remote_config_contoroller.dart';
+import 'package:caraqueprod/controllers/sendmail_controller.dart';
 import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
 import 'package:caraqueprod/view/pages/OTAMESI/MyApp.dart';
-import 'package:caraqueprod/view/pages/OTAMESI/home_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/home_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/maintenance_screen.dart';
@@ -21,6 +21,8 @@ class MyHomePage extends StatelessWidget {
     Get.put(VerifyEmailContoroller());
     Get.put(AuthController());
     Get.put(OrderController());
+    Get.put(SendmailController());
+
     final remoteConfigContoroller = Get.put(RemoteConfigController());
       
     return Scaffold(
@@ -34,8 +36,8 @@ class MyHomePage extends StatelessWidget {
         if(remoteConfigContoroller.rxIsMaintenenanceMode.value){
           return const MaintenanceScreen();//メンテナンス画面
         }else{
-        return// const HomeScreen2();
-        //MailApp();
+        return 
+  
         const MainScreen();
         }
       }),
