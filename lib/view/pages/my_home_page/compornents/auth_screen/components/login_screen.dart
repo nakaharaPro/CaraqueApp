@@ -3,6 +3,8 @@ import 'package:caraqueprod/constant/animation_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 
 import 'package:caraqueprod/view/common/text_field_container.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
@@ -139,7 +141,7 @@ class _LoginScreenState extends State<LoginScreen> {
         color: Colors.black,
       ),
       onPressed: () {
-        Get.back();
+        Get.toNamed(MainScreen.path);
    
       },
       label: const Text(

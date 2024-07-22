@@ -3,13 +3,14 @@ import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:get/get.dart';
 
 class SendmailController extends GetxController{
+   static SendmailController get to => Get.find<SendmailController>();
 
    Future<void> sendEmail(String Address) async {
 
     final Email email = Email(
       body: 'This is the body of the email.',
       subject: '注文の確定',
-      recipients: ['aws09300130@gmail.com'], // 送信先のメールアドレスを指定
+      recipients: ['aws09300130@gmail.com',Address], // 送信先のメールアドレスを指定
       isHTML: false,
     );
 

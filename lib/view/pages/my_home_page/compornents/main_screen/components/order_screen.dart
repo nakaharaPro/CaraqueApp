@@ -1,7 +1,9 @@
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/constant/hole_products_discription.dart';
+import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/order_controller.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/order_screen_check/login_check_screen.dart';
+import 'package:caraqueprod/controllers/sendmail_controller.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
@@ -43,6 +45,8 @@ class _OrderPageState extends State<OrderScreen> {
   @override
   Widget build(BuildContext context) {
     final orderController = OrderController.to;
+    final sendEmailController = SendmailController.to;
+    final authController = AuthController.to;
     int? totalAmount;
     String outputTotalAmount = '0';
 
@@ -189,7 +193,14 @@ class _OrderPageState extends State<OrderScreen> {
                         child: const Text('OK'),
                         onPressed: () {
                           Navigator.of(context).pop(); // ダイアログを閉じる
-                          Get.toNamed(LoginCheckScreen.path);
+                          print(authController.rxAuthUser.value?.email);
+                          if(authController.rxAuthUser.value?.email==null){
+                             Get.toNamed(LoginScreen.path);
+                          }else{
+                         
+                          sendEmailController.sendEmail(authController.rxAuthUser.value!.email.toString());
+                          }
+                         
                         },
                       ),
                         ],

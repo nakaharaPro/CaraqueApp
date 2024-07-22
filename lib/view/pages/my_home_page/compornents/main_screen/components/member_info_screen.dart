@@ -11,6 +11,7 @@ import 'package:like_button/like_button.dart';
 
 class MemberInfoScreen extends StatefulWidget {
   const MemberInfoScreen({super.key});
+   static const path = "/menber_info"; //パス
 
   @override
   _MemberInfoScreenState createState() => _MemberInfoScreenState();
