@@ -4,7 +4,7 @@ import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/comp
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/verify_email_screen.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/verify_email_screen.dart';
 import 'package:get/get.dart';
 
 class GetPages {

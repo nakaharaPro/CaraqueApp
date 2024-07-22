@@ -3,7 +3,7 @@ import 'package:caraqueprod/constant/animation_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 
 import 'package:caraqueprod/view/common/text_field_container.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,7 +31,13 @@ class _LoginScreenState extends State<LoginScreen> {
             _animation(),
             _signupForm(),
             _positiveButton(),
-            _homeButton(),
+            Row(
+               mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+              _signupPageButton(),
+              _homeButton(),
+              ]
+            ),
           ],
         ),
       ),
@@ -55,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget _animation() {
     return Center(
       child: Lottie.asset(
-        coffeeBreak, //アニメーションjsonリンク
+        loginAnimation, //アニメーションjsonリンク
         width: 350,
         height: 170,
       ),
@@ -126,7 +132,7 @@ class _LoginScreenState extends State<LoginScreen> {
         }
       },
       child: const Text(
-        'Login',
+        'ログインを行う',
         style: style,
       ),
     );
@@ -145,7 +151,30 @@ class _LoginScreenState extends State<LoginScreen> {
    
       },
       label: const Text(
-        'ホームに戻る',
+        'ホーム',
+        style: style,
+      ),
+      style: ElevatedButton.styleFrom(
+        //ボタンスタイル
+        backgroundColor: Colors.transparent,
+        elevation: 0, //透明度
+        side: const BorderSide(color: Colors.black), //ボーダー
+      ),
+    );
+  }
+
+     Widget _signupPageButton() {
+    const style = TextStyle(fontSize: 20.0, color: Colors.black);
+    return ElevatedButton.icon(
+      icon: const Icon(
+        Icons.add,
+        color: Colors.black,
+      ),
+      onPressed: () {
+        Get.toNamed(SignupScreen.path);
+      },
+      label: const Text(
+        '新規登録',
         style: style,
       ),
       style: ElevatedButton.styleFrom(

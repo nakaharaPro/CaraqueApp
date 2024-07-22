@@ -2,6 +2,7 @@
 import 'package:caraqueprod/constant/animation_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/view/common/text_field_container.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/verify_email_screen.dart';
@@ -29,7 +30,13 @@ class _SignupScreenState extends State<SignupScreen> {
           _animation(),
           _signupForm(),
           _positiveButton(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              _loginPageButton(),
           _homeButton(),
+            ],
+          ),
         ],
       ),
     );
@@ -48,7 +55,7 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget _animation() {
     return Center(
       child: Lottie.asset(
-        coffeeBreak, //アニメーションjsonリンク
+        signupAnimation, //アニメーションjsonリンク
         width: 350,
         height: 170,
       ),
@@ -63,7 +70,6 @@ class _SignupScreenState extends State<SignupScreen> {
         children: [
           _reAuthMag(),
           _emailTextField(),
-       
           _passwordTextField(),
          
         ],
@@ -141,7 +147,7 @@ class _SignupScreenState extends State<SignupScreen> {
         }
       },
       child: const Text(
-        'Registration',
+        '会員登録を行う',
         style: style,
       ),
     );
@@ -158,7 +164,31 @@ class _SignupScreenState extends State<SignupScreen> {
         Get.toNamed(MainScreen.path);
       },
       label: const Text(
-        'ホームに戻る',
+        'ホーム',
+        style: style,
+      ),
+      style: ElevatedButton.styleFrom(
+        //ボタンスタイル
+        backgroundColor: Colors.transparent,
+        elevation: 0, //透明度
+        side: const BorderSide(color: Colors.black), //ボーダー
+      ),
+    );
+  }
+
+
+    Widget _loginPageButton() {
+    const style = TextStyle(fontSize: 20.0, color: Colors.black);
+    return ElevatedButton.icon(
+      icon: const Icon(
+        Icons.login,
+        color: Colors.black,
+      ),
+      onPressed: () {
+        Get.toNamed(LoginScreen.path);
+      },
+      label: const Text(
+        'ログイン',
         style: style,
       ),
       style: ElevatedButton.styleFrom(

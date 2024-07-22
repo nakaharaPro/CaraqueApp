@@ -1,1 +1,2 @@
-const coffeeBreak = 'assets/lotties/loginAnimation.json';
+const signupAnimation = 'assets/lotties/signupAnimation.json';
+const loginAnimation = 'assets/lotties/loginAnimation.json';
