@@ -62,6 +62,12 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (value == null || value.isEmpty) {
                     return '姓を入力してください';
                   }
+                  //これやっていく
+                  inputInfo.addAll({"first":value});
+                  print(inputInfo);
+
+
+
                   
                   return null;
                 },
