@@ -37,8 +37,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
 
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
-      // フォームの送信処理をここに追加
+       print(inputInfo);
     }
   }
 
@@ -64,11 +63,6 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   }
                   //これやっていく
                   inputInfo.addAll({"first":value});
-                  print(inputInfo);
-
-
-
-                  
                   return null;
                 },
               ),
@@ -79,6 +73,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (value == null || value.isEmpty) {
                     return '名を入力してください';
                   }
+                   inputInfo.addAll({"last":value});
                   return null;
                 },
               ),
@@ -93,6 +88,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (!RegExp(r'^\d{10,11}$').hasMatch(value)) {
                     return '正しい電話番号を入力してください';
                   }
+                   inputInfo.addAll({"phone":value});
                   return null;
                 },
               ),
@@ -107,6 +103,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (!RegExp(r'^\d{7}$').hasMatch(value)) {
                     return '正しい郵便番号を入力してください';
                   }
+                   inputInfo.addAll({"post":value});
                   return null;
                 },
               ),
