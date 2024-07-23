@@ -4,5 +4,5 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 class ColRefCore{
-  static ColRef publicUsersColRef() => FirebaseFirestore.instance.collection('public_users'); 
+  static ColRef publicUsersColRef(String mail) => FirebaseFirestore.instance.collection(mail); //public_user
 }

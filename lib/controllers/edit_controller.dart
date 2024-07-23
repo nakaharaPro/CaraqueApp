@@ -23,7 +23,8 @@ class EditController extends GetxController {
   Future<void> _updatePublicUser() async {
     final repository = FirestoreRepository();
     final uid = AuthController.to.rxAuthUser.value!.uid;
-    final ref = DocRefCore.publicUserDocRef(uid);
+    final mail = AuthController.to.rxAuthUser.value!.email;
+    final ref = DocRefCore.publicUserDocRef(mail as String,uid);
     final data = {
       "name": name,//nameフィールドを紐付ける
     };

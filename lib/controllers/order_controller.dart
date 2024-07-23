@@ -1,3 +1,4 @@
+//注文の計算コントローラー
 import 'package:get/get.dart';
 
 class OrderController extends GetxController {

@@ -6,5 +6,5 @@ import 'package:caraqueprod/core/firesotre/col_ref_core.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 
 class DocRefCore{
-  static DocRef publicUserDocRef(String uid) => ColRefCore.publicUsersColRef().doc(uid);
+  static DocRef publicUserDocRef(String mail,String uid) => ColRefCore.publicUsersColRef(mail).doc(uid);
 }

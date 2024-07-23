@@ -24,7 +24,8 @@ class MainController extends GetxController{
     if(authUser == null) return ;
     final repository = FirestoreRepository();
     final uid = authUser.uid;
-    final ref = DocRefCore.publicUserDocRef(authUser.uid);
+    final email = authUser.email;
+    final ref = DocRefCore.publicUserDocRef(authUser.email as String,authUser.uid);
     final result = await repository.getDoc(ref);
 
     result.when(success: (res) async {

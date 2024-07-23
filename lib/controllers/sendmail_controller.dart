@@ -8,7 +8,7 @@ class SendmailController extends GetxController{
    Future<void> sendEmail(String Address) async {
 
     final Email email = Email(
-      body: 'This is the body of the email.',
+      body: '〇〇様',
       subject: '注文の確定',
       recipients: ['aws09300130@gmail.com',Address], // 送信先のメールアドレスを指定
       isHTML: false,

@@ -212,7 +212,8 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
 
   // お気に入りが登録されていない場合のウィジェット
   Widget _favoriteNone() {
-    return const Align(
+    return const
+     Align(
       alignment: Alignment.center, // 中央寄せ
       child: Padding(
         padding: EdgeInsets.all(20.0),
@@ -225,8 +226,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
   }
 
   // お気に入りリスト
-  Widget _favoriteProducts(
-      bool isLiked, String imagePath, String title, int index) {
+  Widget _favoriteProducts(bool isLiked, String imagePath, String title, int index) {
     return Container(
       margin: const EdgeInsets.all(5.0),
       height: 80,
