@@ -26,6 +26,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
 
   Map<String,dynamic> inputInfo ={"first":"","last":"","phone":0,"post":0};
 
+
   @override
   void dispose() {
     _lastNameController.dispose();
