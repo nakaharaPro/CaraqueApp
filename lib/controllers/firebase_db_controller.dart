@@ -5,6 +5,7 @@ import 'package:caraqueprod/models/public_user/public_user.dart';
 import 'package:caraqueprod/repository/firestore_repository.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:caraqueprod/ui_core/ui_helper.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/input_info/input_info.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
@@ -34,18 +35,21 @@ class FirebaseDbController extends GetxController {
 
 
 
-  void oncreateFirebase() async {
-    await _createDoc();
+  void oncreateFirebase( Map<String,dynamic> inputInfo) async {
+    final String first = inputInfo['first'];
+
+    await _createDoc(first);
   }
 
 //クリエイトDB
-  Future<void> _createDoc() async {
+  Future<void> _createDoc(String first) async {
     final authuser = AuthController.to.rxAuthUser.value;
+
     if(authuser==null){
       UiHelper.showFlutterToast("会員登録を先に行なってください");
     }else{
     final repository = FirestoreRepository();
-    const user = PublicUser(uid: "test");
+    const user = PublicUser(uid: "test",first:, last:,phone: ,post:);
     final ref = DocRefCore.publicUserDocRef(authuser.email as String,user.uid);//コレクションとドキュメント名の指定
     final data = user.toJson();//フィールド名と値の紐付け
     final result = await repository.createDoc(ref, data);

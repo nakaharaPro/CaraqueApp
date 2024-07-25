@@ -47,7 +47,7 @@ class MainController extends GetxController{
 
   Future<void> _createPublicUser(DocRef ref , String uid) async{
     final repository = FirestoreRepository();
-    final newPublicUser = PublicUser(uid:uid);
+    final newPublicUser = PublicUser(uid:uid);//必要な要素が足りていないからエラー
     final json= newPublicUser.toJson();
     final result = await repository.createDoc(ref, json);
     result.when(success: (_){

@@ -15,7 +15,12 @@ abstract class PublicUser implements _$PublicUser{
     @Default(0) int followerCount,
     @Default(0) int followingCount,
     @Default("") String name,
-    required String uid
+    required String uid,
+    required String first,
+    required String last,
+    required String phone,
+    required String post,
+
   }) = _PublicUser;
 
 //モデルのドキュメント読み取り処理メソッド部

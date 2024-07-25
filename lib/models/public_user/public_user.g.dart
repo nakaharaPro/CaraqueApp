@@ -12,6 +12,10 @@ _$PublicUserImpl _$$PublicUserImplFromJson(Map<String, dynamic> json) =>
       followingCount: (json['followingCount'] as num?)?.toInt() ?? 0,
       name: json['name'] as String? ?? "",
       uid: json['uid'] as String,
+      first: json['first'] as String,
+      last: json['last'] as String,
+      phone: json['phone'] as String,
+      post: json['post'] as String,
     );
 
 Map<String, dynamic> _$$PublicUserImplToJson(_$PublicUserImpl instance) =>
@@ -20,4 +24,8 @@ Map<String, dynamic> _$$PublicUserImplToJson(_$PublicUserImpl instance) =>
       'followingCount': instance.followingCount,
       'name': instance.name,
       'uid': instance.uid,
+      'first': instance.first,
+      'last': instance.last,
+      'phone': instance.phone,
+      'post': instance.post,
     };

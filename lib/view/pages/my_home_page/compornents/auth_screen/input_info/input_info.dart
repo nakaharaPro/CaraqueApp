@@ -24,7 +24,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
   final _phoneNumberController = TextEditingController();
   final _postalCodeController = TextEditingController();
 
-  Map<String,dynamic> inputInfo ={"first":"","last":"","phone":0,"post":0};
+  Map<String,dynamic> inputInfo ={'first':"",'last':"",'phone':0,'post':0};
 
 
   @override
@@ -37,14 +37,16 @@ class _InputFormScreenState extends State<InputFormScreen> {
   }
 
   void _submitForm() {
+    final firebaseDbController = FirebaseDbController.to;
     if (_formKey.currentState!.validate()) {
+  firebaseDbController.oncreateFirebase(inputInfo);
        print(inputInfo);
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final firebaseDbController = FirebaseDbController.to;
+    
     return Scaffold(
       appBar: AppBar(
         title: const Text('会員情報入力'),
@@ -63,7 +65,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                     return '姓を入力してください';
                   }
                   //これやっていく
-                  inputInfo.addAll({"first":value});
+                  inputInfo.addAll({'first':value});
                   return null;
                 },
               ),
@@ -74,7 +76,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (value == null || value.isEmpty) {
                     return '名を入力してください';
                   }
-                   inputInfo.addAll({"last":value});
+                   inputInfo.addAll({'last':value});
                   return null;
                 },
               ),
@@ -89,7 +91,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (!RegExp(r'^\d{10,11}$').hasMatch(value)) {
                     return '正しい電話番号を入力してください';
                   }
-                   inputInfo.addAll({"phone":value});
+                   inputInfo.addAll({'phone':value});
                   return null;
                 },
               ),
@@ -104,7 +106,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (!RegExp(r'^\d{7}$').hasMatch(value)) {
                     return '正しい郵便番号を入力してください';
                   }
-                   inputInfo.addAll({"post":value});
+                   inputInfo.addAll({'post':value});
                   return null;
                 },
               ),
