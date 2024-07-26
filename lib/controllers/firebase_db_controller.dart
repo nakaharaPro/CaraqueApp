@@ -61,6 +61,7 @@ class FirebaseDbController extends GetxController {
     });
   }
   }
+  
 
 
 //読み込み
