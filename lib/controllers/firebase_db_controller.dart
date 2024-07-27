@@ -36,20 +36,19 @@ class FirebaseDbController extends GetxController {
 
 
   void oncreateFirebase( Map<String,dynamic> inputInfo) async {
-    final String first = inputInfo['first'];
 
-    await _createDoc(first);
+    await _createDoc(inputInfo);
   }
 
 //クリエイトDB
-  Future<void> _createDoc(String first) async {
+  Future<void> _createDoc(Map<String,dynamic> inputInfo) async {
     final authuser = AuthController.to.rxAuthUser.value;
 
     if(authuser==null){
       UiHelper.showFlutterToast("会員登録を先に行なってください");
     }else{
     final repository = FirestoreRepository();
-    const user = PublicUser(uid: "test",first:, last:,phone: ,post:);
+    const user = PublicUser(uid: "test",first:inputInfo['first'], last:,phone: ,post:);
     final ref = DocRefCore.publicUserDocRef(authuser.email as String,user.uid);//コレクションとドキュメント名の指定
     final data = user.toJson();//フィールド名と値の紐付け
     final result = await repository.createDoc(ref, data);
