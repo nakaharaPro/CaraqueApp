@@ -2,9 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
-class MemberInfoAddPage extends StatelessWidget {
-  const MemberInfoAddPage({Key? key}) : super(key: key);
-   static const path = "/menber_info_add"; //パス
+class MailAddPage extends StatelessWidget {
+  const MailAddPage({Key? key}) : super(key: key);
+   static const path = "/mail_add"; //パス
 
   @override
   Widget build(BuildContext context) {

@@ -5,6 +5,7 @@ import 'package:caraqueprod/models/public_user/public_user.dart';
 import 'package:caraqueprod/repository/firestore_repository.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:caraqueprod/ui_core/ui_helper.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
@@ -47,9 +48,7 @@ class FirebaseDbController extends GetxController {
 
   Future<void> _createDoc() async {
     final authUser = AuthController.to.rxAuthUser.value;
-    if (authUser == null) {
-      UiHelper.showFlutterToast("会員登録を先に行なってください");
-    } else {
+    String mail = authUser!.email as String;
       final repository = FirestoreRepository();
       final user = PublicUser(
         uid: "テスト",
@@ -58,17 +57,18 @@ class FirebaseDbController extends GetxController {
         phone: phoneNumber,
         post: postNumber,
       );
-      final ref = DocRefCore.publicUserDocRef(authUser.email as String,"ドキュメント");
+      final ref = DocRefCore.publicUserDocRef("会員情報",mail);
       final data = user.toJson();
       final result = await repository.createDoc(ref, data);
 
       result.when(success: (_) async {
         await _readDoc(ref);
+        Get.toNamed(MainScreen.path);
       }, failure: () {
         UiHelper.showFlutterToast(MyHomePageConstant.createUserFailureMsg);
       });
     }
-  }
+  
 
   Future<void> _readDoc(DocRef ref) async {
     final repository = FirestoreRepository();
