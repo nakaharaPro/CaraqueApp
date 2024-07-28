@@ -21,10 +21,10 @@ PublicUser _$PublicUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PublicUser {
   int get followerCount => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
+  String get nameFull => throw _privateConstructorUsedError;
   DateTime get inputDate => throw _privateConstructorUsedError;
-  String get first => throw _privateConstructorUsedError;
-  String get last => throw _privateConstructorUsedError;
+  String get nameFirst => throw _privateConstructorUsedError;
+  String get nameLast => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get post => throw _privateConstructorUsedError;
 
@@ -42,10 +42,10 @@ abstract class $PublicUserCopyWith<$Res> {
   @useResult
   $Res call(
       {int followerCount,
-      String name,
+      String nameFull,
       DateTime inputDate,
-      String first,
-      String last,
+      String nameFirst,
+      String nameLast,
       String phone,
       String post});
 }
@@ -64,10 +64,10 @@ class _$PublicUserCopyWithImpl<$Res, $Val extends PublicUser>
   @override
   $Res call({
     Object? followerCount = null,
-    Object? name = null,
+    Object? nameFull = null,
     Object? inputDate = null,
-    Object? first = null,
-    Object? last = null,
+    Object? nameFirst = null,
+    Object? nameLast = null,
     Object? phone = null,
     Object? post = null,
   }) {
@@ -76,21 +76,21 @@ class _$PublicUserCopyWithImpl<$Res, $Val extends PublicUser>
           ? _value.followerCount
           : followerCount // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      nameFull: null == nameFull
+          ? _value.nameFull
+          : nameFull // ignore: cast_nullable_to_non_nullable
               as String,
       inputDate: null == inputDate
           ? _value.inputDate
           : inputDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      first: null == first
-          ? _value.first
-          : first // ignore: cast_nullable_to_non_nullable
+      nameFirst: null == nameFirst
+          ? _value.nameFirst
+          : nameFirst // ignore: cast_nullable_to_non_nullable
               as String,
-      last: null == last
-          ? _value.last
-          : last // ignore: cast_nullable_to_non_nullable
+      nameLast: null == nameLast
+          ? _value.nameLast
+          : nameLast // ignore: cast_nullable_to_non_nullable
               as String,
       phone: null == phone
           ? _value.phone
@@ -114,10 +114,10 @@ abstract class _$$PublicUserImplCopyWith<$Res>
   @useResult
   $Res call(
       {int followerCount,
-      String name,
+      String nameFull,
       DateTime inputDate,
-      String first,
-      String last,
+      String nameFirst,
+      String nameLast,
       String phone,
       String post});
 }
@@ -134,10 +134,10 @@ class __$$PublicUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? followerCount = null,
-    Object? name = null,
+    Object? nameFull = null,
     Object? inputDate = null,
-    Object? first = null,
-    Object? last = null,
+    Object? nameFirst = null,
+    Object? nameLast = null,
     Object? phone = null,
     Object? post = null,
   }) {
@@ -146,21 +146,21 @@ class __$$PublicUserImplCopyWithImpl<$Res>
           ? _value.followerCount
           : followerCount // ignore: cast_nullable_to_non_nullable
               as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
+      nameFull: null == nameFull
+          ? _value.nameFull
+          : nameFull // ignore: cast_nullable_to_non_nullable
               as String,
       inputDate: null == inputDate
           ? _value.inputDate
           : inputDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
-      first: null == first
-          ? _value.first
-          : first // ignore: cast_nullable_to_non_nullable
+      nameFirst: null == nameFirst
+          ? _value.nameFirst
+          : nameFirst // ignore: cast_nullable_to_non_nullable
               as String,
-      last: null == last
-          ? _value.last
-          : last // ignore: cast_nullable_to_non_nullable
+      nameLast: null == nameLast
+          ? _value.nameLast
+          : nameLast // ignore: cast_nullable_to_non_nullable
               as String,
       phone: null == phone
           ? _value.phone
@@ -179,10 +179,10 @@ class __$$PublicUserImplCopyWithImpl<$Res>
 class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
   const _$PublicUserImpl(
       {this.followerCount = 0,
-      this.name = "",
+      required this.nameFull,
       required this.inputDate,
-      required this.first,
-      required this.last,
+      required this.nameFirst,
+      required this.nameLast,
       required this.phone,
       required this.post})
       : super._();
@@ -194,14 +194,13 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
   @JsonKey()
   final int followerCount;
   @override
-  @JsonKey()
-  final String name;
+  final String nameFull;
   @override
   final DateTime inputDate;
   @override
-  final String first;
+  final String nameFirst;
   @override
-  final String last;
+  final String nameLast;
   @override
   final String phone;
   @override
@@ -209,7 +208,7 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PublicUser(followerCount: $followerCount, name: $name, inputDate: $inputDate, first: $first, last: $last, phone: $phone, post: $post)';
+    return 'PublicUser(followerCount: $followerCount, nameFull: $nameFull, inputDate: $inputDate, nameFirst: $nameFirst, nameLast: $nameLast, phone: $phone, post: $post)';
   }
 
   @override
@@ -218,10 +217,10 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'PublicUser'))
       ..add(DiagnosticsProperty('followerCount', followerCount))
-      ..add(DiagnosticsProperty('name', name))
+      ..add(DiagnosticsProperty('nameFull', nameFull))
       ..add(DiagnosticsProperty('inputDate', inputDate))
-      ..add(DiagnosticsProperty('first', first))
-      ..add(DiagnosticsProperty('last', last))
+      ..add(DiagnosticsProperty('nameFirst', nameFirst))
+      ..add(DiagnosticsProperty('nameLast', nameLast))
       ..add(DiagnosticsProperty('phone', phone))
       ..add(DiagnosticsProperty('post', post));
   }
@@ -233,19 +232,22 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
             other is _$PublicUserImpl &&
             (identical(other.followerCount, followerCount) ||
                 other.followerCount == followerCount) &&
-            (identical(other.name, name) || other.name == name) &&
+            (identical(other.nameFull, nameFull) ||
+                other.nameFull == nameFull) &&
             (identical(other.inputDate, inputDate) ||
                 other.inputDate == inputDate) &&
-            (identical(other.first, first) || other.first == first) &&
-            (identical(other.last, last) || other.last == last) &&
+            (identical(other.nameFirst, nameFirst) ||
+                other.nameFirst == nameFirst) &&
+            (identical(other.nameLast, nameLast) ||
+                other.nameLast == nameLast) &&
             (identical(other.phone, phone) || other.phone == phone) &&
             (identical(other.post, post) || other.post == post));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, followerCount, name, inputDate, first, last, phone, post);
+  int get hashCode => Object.hash(runtimeType, followerCount, nameFull,
+      inputDate, nameFirst, nameLast, phone, post);
 
   @JsonKey(ignore: true)
   @override
@@ -264,10 +266,10 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
 abstract class _PublicUser extends PublicUser {
   const factory _PublicUser(
       {final int followerCount,
-      final String name,
+      required final String nameFull,
       required final DateTime inputDate,
-      required final String first,
-      required final String last,
+      required final String nameFirst,
+      required final String nameLast,
       required final String phone,
       required final String post}) = _$PublicUserImpl;
   const _PublicUser._() : super._();
@@ -278,13 +280,13 @@ abstract class _PublicUser extends PublicUser {
   @override
   int get followerCount;
   @override
-  String get name;
+  String get nameFull;
   @override
   DateTime get inputDate;
   @override
-  String get first;
+  String get nameFirst;
   @override
-  String get last;
+  String get nameLast;
   @override
   String get phone;
   @override

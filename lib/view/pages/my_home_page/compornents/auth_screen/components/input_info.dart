@@ -1,10 +1,6 @@
-import 'dart:ui';
-
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/controllers/firebase_db_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 
 //会員情報入力ページ
 class InputInfo extends StatelessWidget {

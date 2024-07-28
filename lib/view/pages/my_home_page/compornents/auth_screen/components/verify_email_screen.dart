@@ -4,7 +4,7 @@ import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
 import 'package:caraqueprod/ui_core/ui_helper.dart';
 import 'package:caraqueprod/view/pages/OTAMESI/mail_add_page.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/input_info/input_info.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/input_info.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';

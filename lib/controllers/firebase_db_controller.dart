@@ -1,4 +1,3 @@
-import 'package:caraqueprod/constant/my_home_page_constant.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/core/firesotre/doc_ref_core.dart';
 import 'package:caraqueprod/models/public_user/public_user.dart';
@@ -52,12 +51,14 @@ class FirebaseDbController extends GetxController {
     final authUser = AuthController.to.rxAuthUser.value;
     String mail = authUser!.email as String;
     DateTime nowtime = DateTime.now();
+    String name = firstName + lastName;
     
       final repository = FirestoreRepository();
       final user = PublicUser(
+        nameFull:name,
         inputDate: nowtime,
-        first: firstName,
-        last: lastName,
+        nameFirst: firstName,
+        nameLast: lastName,
         phone: phoneNumber,
         post: postNumber,
       );
@@ -77,7 +78,6 @@ class FirebaseDbController extends GetxController {
     final result = await repository.getDoc(ref);
     result.when(success: (doc) {
       rxDoc.value = doc;
-      print(rxDoc.value);
       Get.toNamed(MainScreen.path);
       UiHelper.showFlutterToast("会員登録が完了しました");
     }, failure: () {
