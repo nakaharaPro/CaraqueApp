@@ -21,9 +21,8 @@ PublicUser _$PublicUserFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$PublicUser {
   int get followerCount => throw _privateConstructorUsedError;
-  int get followingCount => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
+  DateTime get inputDate => throw _privateConstructorUsedError;
   String get first => throw _privateConstructorUsedError;
   String get last => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
@@ -43,9 +42,8 @@ abstract class $PublicUserCopyWith<$Res> {
   @useResult
   $Res call(
       {int followerCount,
-      int followingCount,
       String name,
-      String uid,
+      DateTime inputDate,
       String first,
       String last,
       String phone,
@@ -66,9 +64,8 @@ class _$PublicUserCopyWithImpl<$Res, $Val extends PublicUser>
   @override
   $Res call({
     Object? followerCount = null,
-    Object? followingCount = null,
     Object? name = null,
-    Object? uid = null,
+    Object? inputDate = null,
     Object? first = null,
     Object? last = null,
     Object? phone = null,
@@ -79,18 +76,14 @@ class _$PublicUserCopyWithImpl<$Res, $Val extends PublicUser>
           ? _value.followerCount
           : followerCount // ignore: cast_nullable_to_non_nullable
               as int,
-      followingCount: null == followingCount
-          ? _value.followingCount
-          : followingCount // ignore: cast_nullable_to_non_nullable
-              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
+      inputDate: null == inputDate
+          ? _value.inputDate
+          : inputDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       first: null == first
           ? _value.first
           : first // ignore: cast_nullable_to_non_nullable
@@ -121,9 +114,8 @@ abstract class _$$PublicUserImplCopyWith<$Res>
   @useResult
   $Res call(
       {int followerCount,
-      int followingCount,
       String name,
-      String uid,
+      DateTime inputDate,
       String first,
       String last,
       String phone,
@@ -142,9 +134,8 @@ class __$$PublicUserImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? followerCount = null,
-    Object? followingCount = null,
     Object? name = null,
-    Object? uid = null,
+    Object? inputDate = null,
     Object? first = null,
     Object? last = null,
     Object? phone = null,
@@ -155,18 +146,14 @@ class __$$PublicUserImplCopyWithImpl<$Res>
           ? _value.followerCount
           : followerCount // ignore: cast_nullable_to_non_nullable
               as int,
-      followingCount: null == followingCount
-          ? _value.followingCount
-          : followingCount // ignore: cast_nullable_to_non_nullable
-              as int,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      uid: null == uid
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
+      inputDate: null == inputDate
+          ? _value.inputDate
+          : inputDate // ignore: cast_nullable_to_non_nullable
+              as DateTime,
       first: null == first
           ? _value.first
           : first // ignore: cast_nullable_to_non_nullable
@@ -192,9 +179,8 @@ class __$$PublicUserImplCopyWithImpl<$Res>
 class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
   const _$PublicUserImpl(
       {this.followerCount = 0,
-      this.followingCount = 0,
       this.name = "",
-      required this.uid,
+      required this.inputDate,
       required this.first,
       required this.last,
       required this.phone,
@@ -209,12 +195,9 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
   final int followerCount;
   @override
   @JsonKey()
-  final int followingCount;
-  @override
-  @JsonKey()
   final String name;
   @override
-  final String uid;
+  final DateTime inputDate;
   @override
   final String first;
   @override
@@ -226,7 +209,7 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PublicUser(followerCount: $followerCount, followingCount: $followingCount, name: $name, uid: $uid, first: $first, last: $last, phone: $phone, post: $post)';
+    return 'PublicUser(followerCount: $followerCount, name: $name, inputDate: $inputDate, first: $first, last: $last, phone: $phone, post: $post)';
   }
 
   @override
@@ -235,9 +218,8 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
     properties
       ..add(DiagnosticsProperty('type', 'PublicUser'))
       ..add(DiagnosticsProperty('followerCount', followerCount))
-      ..add(DiagnosticsProperty('followingCount', followingCount))
       ..add(DiagnosticsProperty('name', name))
-      ..add(DiagnosticsProperty('uid', uid))
+      ..add(DiagnosticsProperty('inputDate', inputDate))
       ..add(DiagnosticsProperty('first', first))
       ..add(DiagnosticsProperty('last', last))
       ..add(DiagnosticsProperty('phone', phone))
@@ -251,10 +233,9 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
             other is _$PublicUserImpl &&
             (identical(other.followerCount, followerCount) ||
                 other.followerCount == followerCount) &&
-            (identical(other.followingCount, followingCount) ||
-                other.followingCount == followingCount) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.uid, uid) || other.uid == uid) &&
+            (identical(other.inputDate, inputDate) ||
+                other.inputDate == inputDate) &&
             (identical(other.first, first) || other.first == first) &&
             (identical(other.last, last) || other.last == last) &&
             (identical(other.phone, phone) || other.phone == phone) &&
@@ -263,8 +244,8 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, followerCount, followingCount,
-      name, uid, first, last, phone, post);
+  int get hashCode => Object.hash(
+      runtimeType, followerCount, name, inputDate, first, last, phone, post);
 
   @JsonKey(ignore: true)
   @override
@@ -283,9 +264,8 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
 abstract class _PublicUser extends PublicUser {
   const factory _PublicUser(
       {final int followerCount,
-      final int followingCount,
       final String name,
-      required final String uid,
+      required final DateTime inputDate,
       required final String first,
       required final String last,
       required final String phone,
@@ -298,11 +278,9 @@ abstract class _PublicUser extends PublicUser {
   @override
   int get followerCount;
   @override
-  int get followingCount;
-  @override
   String get name;
   @override
-  String get uid;
+  DateTime get inputDate;
   @override
   String get first;
   @override

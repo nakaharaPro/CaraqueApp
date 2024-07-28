@@ -13,10 +13,9 @@ abstract class PublicUser implements _$PublicUser{
 //モデルのメンバ変数部
   const factory PublicUser({
     @Default(0) int followerCount,
-    @Default(0) int followingCount,
     @Default("") String name,
-
-    required String uid,
+  
+    required DateTime inputDate,
     required String first,
     required String last,
     required String phone,

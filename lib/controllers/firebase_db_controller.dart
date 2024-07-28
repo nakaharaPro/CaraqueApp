@@ -6,6 +6,7 @@ import 'package:caraqueprod/repository/firestore_repository.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:caraqueprod/ui_core/ui_helper.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
+import 'package:caraqueprod/view/pages/my_home_page/error_page.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
@@ -46,12 +47,15 @@ class FirebaseDbController extends GetxController {
     await _createDoc();
   }
 
+//firesotre登録
   Future<void> _createDoc() async {
     final authUser = AuthController.to.rxAuthUser.value;
     String mail = authUser!.email as String;
+    DateTime nowtime = DateTime.now();
+    
       final repository = FirestoreRepository();
       final user = PublicUser(
-        uid: "テスト",
+        inputDate: nowtime,
         first: firstName,
         last: lastName,
         phone: phoneNumber,
@@ -60,24 +64,23 @@ class FirebaseDbController extends GetxController {
       final ref = DocRefCore.publicUserDocRef("会員情報",mail);
       final data = user.toJson();
       final result = await repository.createDoc(ref, data);
-
       result.when(success: (_) async {
         await _readDoc(ref);
-        Get.toNamed(MainScreen.path);
       }, failure: () {
-        UiHelper.showFlutterToast(MyHomePageConstant.createUserFailureMsg);
+         Get.toNamed(ErrorPage.path);
       });
     }
   
-
+//登録後の読み込み確認
   Future<void> _readDoc(DocRef ref) async {
     final repository = FirestoreRepository();
     final result = await repository.getDoc(ref);
     result.when(success: (doc) {
       rxDoc.value = doc;
-      UiHelper.showFlutterToast(MyHomePageConstant.readUserSuccessMsg);
+      print(rxDoc.value);
+      Get.toNamed(MainScreen.path);
+      UiHelper.showFlutterToast("会員登録が完了しました");
     }, failure: () {
-      UiHelper.showFlutterToast(MyHomePageConstant.readUserFailureMsg);
     });
   }
 }

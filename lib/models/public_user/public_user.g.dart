@@ -9,9 +9,8 @@ part of 'public_user.dart';
 _$PublicUserImpl _$$PublicUserImplFromJson(Map<String, dynamic> json) =>
     _$PublicUserImpl(
       followerCount: (json['followerCount'] as num?)?.toInt() ?? 0,
-      followingCount: (json['followingCount'] as num?)?.toInt() ?? 0,
       name: json['name'] as String? ?? "",
-      uid: json['uid'] as String,
+      inputDate: DateTime.parse(json['inputDate'] as String),
       first: json['first'] as String,
       last: json['last'] as String,
       phone: json['phone'] as String,
@@ -21,9 +20,8 @@ _$PublicUserImpl _$$PublicUserImplFromJson(Map<String, dynamic> json) =>
 Map<String, dynamic> _$$PublicUserImplToJson(_$PublicUserImpl instance) =>
     <String, dynamic>{
       'followerCount': instance.followerCount,
-      'followingCount': instance.followingCount,
       'name': instance.name,
-      'uid': instance.uid,
+      'inputDate': instance.inputDate.toIso8601String(),
       'first': instance.first,
       'last': instance.last,
       'phone': instance.phone,
