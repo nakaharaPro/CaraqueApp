@@ -3,6 +3,8 @@ import 'package:caraqueprod/constant/massage_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
 import 'package:caraqueprod/ui_core/ui_helper.dart';
+import 'package:caraqueprod/view/pages/OTAMESI/member_info_add.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -48,7 +50,7 @@ class VerifyEmailScreen extends StatelessWidget {
             authController.changeEmailAuthState(); //メール認証ステータスの変更
           }
           UiHelper.showFlutterToast("会員登録が完了しました。");
-           Get.toNamed(MainScreen.path);
+           Get.toNamed(MemberInfoAddPage.path);
         } else {
           UiHelper.showFlutterToast("認証が確認できませんでした。");
           authController.changeEmailAuthState(); //メール認証ステータスの変更

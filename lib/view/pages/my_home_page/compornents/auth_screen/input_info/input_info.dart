@@ -17,6 +17,7 @@ class InputFormScreen extends StatefulWidget {
 }
 
 class _InputFormScreenState extends State<InputFormScreen> {
+  final firebaseDbController = FirebaseDbController.to;
   final _formKey = GlobalKey<FormState>();
 
   final _lastNameController = TextEditingController();
@@ -37,16 +38,13 @@ class _InputFormScreenState extends State<InputFormScreen> {
   }
 
   void _submitForm() {
-    final firebaseDbController = FirebaseDbController.to;
     if (_formKey.currentState!.validate()) {
-  firebaseDbController.oncreateFirebase(inputInfo);
-       print(inputInfo);
+  firebaseDbController.onCreateFirebase;
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         title: const Text('会員情報入力'),
@@ -64,8 +62,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (value == null || value.isEmpty) {
                     return '姓を入力してください';
                   }
-                  //これやっていく
-                  inputInfo.addAll({'first':value});
+                  firebaseDbController.setFirstName(value);
                   return null;
                 },
               ),
@@ -76,7 +73,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (value == null || value.isEmpty) {
                     return '名を入力してください';
                   }
-                   inputInfo.addAll({'last':value});
+                  firebaseDbController.setLastName(value);
                   return null;
                 },
               ),
@@ -91,7 +88,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (!RegExp(r'^\d{10,11}$').hasMatch(value)) {
                     return '正しい電話番号を入力してください';
                   }
-                   inputInfo.addAll({'phone':value});
+                   firebaseDbController.setPhoneNumber(value);
                   return null;
                 },
               ),
@@ -106,7 +103,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                   if (!RegExp(r'^\d{7}$').hasMatch(value)) {
                     return '正しい郵便番号を入力してください';
                   }
-                   inputInfo.addAll({'post':value});
+                   firebaseDbController.setPostNumber(value);
                   return null;
                 },
               ),

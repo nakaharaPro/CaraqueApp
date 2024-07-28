@@ -1,4 +1,5 @@
 //画面リンクパス一覧
+import 'package:caraqueprod/view/pages/OTAMESI/member_info_add.dart';
 import 'package:caraqueprod/view/pages/account_page.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
@@ -15,6 +16,7 @@ class GetPages {
     GetPage(name:SignupScreen.path, page:() => const SignupScreen()),
     GetPage(name:LoginScreen.path, page:() => const LoginScreen()),
     GetPage(name:MemberInfoScreen.path, page:() => const MemberInfoScreen()),
+    GetPage(name:MemberInfoAddPage.path, page:() => const MemberInfoAddPage()),
 
 
 

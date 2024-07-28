@@ -2,25 +2,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
-class MailApp extends StatelessWidget {
-  const MailApp({Key? key}) : super(key: key);
+class MemberInfoAddPage extends StatelessWidget {
+  const MemberInfoAddPage({Key? key}) : super(key: key);
+   static const path = "/menber_info_add"; //パス
 
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: MailScreen(),
+      home: MemberInfoAddScreen(),
     );
   }
 }
 
-class MailScreen extends StatefulWidget {
-  const MailScreen({Key? key}) : super(key: key);
+class MemberInfoAddScreen extends StatefulWidget {
+  const MemberInfoAddScreen({Key? key}) : super(key: key);
 
   @override
-  State<MailScreen> createState() => _MailScreenState();
+  State<MemberInfoAddScreen> createState() => _MailScreenState();
 }
 
-class _MailScreenState extends State<MailScreen> {
+class _MailScreenState extends State<MemberInfoAddScreen> {
   late TextEditingController _emailController;
   late TextEditingController _bodyController;
   late TextEditingController _subjectController;

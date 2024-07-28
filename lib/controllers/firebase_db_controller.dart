@@ -5,22 +5,19 @@ import 'package:caraqueprod/models/public_user/public_user.dart';
 import 'package:caraqueprod/repository/firestore_repository.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:caraqueprod/ui_core/ui_helper.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/input_info/input_info.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 
-
 class FirebaseDbController extends GetxController {
-   static FirebaseDbController get to => Get.find<FirebaseDbController>();
-  final rxDoc = Rx<Doc?>(null);//作成したドキュメント情報を読み取った変数
+  static FirebaseDbController get to => Get.find<FirebaseDbController>();
+  final rxDoc = Rx<Doc?>(null); // 作成したドキュメント情報を読み取る変数
 
-    String firstName = "";
-    String lastName = "";
-    int phoneNumber =0;
-    int postNumber =0;
+  String firstName = "";
+  String lastName = "";
+  String phoneNumber = "";
+  String postNumber = "";
 
-    void setFirstName(String? value) {
-    //null許容
+  void setFirstName(String? value) {
     if (value == null) return;
     firstName = value;
     debugPrint(firstName);
@@ -28,50 +25,59 @@ class FirebaseDbController extends GetxController {
 
   void setLastName(String? value) {
     if (value == null) return;
-    lastName= value;
+    lastName = value;
     debugPrint(lastName);
   }
 
-
-
-
-  void oncreateFirebase( Map<String,dynamic> inputInfo) async {
-
-    await _createDoc(inputInfo);
+  void setPhoneNumber(String? value) {
+    if (value == null) return;
+    phoneNumber = value;
+    debugPrint(phoneNumber);
   }
 
-//クリエイトDB
-  Future<void> _createDoc(Map<String,dynamic> inputInfo) async {
-    final authuser = AuthController.to.rxAuthUser.value;
+  void setPostNumber(String? value) {
+    if (value == null) return;
+    postNumber = value;
+    debugPrint(postNumber);
+  }
 
-    if(authuser==null){
+  void onCreateFirebase() async {
+    await _createDoc();
+  }
+
+  Future<void> _createDoc() async {
+    final authUser = AuthController.to.rxAuthUser.value;
+    if (authUser == null) {
       UiHelper.showFlutterToast("会員登録を先に行なってください");
-    }else{
-    final repository = FirestoreRepository();
-    const user = PublicUser(uid: "test",first:inputInfo['first'], last:,phone: ,post:);
-    final ref = DocRefCore.publicUserDocRef(authuser.email as String,user.uid);//コレクションとドキュメント名の指定
-    final data = user.toJson();//フィールド名と値の紐付け
-    final result = await repository.createDoc(ref, data);
-
-    result.when(success: (_) async {
-     await  _readDoc(ref);
-    },failure: (){
-      UiHelper.showFlutterToast(MyHomePageConstant.createUserFailureMsg);
-    });
-  }
-  }
-  
-
-
-//読み込み
-    Future<void> _readDoc (DocRef ref) async{
+    } else {
       final repository = FirestoreRepository();
-      final result = await repository.getDoc(ref);//作成されたドキュメントを読み取る
-      result.when(success: (doc){//()は引数で引数名は自由で中身はresultに代入された値
-      rxDoc.value = doc;//引数をrxDocに代入
-      UiHelper.showFlutterToast(MyHomePageConstant.readUserSuccessMsg);
-      }, failure: (){
-        UiHelper.showFlutterToast(MyHomePageConstant.readUserFailureMsg);
+      final user = PublicUser(
+        uid: "テスト",
+        first: firstName,
+        last: lastName,
+        phone: phoneNumber,
+        post: postNumber,
+      );
+      final ref = DocRefCore.publicUserDocRef(authUser.email as String,"ドキュメント");
+      final data = user.toJson();
+      final result = await repository.createDoc(ref, data);
+
+      result.when(success: (_) async {
+        await _readDoc(ref);
+      }, failure: () {
+        UiHelper.showFlutterToast(MyHomePageConstant.createUserFailureMsg);
       });
     }
+  }
+
+  Future<void> _readDoc(DocRef ref) async {
+    final repository = FirestoreRepository();
+    final result = await repository.getDoc(ref);
+    result.when(success: (doc) {
+      rxDoc.value = doc;
+      UiHelper.showFlutterToast(MyHomePageConstant.readUserSuccessMsg);
+    }, failure: () {
+      UiHelper.showFlutterToast(MyHomePageConstant.readUserFailureMsg);
+    });
+  }
 }
