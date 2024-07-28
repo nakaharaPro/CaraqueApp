@@ -140,7 +140,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
                 backgroundColor: ColorsConst.constColorGrey,
               ),
               onPressed: _submitForm,
-              child: Text('送信',style: TextStyle(color: ColorsConst.constColorOrange,fontWeight: FontWeight.bold),),
+              child:const  Text('登録',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
             ),
           ],
         ),

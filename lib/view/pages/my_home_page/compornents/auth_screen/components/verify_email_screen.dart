@@ -50,8 +50,7 @@ class VerifyEmailScreen extends StatelessWidget {
           if (authController.reMailAuth.value) {//メール未認証なら
             authController.changeEmailAuthState(); //メール認証ステータスの変更
           }
-          UiHelper.showFlutterToast("会員登録が完了しました。");
-           Get.toNamed(InputInfo.path);
+           Get.toNamed(InputInfo.path);//会員情報入力画面
         } else {
           UiHelper.showFlutterToast("認証が確認できませんでした。");
           authController.changeEmailAuthState(); //メール認証ステータスの変更
