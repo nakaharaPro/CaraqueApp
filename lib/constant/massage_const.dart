@@ -1,3 +1,5 @@
+import 'package:caraqueprod/models/public_user/public_user.dart';
+
 class MessageConst {
   //サインアップのメール認証文
   static const sendEmailcheckMassage = 
@@ -25,9 +27,18 @@ static const productDiscription1 =
 メールボックスよりメールの内容からリンクを押下して認証を行ってください。
 
 認証が完了したら、下の完了ボタンをタップしてください。''';
-
-
-
-
-
 }
+
+
+//注文メール本文
+
+class MessageConst2{
+static String orderMailConst(String name) {
+  return '''
+$name様
+
+ご注文の確認をお願いいたします。
+''';
+}
+}
+

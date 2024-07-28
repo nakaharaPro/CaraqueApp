@@ -13,6 +13,8 @@ class FirebaseDbController extends GetxController {
   static FirebaseDbController get to => Get.find<FirebaseDbController>();
   final rxDoc = Rx<Doc?>(null); // 作成したドキュメント情報を読み取る変数
 
+  Map<String,dynamic>? publicUserInfo;
+
   String firstName = "";
   String lastName = "";
   String phoneNumber = "";
@@ -52,7 +54,6 @@ class FirebaseDbController extends GetxController {
     String mail = authUser!.email as String;
     DateTime nowtime = DateTime.now();
     String name = firstName + lastName;
-    
       final repository = FirestoreRepository();
       final user = PublicUser(
         nameFull:name,
@@ -78,6 +79,8 @@ class FirebaseDbController extends GetxController {
     final result = await repository.getDoc(ref);
     result.when(success: (doc) {
       rxDoc.value = doc;
+      publicUserInfo = doc.data();
+      print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa :::$publicUserInfo");
       Get.toNamed(MainScreen.path);
       UiHelper.showFlutterToast("会員登録が完了しました");
     }, failure: () {

@@ -3,16 +3,16 @@ import 'package:caraqueprod/constant/massage_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
 import 'package:caraqueprod/ui_core/ui_helper.dart';
-import 'package:caraqueprod/view/pages/OTAMESI/mail_add_page.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/input_info.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
   const VerifyEmailScreen({super.key});
   static const path = "/verify_email";
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +40,8 @@ class VerifyEmailScreen extends StatelessWidget {
       ),
     );
   }
+
+
 
   Widget _maillCheckButton() {
     final authController = AuthController.to;

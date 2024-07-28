@@ -1,5 +1,4 @@
 //サンプル使用のためのアカウントページ
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/home_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,10 +1,14 @@
 
+import 'package:caraqueprod/controllers/auth_controller.dart';
+import 'package:caraqueprod/controllers/firebase_db_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 
 class MailAddPage extends StatelessWidget {
   const MailAddPage({Key? key}) : super(key: key);
    static const path = "/mail_add"; //パス
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,16 +20,24 @@ class MailAddPage extends StatelessWidget {
 
 class MemberInfoAddScreen extends StatefulWidget {
   const MemberInfoAddScreen({Key? key}) : super(key: key);
+  
+
 
   @override
   State<MemberInfoAddScreen> createState() => _MailScreenState();
+
+  
 }
 
 class _MailScreenState extends State<MemberInfoAddScreen> {
+  //コントローラー値
+  final memberController = FirebaseDbController.to;
+  final authControllerEmail = AuthController.to.rxAuthUser.value!.email as String;
+ 
+
   late TextEditingController _emailController;
   late TextEditingController _bodyController;
   late TextEditingController _subjectController;
-  late TextEditingController _ccController;
   late TextEditingController _bccController;
 
   @override
@@ -34,7 +46,6 @@ class _MailScreenState extends State<MemberInfoAddScreen> {
     _emailController = TextEditingController();
     _bodyController = TextEditingController();
     _subjectController = TextEditingController();
-    _ccController = TextEditingController();
     _bccController = TextEditingController();
   }
 
@@ -43,13 +54,13 @@ class _MailScreenState extends State<MemberInfoAddScreen> {
     _emailController.dispose();
     _bodyController.dispose();
     _subjectController.dispose();
-    _ccController.dispose();
     _bccController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(title: Text('メール送信')),
       body: SingleChildScrollView(
@@ -64,26 +75,12 @@ class _MailScreenState extends State<MemberInfoAddScreen> {
               ),
               const SizedBox(height: 20),
               TextFormField(
-                controller: _ccController,
-                decoration: InputDecoration(hintText: 'cc'),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _bccController,
-                decoration: InputDecoration(hintText: 'bcc'),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
                 controller: _subjectController,
                 decoration: InputDecoration(hintText: '件名'),
               ),
+      
               const SizedBox(height: 20),
-              TextFormField(
-                controller: _bodyController,
-                decoration: InputDecoration(hintText: '本文'),
-              ),
-              const SizedBox(height: 20),
-              ElevatedButton(onPressed: _sendEmail, child: Text('送信する')),
+              ElevatedButton(onPressed: _sendEmail, child: Text('メールを送信する')),
               const SizedBox(height: 40),
             ],
           ),
@@ -93,15 +90,28 @@ class _MailScreenState extends State<MemberInfoAddScreen> {
   }
 
   Future<void> _sendEmail() async {
+  String name = memberController.publicUserInfo!['nameFull'] as String;//フルネーム
+  String message = orderMailConst(name);//本文
+  
     final email = Email(
-      body: _bodyController.text,
+      body: orderMailConst(name),
       subject: _subjectController.text,
       recipients: [_emailController.text],
-      cc: [_ccController.text],
-      bcc: [_bccController.text],
+      cc: [authControllerEmail],
       isHTML: false,
     );
 
     await FlutterEmailSender.send(email);
+  }
+  
+
+  
+  static String orderMailConst(String name) {
+      return '''
+$name様
+
+ご注文の確認をお願いいたします。
+''';
+
   }
 }
