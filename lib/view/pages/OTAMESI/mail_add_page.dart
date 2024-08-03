@@ -94,7 +94,7 @@ class _MailScreenState extends State<MemberInfoAddScreen> {
   String message = orderMailConst(name);//本文
   
     final email = Email(
-      body: orderMailConst(name),
+      body: "テスト",
       subject: _subjectController.text,
       recipients: [_emailController.text],
       cc: [authControllerEmail],
