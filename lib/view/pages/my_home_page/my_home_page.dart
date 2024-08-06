@@ -15,9 +15,9 @@ class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key});
   @override
   Widget build(BuildContext context) {
-    Get.put(FirebaseDbController());
     Get.put(VerifyEmailContoroller());
     Get.put(AuthController());
+    Get.put(FirebaseDbController());
     Get.put(OrderController());
     Get.put(SendmailController());
     final remoteConfigContoroller = Get.put(RemoteConfigController());

@@ -11,9 +11,11 @@ import 'package:get/get.dart';
 
 class FirebaseDbController extends GetxController {
   static FirebaseDbController get to => Get.find<FirebaseDbController>();
-  final rxDoc = Rx<Doc?>(null); // 作成したドキュメント情報を読み取る変数
+  final rxDoc = Rx<Doc?>(null); // 新規会員登録時の情報
+ 
+  bool authBool = AuthController.to.rxAuthUser.value != null ? true : false;//ログイン中かの有無
 
-  Map<String,dynamic>? publicUserInfo;
+  Map<String,dynamic>? publicUserInfo;//新規登録もしくはログイン中のメールアドレスから取得した情報
 
   String firstName = "";
   String lastName = "";
@@ -80,10 +82,26 @@ class FirebaseDbController extends GetxController {
     result.when(success: (doc) {
       rxDoc.value = doc;
       publicUserInfo = doc.data();
-      print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa :::$publicUserInfo");
       Get.toNamed(MainScreen.path);
       UiHelper.showFlutterToast("会員登録が完了しました");
     }, failure: () {
     });
   }
+
+
+//ログイン中のメールアドレスからdocを持ってくる
+   Future<void> emailReadDoc(String email) async {
+    final ref = DocRefCore.publicUserDocRef("会員情報",email);
+    final repository = FirestoreRepository();
+    final result = await repository.getDoc(ref);
+      result.when(success: (doc) {
+      publicUserInfo = doc.data();
+      print ("読み取り成功");
+    }, failure: () {
+      print ("読み取り失敗");
+    });
+
+
+  }
+
 }

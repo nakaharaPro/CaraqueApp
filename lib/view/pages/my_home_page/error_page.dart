@@ -18,7 +18,7 @@ class ErrorPage extends StatelessWidget {
           padding: EdgeInsets.all(16.0),
           child: Align(
             alignment: Alignment.center,
-            child: Text("エラーが生じました。ホーム画面よりやり直してください"),
+            child: Text("エラーが生じました。ログアウト->ログインし直してホーム画面よりやり直してください"),
           ),
         ),
 

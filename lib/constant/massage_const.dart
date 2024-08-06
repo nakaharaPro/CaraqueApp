@@ -32,13 +32,13 @@ static const productDiscription1 =
 
 //注文メール本文
 
-class MessageConst2{
-static String orderMailConst(String name) {
+
+String orderMailMsgConst(String fullName) {
   return '''
-$name様
+$fullName様
 
 ご注文の確認をお願いいたします。
 ''';
 }
-}
+
 
