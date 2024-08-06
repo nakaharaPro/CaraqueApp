@@ -5,12 +5,13 @@ import 'package:get/get.dart';
 class SendmailController extends GetxController{
    static SendmailController get to => Get.find<SendmailController>();
 
-   Future<void> sendEmail(String Address) async {
+   Future<void> sendEmail(String address, String fullName) async {
+    
 
     final Email email = Email(
-      body: '〇〇様',
+      body: '$fullName 様',
       subject: '注文の確定',
-      recipients: ['aws09300130@gmail.com',Address], // 送信先のメールアドレスを指定
+      recipients: ['aws09300130@gmail.com',address], // 送信先のメールアドレスを指定
       isHTML: false,
     );
 

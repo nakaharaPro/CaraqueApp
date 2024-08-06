@@ -90,8 +90,7 @@ class _MailScreenState extends State<MemberInfoAddScreen> {
   }
 
   Future<void> _sendEmail() async {
-  String name = memberController.publicUserInfo!['nameFull'] as String;//フルネーム
-  String message = orderMailConst(name);//本文
+  
   
     final email = Email(
       body: "テスト",

@@ -1,6 +1,7 @@
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/constant/hole_products_discription.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
+import 'package:caraqueprod/controllers/firebase_db_controller.dart';
 import 'package:caraqueprod/controllers/order_controller.dart';
 import 'package:caraqueprod/controllers/sendmail_controller.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
@@ -25,7 +26,10 @@ class _OrderPageState extends State<OrderScreen> {
   final Map<String, Map<String, int>> contentsInfo = {};
   final List<String> sizes = ['12cm', '15cm', '18cm', '21cm', '24cm'];
 
+
   Map<String, Map<String, int>> buyContentsInfo = {}; //購入商品情報
+
+
 
   @override
   void initState() {
@@ -47,8 +51,14 @@ class _OrderPageState extends State<OrderScreen> {
     final orderController = OrderController.to;
     final sendEmailController = SendmailController.to;
     final authController = AuthController.to;
+    final firebaseDbController = FirebaseDbController.to;
+
     int? totalAmount;
     String outputTotalAmount = '0';
+    String memberFullName = firebaseDbController.publicUserInfo!['nameFull'] as String; //会員情報のフルネーム
+    String? authEmail = authController.rxAuthUser.value!.email;//ログインユーザーのフルネーム
+
+
 
     return Scaffold(
       appBar: AppBar(
@@ -150,7 +160,8 @@ class _OrderPageState extends State<OrderScreen> {
                   context: context,
                   builder: (context) => AlertDialog(
                     title: const Text('注文内容'),
-                    
+
+
                     content: Column(
                       children: [
                         Column(
@@ -193,12 +204,12 @@ class _OrderPageState extends State<OrderScreen> {
                         child: const Text('OK'),
                         onPressed: () {
                           Navigator.of(context).pop(); // ダイアログを閉じる
-                          print(authController.rxAuthUser.value?.email);
-                          if(authController.rxAuthUser.value?.email==null){
+                          print(authEmail);
+                          if(authEmail==null){
                              Get.toNamed(LoginScreen.path);
                           }else{
                          
-                          sendEmailController.sendEmail(authController.rxAuthUser.value!.email.toString());
+                          sendEmailController.sendEmail(authEmail.toString(),memberFullName,);
                           }
                          
                         },
