@@ -140,10 +140,8 @@ class _OrderPageState extends State<OrderScreen> {
                   TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
             onPressed: () {
-              buyContentsInfo =
-                  orderController.buyInfo(contentsInfo); // 注文したリストの作成
-              totalAmount =
-                  orderController.amountCalculation(buyContentsInfo); // 合計金額計算
+              buyContentsInfo = orderController.buyInfo(contentsInfo); // 注文したリストの作成
+              totalAmount = orderController.amountCalculation(buyContentsInfo); // 合計金額計算
               outputTotalAmount = formatter.format(totalAmount); // 円フォーマット
 
               // タイアログ表示
