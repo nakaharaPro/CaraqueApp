@@ -1,4 +1,3 @@
-
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/constant/hole_products_discription.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
@@ -24,6 +23,16 @@ class _OrderPageState extends State<OrderScreen> {
   final authController = AuthController.to;
   final firebaseDbController = FirebaseDbController.to;
 
+  // 商品情報
+  final formatter = NumberFormat("#,###"); // 円フォーマット
+  final List<String> products = ['生デコホール', '生チョコホール', '栗チョコホール', 'パリパリショコラ'];
+  final List<String> holeDiscription =
+      HoleProductsDiscription.holeProductDescription; // 商品説明
+  final List<String> amountList = HoleProductsDiscription.amountList; // 価格リスト
+  final Map<String, Map<String, int>> contentsInfo = {};
+  final List<String> sizes = ['12cm', '15cm', '18cm', '21cm', '24cm'];
+  Map<String, Map<String, int>> buyContentsInfo = {}; // 購入商品情報
+
   String authEmail = '';
   String memberFullName = '';
 
@@ -31,9 +40,9 @@ class _OrderPageState extends State<OrderScreen> {
   void initState() {
     super.initState();
 
-    // ログインユーザーのフルネームの取得
+    // ログインユーザーのメール取得の取得
     authEmail = authController.rxAuthUser.value?.email ?? '';
-
+    //ログイン中のメールが取得できたらfirestoreからフルネーム取得する
     if (authEmail.isNotEmpty) {
       firebaseDbController.emailReadDoc(authEmail);
       memberFullName = firebaseDbController.publicUserInfo?['nameFull'] ?? '';
@@ -50,15 +59,6 @@ class _OrderPageState extends State<OrderScreen> {
       };
     }
   }
-
-  // 商品情報
-  final formatter = NumberFormat("#,###"); // 円フォーマット
-  final List<String> products = ['生デコホール', '生チョコホール', '栗チョコホール', 'パリパリショコラ'];
-  final List<String> holeDiscription = HoleProductsDiscription.holeProductDescription; // 商品説明
-  final List<String> amountList = HoleProductsDiscription.amountList; // 価格リスト
-  final Map<String, Map<String, int>> contentsInfo = {};
-  final List<String> sizes = ['12cm', '15cm', '18cm', '21cm', '24cm'];
-  Map<String, Map<String, int>> buyContentsInfo = {}; // 購入商品情報
 
   @override
   Widget build(BuildContext context) {
@@ -86,8 +86,7 @@ class _OrderPageState extends State<OrderScreen> {
                 ),
                 Text(holeDiscription[index],
                     style: const TextStyle(fontSize: 10.0)),
-                Text(amountList[index],
-                    style: const TextStyle(fontSize: 10.0)),
+                Text(amountList[index], style: const TextStyle(fontSize: 10.0)),
               ],
             ),
             children: sizes.map((size) {
@@ -137,12 +136,14 @@ class _OrderPageState extends State<OrderScreen> {
             ),
             child: const Text(
               '注文する',
-              style: TextStyle(
-                  color: Colors.white, fontWeight: FontWeight.bold),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             ),
             onPressed: () {
-              buyContentsInfo = orderController.buyInfo(contentsInfo); // 注文したリストの作成
-              totalAmount = orderController.amountCalculation(buyContentsInfo); // 合計金額計算
+              buyContentsInfo =
+                  orderController.buyInfo(contentsInfo); // 注文したリストの作成
+              totalAmount =
+                  orderController.amountCalculation(buyContentsInfo); // 合計金額計算
               outputTotalAmount = formatter.format(totalAmount); // 円フォーマット
 
               // タイアログ表示
@@ -209,9 +210,7 @@ class _OrderPageState extends State<OrderScreen> {
                                 Get.toNamed(LoginScreen.path);
                               } else {
                                 sendEmailController.sendEmail(
-                                  authEmail,
-                                  memberFullName,
-                                );
+                                    authEmail, memberFullName, buyContentsInfo);
                               }
                             },
                           ),

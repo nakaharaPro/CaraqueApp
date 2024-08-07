@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 class SendmailController extends GetxController{
    static SendmailController get to => Get.find<SendmailController>();
 
-   Future<void> sendEmail(String address, String fullName) async {
+   Future<void> sendEmail(String address, String fullName,Map<String, Map<String, int>>buyContentsInfo) async {
     String bodyMsg = orderMailMsgConst(fullName);
 
     final Email email = Email(
