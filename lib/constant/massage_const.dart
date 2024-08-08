@@ -32,13 +32,21 @@ static const productDiscription1 =
 
 //注文メール本文
 
+String orderMailMsgConst(String fullName, Map<String, Map<String, int>> buyContentsInfo) {
+  // メッセージの初期化
+  String message = '$fullName様\n\nご注文の確認をお願い致します。\n注文内容に間違いなければ送信ボタンを押してください。\n\n';
 
-String orderMailMsgConst(String fullName) {
-  return '''
-$fullName様
+  // buyContentsInfoの内容をメッセージに追加
+  buyContentsInfo.forEach((product, sizes) {
+    message += '$product:\n';
+    sizes.forEach((size, quantity) {
+      message += '  サイズ: $size, 数量: $quantity\n';
+    });
+    message += '\n';
+  });
 
-ご注文の確認をお願いいたします。
-''';
+  return message;
 }
+
 
 
