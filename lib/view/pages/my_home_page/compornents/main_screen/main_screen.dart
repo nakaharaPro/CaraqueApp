@@ -33,41 +33,7 @@ class _MainScreenState extends State<MainScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // final authController = AuthController.to;
-    //   const style = TextStyle(
-        // fontSize: 12.0,
-        // fontWeight: FontWeight.bold);
     return Scaffold(
-      //ログインアイコンの制御
-      // appBar: AppBar(
-      //   actions: <Widget>[
-      //     Obx(() {
-      //       return ElevatedButton(
-      //         style: ElevatedButton.styleFrom(
-      //           foregroundColor: authController.rxAuthUser.value != null
-      //               ? Colors.white
-      //               : Colors.black,
-      //           backgroundColor: authController.rxAuthUser.value != null
-      //               ? Colors.green
-      //               : Colors.grey,
-      //           shape: const StadiumBorder(),
-      //         ),
-      //         child: Text(
-      //             authController.rxAuthUser.value != null ? 'ログイン中' : '未ログイン',style: style,),
-      //         onPressed: () {
-      //           //処理なし
-      //         },
-      //       );
-      //     }),
-      //     //追加したかったらコメント消す
-      //     // IconButton(
-      //     //   onPressed: () {},
-      //     //   icon: const Icon(Icons.more_vert),
-      //     // ),
-      //   ],
-      // ),
-
-
       body: _screens[_selectedIndex], //画面配列からタップされたインデックスを指定して紐づく画面を表示
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedIndex, //アクティブなページ番号(インデックス)を指定
@@ -76,8 +42,7 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'ホーム'),
           BottomNavigationBarItem(icon: Icon(Icons.cake), label: '注文'),
           BottomNavigationBarItem(icon: Icon(Icons.article), label: '商品一覧'),
-          BottomNavigationBarItem(
-          icon: Icon(Icons.account_circle), label: '会員情報'),
+          BottomNavigationBarItem(icon: Icon(Icons.account_circle), label: '会員情報'),
         ],
         type: BottomNavigationBarType.fixed, //アイコンの下にラベルをつけるタイプ
         backgroundColor: ColorsConst.constColorGrey,

@@ -43,21 +43,22 @@ class TopHomePage extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.only(left: 20.0),
                     child: Text(
-                      'C a r a q u e .',
+                      'C  a  r  a  q  u  e  .',
                       style: TextStyle(
-                        fontSize: 30.0,
+                        fontSize: 40.0,
                         color: Colors.white,
                       ),
                       textAlign: TextAlign.left, // 左よせ
                     ),
                   ),
-                  const Padding(padding: EdgeInsets.only(top: 30.0)),
+                  const Padding(padding: EdgeInsets.only(top: 150.0)),
                   const Row(
                     children: [
                       Padding(padding: EdgeInsets.only(left: 20.0)),
                       Text(
-                        '香川県高松市に拠点を置く洋菓子店',
+                        '香川県高松市の洋菓子店',
                         style: TextStyle(
+                          fontSize: 20.0,
                           color: Colors.white,
                         ),
                       ),
@@ -67,8 +68,9 @@ class TopHomePage extends StatelessWidget {
                     children: [
                       Padding(padding: EdgeInsets.only(left: 20.0)),
                       Text(
-                        '甘さ控えめで大人な洋菓子を提供しております',
+                        '甘さ控えめで大人な洋菓子を提供しています。',
                         style: TextStyle(
+                          fontSize: 15.0,
                           color: Colors.white,
                         ),
                       ),

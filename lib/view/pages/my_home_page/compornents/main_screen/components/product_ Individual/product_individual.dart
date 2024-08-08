@@ -1,4 +1,4 @@
-//商品詳細ページ
+//商品詳細ページの大枠
 import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/constant/massage_const.dart';
@@ -18,6 +18,10 @@ final int index;
   final SDMap productState = pagestate[index];
   final String title= productState['title'] ?? '';
   final String imagePath= productState['imagePath'] ?? '';
+  final String allergie = productState['allergie'] ?? '該当なし';
+  final String discription= productState['discription'] ?? '';
+  
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: ColorsConst.constColorGrey,
@@ -44,7 +48,9 @@ final int index;
               index: index,
                 imagePath: imagePath,
                 titleName: title,
-                description: MessageConst.productDiscription1)
+                allergie: allergie,
+                discription: discription,
+                ),
           ],
         ),
       ),

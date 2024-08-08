@@ -1,3 +1,5 @@
+//個別商品詳細ページ
+import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -7,16 +9,18 @@ class ProductDescriptionPage extends StatefulWidget {
   // メンバ変数
   final String imagePath;
   final String titleName;
-  final String description;
+  final String discription;
   final int index;
+  final String allergie;
 
   // コンストラクタ
   const ProductDescriptionPage({
     super.key,
     required this.imagePath,
     required this.titleName,
-    required this.description,
+    required this.discription,
     required this.index,
+    required this.allergie,
   });
 
   @override
@@ -117,7 +121,8 @@ class _ProductDescriptionPageState extends State<ProductDescriptionPage> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(10),
                                 ),
-                                child: Center( // Centerウィジェットを使用
+                                child: Center(
+                                  // Centerウィジェットを使用
                                   child: LikeButton(
                                     size: 50.0,
                                     isLiked: isLiked, // bool値
@@ -125,7 +130,9 @@ class _ProductDescriptionPageState extends State<ProductDescriptionPage> {
                                     likeBuilder: (bool isLiked) {
                                       return Icon(
                                         Icons.favorite,
-                                        color: isLiked ? Colors.orange : Colors.grey,
+                                        color: isLiked
+                                            ? Colors.orange
+                                            : Colors.grey,
                                         size: 40.0,
                                       );
                                     },
@@ -134,11 +141,23 @@ class _ProductDescriptionPageState extends State<ProductDescriptionPage> {
                               ),
                             ],
                           ),
+                           const Padding(padding: EdgeInsets.only(top: 30.0)),
+                          //アレルギー説明
+                          Text(
+                            widget.allergie, // 商品説明
+                            style: TextStyle(
+                              fontSize: 20.0,
+                              color: ColorsConst.constColorOrange,
+                              fontWeight: FontWeight.bold,
+                            ),
+                            textAlign: TextAlign.left, // 左よせ
+                          ),
+                           const Padding(padding: EdgeInsets.only(top: 10.0)),
                           // 商品説明ゾーン
                           Text(
-                            widget.description, // 商品説明
+                            widget.discription, // 商品説明
                             style: const TextStyle(
-                              fontSize: 15.0,
+                              fontSize: 25.0,
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
                             ),
