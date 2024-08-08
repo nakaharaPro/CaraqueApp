@@ -80,3 +80,5 @@ class _ImageSlideshowState extends State<ImageSlideshow> with SingleTickerProvid
     );
   }
 }
+
+//背景グラデーションチェンジ
