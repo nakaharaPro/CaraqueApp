@@ -1,4 +1,4 @@
-import 'package:caraqueprod/models/public_user/public_user.dart';
+
 
 class MessageConst {
   //サインアップのメール認証文
