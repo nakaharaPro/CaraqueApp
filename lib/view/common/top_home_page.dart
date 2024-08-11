@@ -76,6 +76,31 @@ class TopHomePage extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const Row(
+                    children: [
+                      Padding(padding: EdgeInsets.only(left: 20.0)),
+                      Text(
+                        'ケーキ、ホールケーキ、焼き菓子など\n幅広く取り揃えております。\nクレジット、電子マネー、QRキャッシュレス決済\nでの支払いが可能です。',
+                        style: TextStyle(
+                          fontSize: 15.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const Padding(padding: EdgeInsets.only(top: 100.0)),
+                  const Row(
+                    children: [
+                      Padding(padding: EdgeInsets.only(left: 20.0)),
+                      Text(
+                        'ご来店お待ちしております。',
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

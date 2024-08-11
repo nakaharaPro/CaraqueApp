@@ -31,13 +31,16 @@ dependencies:
   intl: ^0.19.0 #桁区切り
   flutter_email_sender: ^6.0.3 #メール送信
   google_sign_in: ^6.2.1 #google認証
+  flutter_launcher_icons: ^0.13.1
 flutter_email_sender: ^6.0.3
 url_launcher: ^6.3.0
 
 
-
-
-
+flutter_icons:
+ android: true
+ ios: true
+ image_path: "assets/icon/icon.png"
+ remove_alpha_ios: true
 
 
 

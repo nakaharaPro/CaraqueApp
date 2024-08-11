@@ -288,7 +288,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
           ),
           const Padding(padding: EdgeInsets.all(10.0)),
           Expanded(
-            child: Text(title),
+            child: Text(title,style:const TextStyle(fontSize: 20.0,),),
           ),
           const Expanded(child: SizedBox()), // 最大幅で空間を埋める
           LikeButton(
