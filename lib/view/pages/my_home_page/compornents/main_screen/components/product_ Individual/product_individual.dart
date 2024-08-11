@@ -2,7 +2,7 @@
 import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
-import 'package:caraqueprod/view/common/product_description_page.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_%20Individual/product_description_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

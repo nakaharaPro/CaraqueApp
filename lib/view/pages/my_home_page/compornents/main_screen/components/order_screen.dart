@@ -30,7 +30,7 @@ class _OrderPageState extends State<OrderScreen> {
       HoleProductsDiscription.holeProductDescription; // 商品説明
   final List<String> amountList = HoleProductsDiscription.amountList; // 価格リスト
   final Map<String, Map<String, int>> contentsInfo = {};
-  final List<String> sizes = ['12cm', '15cm', '18cm', '21cm', '24cm'];
+  final List<String> sizes = ['12cm(2〜3名様)', '15cm(4〜5名様)', '18cm(6〜8名様)', '21cm(8〜10名様)', '24cm(10〜12名様)'];
   Map<String, Map<String, int>> buyContentsInfo = {}; // 購入商品情報
 
   String authEmail = '';
@@ -51,11 +51,11 @@ class _OrderPageState extends State<OrderScreen> {
     // 商品情報の初期化
     for (var product in products) {
       contentsInfo[product] = {
-        '12cm': 0,
-        '15cm': 0,
-        '18cm': 0,
-        '21cm': 0,
-        '24cm': 0
+        '12cm(2〜3名様)': 0,
+        '15cm(4〜5名様)': 0,
+        '18cm(6〜8名様)': 0,
+        '21cm(8〜10名様)': 0,
+        '24cm(10〜12名様)': 0
       };
     }
   }
@@ -73,7 +73,12 @@ class _OrderPageState extends State<OrderScreen> {
         toolbarHeight: 40.0, // AppBarの高さ
         backgroundColor: ColorsConst.constColorGrey, // 色
       ),
-      body: ListView.builder(
+  
+        
+      
+     body:  Expanded(
+        child: 
+      ListView.builder(
         itemCount: products.length, // 商品名レングス
         itemBuilder: (context, index) {
           return ExpansionTile(
@@ -125,6 +130,7 @@ class _OrderPageState extends State<OrderScreen> {
             }).toList(), // ListTitleのMapをListに格納する[Map,Map,Map]
           );
         },
+      ),
       ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
@@ -223,5 +229,7 @@ class _OrderPageState extends State<OrderScreen> {
         ),
       ),
     );
+    
+
   }
 }

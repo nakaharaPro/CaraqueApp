@@ -4,6 +4,7 @@ import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/inquiry_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:get/get.dart';
@@ -74,6 +75,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                     ),
                   ),
                   children: [
+                    //新規登録ログインログアウトタイトル
                     _menbaerTitle(),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -88,10 +90,9 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                         }),
                       ],
                     ),
-                    _favoriteTitle(),
-                  ],
-                ),
-              ),
+                //お気に入りタイトル
+               _favoriteTitle(),
+
               // お気に入りリスト
               AnimationLimiter(
                 child: favoriteList.isEmpty
@@ -122,10 +123,18 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                           );
                         },
                       ),
-              )
+              ),
+        
+                  _inquiryTitle(),
+
+                  _inquiryButton(),
+
             ],
           ),
         ),
+          ],
+                ),
+              ),
       ),
     );
   }
@@ -155,6 +164,20 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold)));
   }
+  //問い合わせタイトル
+  Widget _inquiryTitle() {
+    return Container(
+        margin: const EdgeInsets.only(top: 20.0,bottom: 20.0),
+        width: double.infinity, //横幅いっぱいを意味する
+        color: ColorsConst.constColorGrey, //広がっているか色をつけて確認
+        child: const Text('　お問い合わせ',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold)));
+  }
+
+
 
   // ログインボタン関数
   Widget _loginButton() {
@@ -169,6 +192,24 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
       icon: const Icon(Icons.login),
       label: const Text(
         'ログイン',
+        style: TextStyle(color: Colors.white),
+      ),
+    );
+  }
+
+  // 問い合わせボタン関数
+  Widget _inquiryButton() {
+    return OutlinedButton.icon(
+      style: OutlinedButton.styleFrom(
+        iconColor: ColorsConst.constColorOrange,
+        backgroundColor: ColorsConst.constColorGrey,
+      ),
+      onPressed: () {
+        Get.toNamed(InquiryPage.path);
+      },
+      icon: const Icon(Icons.view_timeline),
+      label: const Text(
+        '問い合わせ',
         style: TextStyle(color: Colors.white),
       ),
     );
