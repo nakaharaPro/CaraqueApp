@@ -9,49 +9,41 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
 
   cupertino_icons: ^1.0.2
   flutter_flavor: ^3.1.1
   flutter_flavorizr: ^2.2.3
   firebase_core: ^2.4.1
   cloud_firestore: ^4.7.0
-  freezed_annotation: ^2.2.0 
+  freezed_annotation: ^2.2.0
   get: ^4.6.5
-  fluttertoast: ^8.1.2 
+  fluttertoast: ^8.1.2
   firebase_auth: ^4.10.1
   firebase_remote_config: ^4.2.4
   flutter_dotenv: ^5.0.2
   google_fonts: ^6.2.1
-  lottie: ^3.1.2 #アニメーション
-  carousel_slider: ^4.0.0 #スライダー
-  smooth_page_indicator: ^0.3.0-nullsafety.0 #スライダーの丸
-  flutter_staggered_animations: ^1.1.1 #ウィジェットパッケージ
-  like_button: ^2.0.5 #いいねボタン
-  intl: ^0.19.0 #桁区切り
-  flutter_email_sender: ^6.0.3 #メール送信
-  google_sign_in: ^6.2.1 #google認証
+  lottie: ^3.1.2 # アニメーション
+  carousel_slider: ^4.0.0 # スライダー
+  smooth_page_indicator: ^0.3.0-nullsafety.0 # スライダーの丸
+  flutter_staggered_animations: ^1.1.1 # ウィジェットパッケージ
+  like_button: ^2.0.5 # いいねボタン
+  intl: ^0.19.0 # 桁区切り
+  flutter_email_sender: ^6.0.3 # メール送信
+  google_sign_in: ^6.2.1 # Google認証
   flutter_launcher_icons: ^0.13.1
-flutter_email_sender: ^6.0.3
-url_launcher: ^6.3.0
+  url_launcher: ^6.3.0
+  flutter_native_splash: ^2.2.7
 
-
-flutter_icons:
- android: true
- ios: true
- image_path: "assets/icon/icon.png"
- remove_alpha_ios: true
-
-
+  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^3.0.0
-  build_runner: ^2.3.3 #freezed_annotation
-  freezed: ^2.3.2 #freezed_annotation
-  json_serializable: ^6.6.1  #freezed_annotation
+  build_runner: ^2.3.3 # freezed_annotation
+  freezed: ^2.3.2 # freezed_annotation
+  json_serializable: ^6.6.1 # freezed_annotation
 
 flutter:
   uses-material-design: true
@@ -64,10 +56,17 @@ flutter:
       fonts:
         - asset: fonts/SawarabiMincho-Regular.ttf
 
+# アプリアイコンの設定
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.jpg"
+  remove_alpha_ios: true
 
-
-
-
+# スプラッシュ画面の設定
+flutter_native_splash:
+  image: "assets/images/splash.png"
+  color: "FFFFFF"
 
 flavorizr:
   app:
@@ -88,4 +87,3 @@ flavorizr:
         applicationId: "com.firebaseapp.caraqueprod"
       ios:
         bundleId: "com.firebaseapp.caraqueprod"
- 
