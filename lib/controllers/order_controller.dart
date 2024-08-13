@@ -40,19 +40,19 @@ class OrderController extends GetxController {
         if (key == '生デコホール' || key == '生チョコホール') {
           value.forEach((sizekey, quantityvalue) {
             //keyサイズ　valueに個数
-            if (sizekey == '12cm') {
+            if (sizekey == '12cm(2〜3名様)') {
               totalAmount = totalAmount + quantityvalue * 2350;
             }
-            if (sizekey == '15cm') {
+            if (sizekey == '15cm(4〜5名様)') {
               totalAmount = totalAmount + quantityvalue * 3550;
             }
-            if (sizekey == '18cm') {
+            if (sizekey == '18cm(6〜8名様)') {
               totalAmount = totalAmount + quantityvalue * 4500;
             }
-            if (sizekey == '21cm') {
+            if (sizekey == '21cm(8〜10名様)') {
               totalAmount = totalAmount + quantityvalue * 5900;
             }
-            if (sizekey == '24cm') {
+            if (sizekey == '24cm(10〜12名様)') {
               totalAmount = totalAmount + quantityvalue * 7100;
             }
           });
@@ -61,19 +61,19 @@ class OrderController extends GetxController {
         if (key == '栗チョコホール') {
           value.forEach((sizekey, quantityvalue) {
             //keyサイズ　valueに個数
-            if (sizekey == '12cm') {
+            if (sizekey == '12cm(2〜3名様)') {
               totalAmount = totalAmount + quantityvalue * 2450;
             }
-            if (sizekey == '15cm') {
+            if (sizekey == '15cm(4〜5名様)') {
               totalAmount = totalAmount + quantityvalue * 3700;
             }
-            if (sizekey == '18cm') {
+            if (sizekey == '18cm(6〜8名様)') {
               totalAmount = totalAmount + quantityvalue * 4700;
             }
-            if (sizekey == '21cm') {
+            if (sizekey == '21cm(8〜10名様)') {
               totalAmount = totalAmount + quantityvalue * 6150;
             }
-            if (sizekey == '24cm') {
+            if (sizekey == '24cm(10〜12名様)') {
               totalAmount = totalAmount + quantityvalue * 7400;
             }
           });
@@ -82,19 +82,19 @@ class OrderController extends GetxController {
         if (key == 'パリパリショコラ') {
           value.forEach((sizekey, quantityvalue) {
             //keyサイズ　valueに個数
-            if (sizekey == '12cm') {
+            if (sizekey == '12cm(2〜3名様)') {
               totalAmount = totalAmount + quantityvalue * 2150;
             }
-            if (sizekey == '15cm') {
+            if (sizekey == '15cm(4〜5名様)') {
               totalAmount = totalAmount + quantityvalue * 3350;
             }
-            if (sizekey == '18cm') {
+            if (sizekey == '18cm(6〜8名様)') {
               totalAmount = totalAmount + quantityvalue * 4300;
             }
-            if (sizekey == '21cm') {
+            if (sizekey == '21cm(8〜10名様)') {
               totalAmount = totalAmount + quantityvalue * 5500;
             }
-            if (sizekey == '24cm') {
+            if (sizekey == '24cm(10〜12名様)') {
               totalAmount = totalAmount + quantityvalue * 6700;
             }
           });

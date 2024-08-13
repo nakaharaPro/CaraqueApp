@@ -76,62 +76,59 @@ class _OrderPageState extends State<OrderScreen> {
   
         
       
-     body:  Expanded(
-        child: 
-      ListView.builder(
-        itemCount: products.length, // 商品名レングス
-        itemBuilder: (context, index) {
-          return ExpansionTile(
-            title: Column(
-              children: [
-                Text(
-                  products[index],
-                  style: const TextStyle(
-                      fontSize: 20.0, fontWeight: FontWeight.bold),
-                ),
-                Text(holeDiscription[index],
-                    style: const TextStyle(fontSize: 10.0)),
-                Text(amountList[index], style: const TextStyle(fontSize: 10.0)),
-              ],
-            ),
-            children: sizes.map((size) {
-              return ListTile(
-                title: Text(size),
-                trailing: Row(
-                  mainAxisSize: MainAxisSize.min, // 右端に配置
-                  children: [
-                    IconButton(
-                      icon: const Icon(Icons.remove), // マイナスボタン
-                      onPressed: () {
-                        setState(() {
-                          // マイナス処理
-                          if (contentsInfo[products[index]]![size]! > 0) {
-                            contentsInfo[products[index]]![size] =
-                                contentsInfo[products[index]]![size]! - 1;
-                          }
-                        });
-                      },
-                    ),
-                    Text(contentsInfo[products[index]]![size]!
-                        .toString()), // カウント
-                    IconButton(
-                      icon: const Icon(Icons.add),
-                      onPressed: () {
-                        setState(() {
-                          // プラス処理
-                          contentsInfo[products[index]]![size] =
-                              contentsInfo[products[index]]![size]! + 1;
-                        });
-                      },
-                    ),
-                  ],
-                ),
-              );
-            }).toList(), // ListTitleのMapをListに格納する[Map,Map,Map]
-          );
-        },
-      ),
-      ),
+     body:  ListView.builder(
+       itemCount: products.length, // 商品名レングス
+       itemBuilder: (context, index) {
+         return ExpansionTile(
+           title: Column(
+             children: [
+               Text(
+                 products[index],
+                 style: const TextStyle(
+                     fontSize: 20.0, fontWeight: FontWeight.bold),
+               ),
+               Text(holeDiscription[index],
+                   style: const TextStyle(fontSize: 10.0)),
+               Text(amountList[index], style: const TextStyle(fontSize: 10.0)),
+             ],
+           ),
+           children: sizes.map((size) {
+             return ListTile(
+               title: Text(size),
+               trailing: Row(
+                 mainAxisSize: MainAxisSize.min, // 右端に配置
+                 children: [
+                   IconButton(
+                     icon: const Icon(Icons.remove), // マイナスボタン
+                     onPressed: () {
+                       setState(() {
+                         // マイナス処理
+                         if (contentsInfo[products[index]]![size]! > 0) {
+                           contentsInfo[products[index]]![size] =
+                               contentsInfo[products[index]]![size]! - 1;
+                         }
+                       });
+                     },
+                   ),
+                   Text(contentsInfo[products[index]]![size]!
+                       .toString()), // カウント
+                   IconButton(
+                     icon: const Icon(Icons.add),
+                     onPressed: () {
+                       setState(() {
+                         // プラス処理
+                         contentsInfo[products[index]]![size] =
+                             contentsInfo[products[index]]![size]! + 1;
+                       });
+                     },
+                   ),
+                 ],
+               ),
+             );
+           }).toList(), // ListTitleのMapをListに格納する[Map,Map,Map]
+         );
+       },
+     ),
       bottomNavigationBar: BottomAppBar(
         color: Colors.white,
         child: Padding(
