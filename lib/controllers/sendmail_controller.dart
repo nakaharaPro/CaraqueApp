@@ -14,7 +14,7 @@ class SendmailController extends GetxController{
     final Email email = Email(
       body: bodyMsg,
       subject: '注文の確定',
-      recipients: ['test@gmail.com',address], // 送信先のメールアドレスを指定
+      recipients: ['marimo09300130@gmail.com',address], // 送信先のメールアドレスを指定
       isHTML: false,
     );
 

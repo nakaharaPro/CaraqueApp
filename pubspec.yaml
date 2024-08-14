@@ -75,7 +75,7 @@ flavorizr:
   flavors:
     dev:
       app:
-        name: "CaraqueDev"
+        name: "Caraque"
       android:
         applicationId: "com.firebaseapp.caraquedev"
       ios:

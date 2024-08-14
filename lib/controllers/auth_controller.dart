@@ -1,6 +1,7 @@
 import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
 import 'package:caraqueprod/repository/auth_repository.dart';
 import 'package:caraqueprod/ui_core/ui_helper.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -69,7 +70,7 @@ class AuthController extends GetxController {
     result.when(success: (res) {
       rxAuthUser.value = res;//情報更新
       UiHelper.showFlutterToast("ログインが成功しました");
-       Get.back();
+       Get.toNamed(MainScreen.path);
     }, failure: () {
       UiHelper.showFlutterToast("アカウントが見つかりません。入力内容を見直してください");
 
