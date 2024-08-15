@@ -73,3 +73,4 @@ class InquiryPage extends StatelessWidget {
     );
   }
 }
+
