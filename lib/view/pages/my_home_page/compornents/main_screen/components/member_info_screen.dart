@@ -42,6 +42,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
       }
     }
     
+    
   }
   @override
   void dispose() {
