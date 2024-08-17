@@ -15,7 +15,7 @@ class FirestoreRepository{
     }
   }
 
-
+//ドキュメントの更新
   FutureResult<bool> updateDoc(DocRef ref,SDMap data) async{
     final client = FirestoreClient();
     try{
@@ -36,6 +36,18 @@ class FirestoreRepository{
     }catch(e){
       return const Result.failure();//失敗した時のインスタンスを返す
     }
+  }
+
+  //ドキュメントの削除
+  FutureResult<bool> deleteDoc(DocRef ref) async{
+    final client = FirestoreClient();
+    try{
+      await client.deleteDoc(ref);
+      return const Result.success(true);
+    }catch(e){
+      return const Result.failure();
+    }
+
   }
 
 }

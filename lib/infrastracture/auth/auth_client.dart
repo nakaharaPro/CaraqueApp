@@ -29,4 +29,10 @@ class AuthClient {
 //認証メール送信メソッド
 
 
+//ユーザー削除メソッド
+ Future<void> delte(User user) async {
+    await user.delete();
+  }
+
+
 }

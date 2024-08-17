@@ -7,6 +7,8 @@ class FirestoreClient{
 
    Future<void> updateDoc(DocRef ref,SDMap data) async => await ref.update(data);
 
+   Future<void> deleteDoc(DocRef ref) async => await ref.delete();
+
   FutureDoc clientGetDoc(DocRef ref) async => await ref.get();
   //内容は.doc(ref).get()でdocumentSnapshot(フィールド値)を取得する
 
