@@ -54,11 +54,11 @@ class AuthRepository{
     }
   }
 
-  //
+  //ユーザーの削除
    FutureResult<bool> delete(User user) async{
     final client = AuthClient();
     try{
-      await client.sendEmailVerification(user);
+      await client.delte(user);
       return const Result.success(true);
     }catch(e){
       return const Result.failure();

@@ -1,5 +1,6 @@
 import 'package:caraqueprod/constant/colors_const.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
+import 'package:caraqueprod/controllers/firebase_db_controller.dart';
 import 'package:caraqueprod/pageInfo/page_info.dart';
 import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
@@ -12,27 +13,40 @@ import 'package:like_button/like_button.dart';
 
 class MemberInfoScreen extends StatefulWidget {
   const MemberInfoScreen({super.key});
-   static const path = "/menber_info"; //パス
+  static const path = "/menber_info"; //パス
 
   @override
   _MemberInfoScreenState createState() => _MemberInfoScreenState();
 }
 
 class _MemberInfoScreenState extends State<MemberInfoScreen> {
-  late List<int> favoriteList; // お気に入り配列
-  late LSDMap pageList; //
+  late List<int> favoriteList = []; // お気に入り配列
+  late LSDMap pageList; //ページ情報
 
+//画面起動時の処理
   @override
   void initState() {
     super.initState();
     pageList = PageInfo.productState; // page総数配列
-    favoriteList = []; // お気に入りリスト
+    favoriteList=[]; // お気に入りリスト
+    LSDMap? readDocPageList =  FirebaseDbController.to.readDocPageList;
+
+    if(readDocPageList!=null){
+      pageList=readDocPageList;
+    }
+
     // お気に入りがtrueのインデックスを配列に格納
     for (int i = 0; i < pageList.length; i++) {
       if (pageList[i]['favoriteState']) {
         favoriteList.add(i);
       }
     }
+    
+  }
+  @override
+  void dispose() {
+    super.dispose();
+    FirebaseDbController.to.onfavoriteList(pageList);//firebaseDB登録
   }
 
   // ライクボタン押下でtrueになれば配列格納、falseになれば削除
@@ -77,64 +91,74 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                   children: [
                     //新規登録ログインログアウトタイトル
                     _menbaerTitle(),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        _signUpButton(),
-                        Obx(() {
-                          if (AuthController.to.rxAuthUser.value == null) {
-                            return _loginButton();
-                          } else {
-                            return _logout();
-                          }
-                        }),
-                      ],
-                    ),
-                //お気に入りタイトル
-               _favoriteTitle(),
 
-              // お気に入りリスト
-              AnimationLimiter(
-                child: favoriteList.isEmpty
-                    ? _favoriteNone() //お気に入りリストが登録なければ
-                    : ListView.builder(
-                        //お気に入りリストの登録があれば
-                        physics:
-                            const NeverScrollableScrollPhysics(), // 内側のListViewのスクロールを無効にする
-                        shrinkWrap: true, // 内側のListViewの高さをコンテンツに合わせる
-                        itemCount: favoriteList.length, // リストアイテム個数分リストを作成
-                        itemBuilder: (BuildContext context, int index) {
-                          int productIndex = favoriteList[index]; // インデックス代入
-                          return AnimationConfiguration.staggeredList(
-                            position: index,
-                            duration: const Duration(milliseconds: 1000),
-                            child: SlideAnimation(
-                              verticalOffset: 50.0,
-                              child: FadeInAnimation(
-                                child: _favoriteProducts(
-                                  pageList[productIndex]['favoriteState'] ??
-                                      false,
-                                  pageList[productIndex]['imagePath'] ?? '',
-                                  pageList[productIndex]['title'] ?? '',
-                                  productIndex,
-                                ),
-                              ),
+                    Obx(() {
+                      if (AuthController.to.rxAuthUser.value == null) {
+                        return Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              _signUpButton(),
+                              _loginButton(),
+                            ]);
+                      } else {
+                        return Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            _logout(),
+                            _deleteUserButton(),
+                          ],
+                        );
+                      }
+                    }),
+
+                    //お気に入りタイトル
+                    _favoriteTitle(),
+
+                    // お気に入りリスト
+                    AnimationLimiter(
+                      child: favoriteList.isEmpty
+                          ? _favoriteNone() //お気に入りリストが登録なければ
+                          : ListView.builder(
+                              //お気に入りリストの登録があれば
+                              physics:
+                                  const NeverScrollableScrollPhysics(), // 内側のListViewのスクロールを無効にする
+                              shrinkWrap: true, // 内側のListViewの高さをコンテンツに合わせる
+                              itemCount:
+                                  favoriteList.length, // リストアイテム個数分リストを作成
+                              itemBuilder: (BuildContext context, int index) {
+                                int productIndex =
+                                    favoriteList[index]; // インデックス代入
+                                return AnimationConfiguration.staggeredList(
+                                  position: index,
+                                  duration: const Duration(milliseconds: 1000),
+                                  child: SlideAnimation(
+                                    verticalOffset: 50.0,
+                                    child: FadeInAnimation(
+                                      child: _favoriteProducts(
+                                        pageList[productIndex]
+                                                ['favoriteState'] ??
+                                            false,
+                                        pageList[productIndex]['imagePath'] ??
+                                            '',
+                                        pageList[productIndex]['title'] ?? '',
+                                        productIndex,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
-                          );
-                        },
-                      ),
+                    ),
+
+                    _inquiryTitle(),
+
+                    _inquiryButton(),
+                  ],
+                ),
               ),
-        
-                  _inquiryTitle(),
-
-                  _inquiryButton(),
-
             ],
           ),
         ),
-          ],
-                ),
-              ),
       ),
     );
   }
@@ -164,10 +188,11 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold)));
   }
+
   //問い合わせタイトル
   Widget _inquiryTitle() {
     return Container(
-        margin: const EdgeInsets.only(top: 20.0,bottom: 20.0),
+        margin: const EdgeInsets.only(top: 20.0, bottom: 20.0),
         width: double.infinity, //横幅いっぱいを意味する
         color: ColorsConst.constColorGrey, //広がっているか色をつけて確認
         child: const Text('　お問い合わせ',
@@ -176,8 +201,6 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold)));
   }
-
-
 
   // ログインボタン関数
   Widget _loginButton() {
@@ -251,10 +274,29 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
     );
   }
 
+  // ユーザー削除ボタン関数
+  Widget _deleteUserButton() {
+    final firebaseDbController = FirebaseDbController.to;
+    return OutlinedButton.icon(
+      style: OutlinedButton.styleFrom(
+        padding: const EdgeInsets.all(10.0),
+        iconColor: ColorsConst.constColorOrange,
+        backgroundColor: ColorsConst.constColorGrey,
+      ),
+      onPressed: () {
+        firebaseDbController.deleteUser();
+      },
+      icon: const Icon(Icons.delete_sweep),
+      label: const Text(
+        "会員情報抹消",
+        style: TextStyle(color: Colors.white),
+      ),
+    );
+  }
+
   // お気に入りが登録されていない場合のウィジェット
   Widget _favoriteNone() {
-    return const
-     Align(
+    return const Align(
       alignment: Alignment.center, // 中央寄せ
       child: Padding(
         padding: EdgeInsets.all(20.0),
@@ -267,7 +309,8 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
   }
 
   // お気に入りリスト
-  Widget _favoriteProducts(bool isLiked, String imagePath, String title, int index) {
+  Widget _favoriteProducts(
+      bool isLiked, String imagePath, String title, int index) {
     return Container(
       margin: const EdgeInsets.all(5.0),
       height: 80,
@@ -277,20 +320,23 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
       ),
       child: Row(
         children: [
-          const Padding(padding: EdgeInsets.all(10.0)),
           Image.asset(
             imagePath,
             height: 80, // 画像の高さ
-            width: 100, // 画像の幅
+            width: 100, //画像の幅
             errorBuilder: (context, error, stackTrace) {
               return const Icon(Icons.image_not_supported, size: 60);
             },
           ),
           const Padding(padding: EdgeInsets.all(10.0)),
           Expanded(
-            child: Text(title,style:const TextStyle(fontSize: 20.0,),),
+            child: Text(
+              title,
+              style: const TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
           ),
-          const Expanded(child: SizedBox()), // 最大幅で空間を埋める
           LikeButton(
             size: 30.0,
             isLiked: isLiked, // bool値

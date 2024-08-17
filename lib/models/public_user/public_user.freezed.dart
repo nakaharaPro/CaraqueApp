@@ -20,13 +20,13 @@ PublicUser _$PublicUserFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$PublicUser {
-  int get followerCount => throw _privateConstructorUsedError;
-  String get nameFull => throw _privateConstructorUsedError;
   DateTime get inputDate => throw _privateConstructorUsedError;
+  String get nameFull => throw _privateConstructorUsedError;
   String get nameFirst => throw _privateConstructorUsedError;
   String get nameLast => throw _privateConstructorUsedError;
   String get phone => throw _privateConstructorUsedError;
   String get post => throw _privateConstructorUsedError;
+  List<Map<String, dynamic>> get pageList => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -41,13 +41,13 @@ abstract class $PublicUserCopyWith<$Res> {
       _$PublicUserCopyWithImpl<$Res, PublicUser>;
   @useResult
   $Res call(
-      {int followerCount,
+      {DateTime inputDate,
       String nameFull,
-      DateTime inputDate,
       String nameFirst,
       String nameLast,
       String phone,
-      String post});
+      String post,
+      List<Map<String, dynamic>> pageList});
 }
 
 /// @nodoc
@@ -63,27 +63,23 @@ class _$PublicUserCopyWithImpl<$Res, $Val extends PublicUser>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? followerCount = null,
-    Object? nameFull = null,
     Object? inputDate = null,
+    Object? nameFull = null,
     Object? nameFirst = null,
     Object? nameLast = null,
     Object? phone = null,
     Object? post = null,
+    Object? pageList = null,
   }) {
     return _then(_value.copyWith(
-      followerCount: null == followerCount
-          ? _value.followerCount
-          : followerCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      nameFull: null == nameFull
-          ? _value.nameFull
-          : nameFull // ignore: cast_nullable_to_non_nullable
-              as String,
       inputDate: null == inputDate
           ? _value.inputDate
           : inputDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      nameFull: null == nameFull
+          ? _value.nameFull
+          : nameFull // ignore: cast_nullable_to_non_nullable
+              as String,
       nameFirst: null == nameFirst
           ? _value.nameFirst
           : nameFirst // ignore: cast_nullable_to_non_nullable
@@ -100,6 +96,10 @@ class _$PublicUserCopyWithImpl<$Res, $Val extends PublicUser>
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
               as String,
+      pageList: null == pageList
+          ? _value.pageList
+          : pageList // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
     ) as $Val);
   }
 }
@@ -113,13 +113,13 @@ abstract class _$$PublicUserImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {int followerCount,
+      {DateTime inputDate,
       String nameFull,
-      DateTime inputDate,
       String nameFirst,
       String nameLast,
       String phone,
-      String post});
+      String post,
+      List<Map<String, dynamic>> pageList});
 }
 
 /// @nodoc
@@ -133,27 +133,23 @@ class __$$PublicUserImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? followerCount = null,
-    Object? nameFull = null,
     Object? inputDate = null,
+    Object? nameFull = null,
     Object? nameFirst = null,
     Object? nameLast = null,
     Object? phone = null,
     Object? post = null,
+    Object? pageList = null,
   }) {
     return _then(_$PublicUserImpl(
-      followerCount: null == followerCount
-          ? _value.followerCount
-          : followerCount // ignore: cast_nullable_to_non_nullable
-              as int,
-      nameFull: null == nameFull
-          ? _value.nameFull
-          : nameFull // ignore: cast_nullable_to_non_nullable
-              as String,
       inputDate: null == inputDate
           ? _value.inputDate
           : inputDate // ignore: cast_nullable_to_non_nullable
               as DateTime,
+      nameFull: null == nameFull
+          ? _value.nameFull
+          : nameFull // ignore: cast_nullable_to_non_nullable
+              as String,
       nameFirst: null == nameFirst
           ? _value.nameFirst
           : nameFirst // ignore: cast_nullable_to_non_nullable
@@ -170,6 +166,10 @@ class __$$PublicUserImplCopyWithImpl<$Res>
           ? _value.post
           : post // ignore: cast_nullable_to_non_nullable
               as String,
+      pageList: null == pageList
+          ? _value._pageList
+          : pageList // ignore: cast_nullable_to_non_nullable
+              as List<Map<String, dynamic>>,
     ));
   }
 }
@@ -178,25 +178,23 @@ class __$$PublicUserImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
   const _$PublicUserImpl(
-      {this.followerCount = 0,
+      {required this.inputDate,
       required this.nameFull,
-      required this.inputDate,
       required this.nameFirst,
       required this.nameLast,
       required this.phone,
-      required this.post})
-      : super._();
+      required this.post,
+      final List<Map<String, dynamic>> pageList = const [{}]})
+      : _pageList = pageList,
+        super._();
 
   factory _$PublicUserImpl.fromJson(Map<String, dynamic> json) =>
       _$$PublicUserImplFromJson(json);
 
   @override
-  @JsonKey()
-  final int followerCount;
+  final DateTime inputDate;
   @override
   final String nameFull;
-  @override
-  final DateTime inputDate;
   @override
   final String nameFirst;
   @override
@@ -205,10 +203,18 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
   final String phone;
   @override
   final String post;
+  final List<Map<String, dynamic>> _pageList;
+  @override
+  @JsonKey()
+  List<Map<String, dynamic>> get pageList {
+    if (_pageList is EqualUnmodifiableListView) return _pageList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_pageList);
+  }
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'PublicUser(followerCount: $followerCount, nameFull: $nameFull, inputDate: $inputDate, nameFirst: $nameFirst, nameLast: $nameLast, phone: $phone, post: $post)';
+    return 'PublicUser(inputDate: $inputDate, nameFull: $nameFull, nameFirst: $nameFirst, nameLast: $nameLast, phone: $phone, post: $post, pageList: $pageList)';
   }
 
   @override
@@ -216,13 +222,13 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'PublicUser'))
-      ..add(DiagnosticsProperty('followerCount', followerCount))
-      ..add(DiagnosticsProperty('nameFull', nameFull))
       ..add(DiagnosticsProperty('inputDate', inputDate))
+      ..add(DiagnosticsProperty('nameFull', nameFull))
       ..add(DiagnosticsProperty('nameFirst', nameFirst))
       ..add(DiagnosticsProperty('nameLast', nameLast))
       ..add(DiagnosticsProperty('phone', phone))
-      ..add(DiagnosticsProperty('post', post));
+      ..add(DiagnosticsProperty('post', post))
+      ..add(DiagnosticsProperty('pageList', pageList));
   }
 
   @override
@@ -230,24 +236,23 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PublicUserImpl &&
-            (identical(other.followerCount, followerCount) ||
-                other.followerCount == followerCount) &&
-            (identical(other.nameFull, nameFull) ||
-                other.nameFull == nameFull) &&
             (identical(other.inputDate, inputDate) ||
                 other.inputDate == inputDate) &&
+            (identical(other.nameFull, nameFull) ||
+                other.nameFull == nameFull) &&
             (identical(other.nameFirst, nameFirst) ||
                 other.nameFirst == nameFirst) &&
             (identical(other.nameLast, nameLast) ||
                 other.nameLast == nameLast) &&
             (identical(other.phone, phone) || other.phone == phone) &&
-            (identical(other.post, post) || other.post == post));
+            (identical(other.post, post) || other.post == post) &&
+            const DeepCollectionEquality().equals(other._pageList, _pageList));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, followerCount, nameFull,
-      inputDate, nameFirst, nameLast, phone, post);
+  int get hashCode => Object.hash(runtimeType, inputDate, nameFull, nameFirst,
+      nameLast, phone, post, const DeepCollectionEquality().hash(_pageList));
 
   @JsonKey(ignore: true)
   @override
@@ -265,24 +270,22 @@ class _$PublicUserImpl extends _PublicUser with DiagnosticableTreeMixin {
 
 abstract class _PublicUser extends PublicUser {
   const factory _PublicUser(
-      {final int followerCount,
+      {required final DateTime inputDate,
       required final String nameFull,
-      required final DateTime inputDate,
       required final String nameFirst,
       required final String nameLast,
       required final String phone,
-      required final String post}) = _$PublicUserImpl;
+      required final String post,
+      final List<Map<String, dynamic>> pageList}) = _$PublicUserImpl;
   const _PublicUser._() : super._();
 
   factory _PublicUser.fromJson(Map<String, dynamic> json) =
       _$PublicUserImpl.fromJson;
 
   @override
-  int get followerCount;
+  DateTime get inputDate;
   @override
   String get nameFull;
-  @override
-  DateTime get inputDate;
   @override
   String get nameFirst;
   @override
@@ -291,6 +294,8 @@ abstract class _PublicUser extends PublicUser {
   String get phone;
   @override
   String get post;
+  @override
+  List<Map<String, dynamic>> get pageList;
   @override
   @JsonKey(ignore: true)
   _$$PublicUserImplCopyWith<_$PublicUserImpl> get copyWith =>

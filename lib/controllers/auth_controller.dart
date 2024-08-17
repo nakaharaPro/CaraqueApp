@@ -69,11 +69,10 @@ class AuthController extends GetxController {
         email.trim(), password.trim());
     result.when(success: (res) {
       rxAuthUser.value = res;//情報更新
-      UiHelper.showFlutterToast("ログインが成功しました");
+      UiHelper.showFlutterToast("ログインしました");
        Get.toNamed(MainScreen.path);
     }, failure: () {
       UiHelper.showFlutterToast("アカウントが見つかりません。入力内容を見直してください");
-
     });
   }
 
@@ -88,12 +87,16 @@ class AuthController extends GetxController {
     final result = await repository.signOut();
     result.when(success: (_) {
       rxAuthUser.value = null;
-      UiHelper.showFlutterToast("ログアウトに成功しました");
+      UiHelper.showFlutterToast("ログアウトしました");
       
     }, failure: () {
       UiHelper.showFlutterToast("ログアウトに失敗しました");
     });
   }
+
+
+
+
 
 //boolステータスの変更
   void changeEmailAuthState() =>
