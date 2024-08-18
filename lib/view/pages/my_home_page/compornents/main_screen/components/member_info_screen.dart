@@ -23,31 +23,43 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
   late List<int> favoriteList = []; // お気に入り配列
   late LSDMap pageList; //ページ情報
 
+  
+
 //画面起動時の処理
   @override
   void initState() {
     super.initState();
     pageList = PageInfo.productState; // page総数配列
-    favoriteList=[]; // お気に入りリスト
-    LSDMap? readDocPageList =  FirebaseDbController.to.readDocPageList;
+    favoriteList = []; // お気に入りリスト
+    
+    FirebaseDbController.to.initreadFavoriteList(); //firebaseDBからpagelist読み込み
+    LSDMap? readDocPageList;//読み込んだPageList
+    readDocPageList = FirebaseDbController.to.readPageList;
 
-    if(readDocPageList!=null){
-      pageList=readDocPageList;
-    }
+    if (readDocPageList![0].isNotEmpty) {//DBにお気に入り情報があれば
+      pageList = readDocPageList;
+      // DBから読み込んだお気に入りがtrueのインデックスを配列に格納
+       for (int i = 0; i < pageList.length; i++) {
+        if (pageList[i]['favoriteState']) {
+          favoriteList.add(i);
+        }
+      }
 
-    // お気に入りがtrueのインデックスを配列に格納
-    for (int i = 0; i < pageList.length; i++) {
-      if (pageList[i]['favoriteState']) {
-        favoriteList.add(i);
+    } else {
+      // お気に入りがtrueのインデックスを配列に格納
+      for (int i = 0; i < pageList.length; i++) {
+        if (pageList[i]['favoriteState']) {
+          favoriteList.add(i);
+        }
       }
     }
-    
-    
   }
+
+//別の画面に遷移した時の処理
   @override
   void dispose() {
     super.dispose();
-    FirebaseDbController.to.onfavoriteList(pageList);//firebaseDB登録
+    FirebaseDbController.to.onfavoriteList(pageList); //firebaseDB登録
   }
 
   // ライクボタン押下でtrueになれば配列格納、falseになれば削除
@@ -56,11 +68,21 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
       pageList[index]['favoriteState'] = !isLiked; //const配列のbool値変更
       if (pageList[index]['favoriteState']) {
         favoriteList.add(index); //お気に入りリスト追加
+        FirebaseDbController.to.onfavoriteList(pageList);
       } else {
         favoriteList.remove(index); //お気に入りリスト削除
+        FirebaseDbController.to.onfavoriteList(pageList);
       }
     });
     return !isLiked;
+  }
+
+
+  Future<void> onDeleteButtonTapped() async {
+    setState(() {
+       final firebaseDbController = FirebaseDbController.to;
+        firebaseDbController.deleteUser();
+    });
   }
 
   @override
@@ -277,7 +299,6 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
 
   // ユーザー削除ボタン関数
   Widget _deleteUserButton() {
-    final firebaseDbController = FirebaseDbController.to;
     return OutlinedButton.icon(
       style: OutlinedButton.styleFrom(
         padding: const EdgeInsets.all(10.0),
@@ -285,7 +306,7 @@ class _MemberInfoScreenState extends State<MemberInfoScreen> {
         backgroundColor: ColorsConst.constColorGrey,
       ),
       onPressed: () {
-        firebaseDbController.deleteUser();
+        onDeleteButtonTapped();
       },
       icon: const Icon(Icons.delete_sweep),
       label: const Text(

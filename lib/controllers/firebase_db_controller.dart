@@ -27,7 +27,7 @@ class FirebaseDbController extends GetxController {
   String phoneNumber = "";
   String postNumber = "";
 
-  LSDMap? readDocPageList=[{}]; //出力ページ情報
+  LSDMap? readPageList=[{}]; //出力ページ情報
 
   void setFirstName(String? value) {
     if (value == null) return;
@@ -133,7 +133,6 @@ class FirebaseDbController extends GetxController {
     final result = await repository.delete(authUser);
      result.when(success: (_) {
       UiHelper.showFlutterToast("ユーザーを削除しました");
-      _deleteAutuUser(authUser); //auth側の削除
       if(
       AuthController.to.rxAuthUser.value != null){
         AuthController.to.rxAuthUser.value = null;
@@ -145,14 +144,12 @@ class FirebaseDbController extends GetxController {
 
 
 
-//お気に入りリストの登録
+//ページリストの登録
 void onfavoriteList(LSDMap pageList) async {
     await _creatFavoriteList(pageList);
   }
 
-
-
-//お気に入りリスト登録
+//ページリスト登録
   Future<void> _creatFavoriteList(LSDMap pageList) async {
     final authUser = AuthController.to.rxAuthUser.value;
     String mail = authUser!.email as String;
@@ -178,7 +175,26 @@ void onfavoriteList(LSDMap pageList) async {
     result.when(success: (doc) {
      print("成功");
      Map<String,dynamic>? test= doc.data();
-     readDocPageList = test!['pageList'];
+     readPageList = test!['pageList'];
+    
+    }, failure: () {
+    print("失敗");
+    });
+  }
+
+
+
+  //DBからページリスト読み込み
+  Future<void> initreadFavoriteList() async {
+    final repository = FirestoreRepository();
+    final authUser = AuthController.to.rxAuthUser.value;
+    String mail = authUser!.email as String;
+    final ref = DocRefCore.publicUserDocRef("会員情報",mail);
+    final result = await repository.getDoc(ref);
+    result.when(success: (doc) {
+     print("成功");
+     Map<String,dynamic>? test= doc.data();
+     readPageList = test!['pageList'];
     
     }, failure: () {
     print("失敗");

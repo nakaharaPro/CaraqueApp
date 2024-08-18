@@ -1,6 +1,8 @@
 //個別商品詳細ページ
 import 'package:caraqueprod/constant/colors_const.dart';
+import 'package:caraqueprod/controllers/firebase_db_controller.dart';
 import 'package:caraqueprod/pageInfo/page_info.dart';
+import 'package:caraqueprod/typedefs/firestore_typedefs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:like_button/like_button.dart';
@@ -35,10 +37,21 @@ class _ProductDescriptionPageState extends State<ProductDescriptionPage> {
   @override
   void initState() {
     super.initState();
-    pageState = PageInfo.productState;
+  
+    FirebaseDbController.to.initreadFavoriteList(); //firebaseDBからpagelist読み込み
+    LSDMap? readDocPageList;//読み込んだPageList
+
+    //DBにpageListがあれば読み込んで適応
+    readDocPageList = FirebaseDbController.to.readPageList;
+     if (readDocPageList![0].isNotEmpty) {//DBにお気に入り情報があれば
+      pageState = readDocPageList;
+     }else{
+       pageState = PageInfo.productState;
+     }
     productState = pageState[widget.index];
     isLiked = productState['favoriteState'] ?? false;
   }
+
 
 // ライクボタン押下処理
   Future<bool> onLikeButtonTapped(bool isLiked) async {
