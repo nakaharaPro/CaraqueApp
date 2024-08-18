@@ -117,7 +117,7 @@ class _InputFormScreenState extends State<InputFormScreen> {
             ),
             TextFormField(
               controller: _postalCodeController,
-              decoration: const InputDecoration(labelText: '郵便番号'),
+              decoration: const InputDecoration(labelText: '郵便番号(ハイフンなし)'),
               keyboardType: TextInputType.number,
               validator: (value) {
                 if (value == null || value.isEmpty) {

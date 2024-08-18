@@ -58,6 +58,7 @@ class _ProductDescriptionPageState extends State<ProductDescriptionPage> {
     setState(() {
       this.isLiked = !isLiked; // bool値を変更する
       productState['favoriteState'] = this.isLiked;
+      FirebaseDbController.to.onfavoriteList(pageState);//DBへのお気に入り登録
     });
     return !isLiked;
   }
