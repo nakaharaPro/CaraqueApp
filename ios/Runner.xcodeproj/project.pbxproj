@@ -699,7 +699,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraquedev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraqueprod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -713,6 +713,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = 6BAJ6GYU25;
 				INFOPLIST_KEY_CFBundleDisplayName = Caraque;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraqueprod;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-dev";
@@ -723,6 +724,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = 6BAJ6GYU25;
 				INFOPLIST_KEY_CFBundleDisplayName = Caraque;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraqueprod;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-dev";
@@ -733,6 +735,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = 6BAJ6GYU25;
 				INFOPLIST_KEY_CFBundleDisplayName = Caraque;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraqueprod;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-dev";
@@ -743,7 +746,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = 6BAJ6GYU25;
 				INFOPLIST_KEY_CFBundleDisplayName = Caraque;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraquedev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraqueprod;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Debug-prod";
@@ -754,7 +757,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = 6BAJ6GYU25;
 				INFOPLIST_KEY_CFBundleDisplayName = Caraque;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraquedev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraqueprod;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Profile-prod";
@@ -765,7 +768,7 @@
 			buildSettings = {
 				DEVELOPMENT_TEAM = 6BAJ6GYU25;
 				INFOPLIST_KEY_CFBundleDisplayName = Caraque;
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraquedev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraqueprod;
 				PRODUCT_NAME = Runner;
 			};
 			name = "Release-prod";
@@ -994,7 +997,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraquedev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraqueprod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1018,7 +1021,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraquedev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.firebaseapp.caraqueprod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
