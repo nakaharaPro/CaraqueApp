@@ -2,7 +2,7 @@ import 'package:caraqueprod/constant/colors_const.dart';
 
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/home_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/member_info_screen.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/order_screen.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/order_page/order_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/product_list_screen.dart';
 import 'package:flutter/material.dart';
 

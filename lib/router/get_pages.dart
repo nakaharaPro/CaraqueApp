@@ -1,5 +1,6 @@
 //画面リンクパス一覧
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/inquiry_page.dart';
+import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/components/order_page/order_complete_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/error_page.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/signup_screen.dart';
@@ -19,6 +20,7 @@ class GetPages {
     GetPage(name:InputInfo.path, page:() => const InputInfo()),
     GetPage(name:ErrorPage.path, page:() => const ErrorPage()),
     GetPage(name:InquiryPage.path, page:() => const InquiryPage()),
+    GetPage(name:OrderCompleteScreen.path, page:() => const OrderCompleteScreen()),
 
 
 

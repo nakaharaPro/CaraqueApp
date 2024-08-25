@@ -14,5 +14,7 @@ flutter pub run build_runner build --delete-conflicting-outputs
 ## Cloid Funcitons
 firebase deploy --only functions
 
-## セッション45
+## 注意
+メール送信機能はappleの標準メールツールを使用してメールを送信するため、標準メールツールに何かしらのメールを登録して使用できるようにしておく必要がある。
 
+画面遷移はrouterのget_pages.dartにも追記する

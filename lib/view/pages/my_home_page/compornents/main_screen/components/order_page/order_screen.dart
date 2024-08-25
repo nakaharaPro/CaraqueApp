@@ -3,6 +3,7 @@ import 'package:caraqueprod/constant/hole_products_discription.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/firebase_db_controller.dart';
 import 'package:caraqueprod/controllers/order_controller.dart';
+import 'package:caraqueprod/controllers/sendmail_controller.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,6 +21,7 @@ class _OrderPageState extends State<OrderScreen> {
   final orderController = OrderController.to;
   final authController = AuthController.to;
   final firebaseDbController = FirebaseDbController.to;
+    final sendEmailController = SendmailController.to;
 
   // 商品情報
   final formatter = NumberFormat("#,###"); // 円フォーマット
@@ -208,11 +210,8 @@ class _OrderPageState extends State<OrderScreen> {
                               if (authEmail.isEmpty) {
                                 Get.toNamed(LoginScreen.path);
                               } else {
-
-
-                               //注文処理
-
-
+                                sendEmailController.sendEmail(
+                                    authEmail, memberFullName, buyContentsInfo);
                               }
                             },
                           ),
