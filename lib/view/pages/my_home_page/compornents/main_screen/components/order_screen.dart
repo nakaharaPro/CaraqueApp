@@ -3,7 +3,6 @@ import 'package:caraqueprod/constant/hole_products_discription.dart';
 import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/firebase_db_controller.dart';
 import 'package:caraqueprod/controllers/order_controller.dart';
-import 'package:caraqueprod/controllers/sendmail_controller.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -19,7 +18,6 @@ class OrderScreen extends StatefulWidget {
 class _OrderPageState extends State<OrderScreen> {
   // コントローラーの定義
   final orderController = OrderController.to;
-  final sendEmailController = SendmailController.to;
   final authController = AuthController.to;
   final firebaseDbController = FirebaseDbController.to;
 
@@ -210,8 +208,11 @@ class _OrderPageState extends State<OrderScreen> {
                               if (authEmail.isEmpty) {
                                 Get.toNamed(LoginScreen.path);
                               } else {
-                                sendEmailController.sendEmail(
-                                    authEmail, memberFullName, buyContentsInfo);
+
+
+                               //注文処理
+
+
                               }
                             },
                           ),
