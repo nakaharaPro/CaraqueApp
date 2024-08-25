@@ -1,9 +1,6 @@
 //メール認証画面
 import 'package:caraqueprod/constant/massage_const.dart';
-import 'package:caraqueprod/controllers/auth_controller.dart';
 import 'package:caraqueprod/controllers/verify_email_contoroller.dart';
-import 'package:caraqueprod/ui_core/ui_helper.dart';
-import 'package:caraqueprod/view/pages/my_home_page/compornents/auth_screen/components/input_info.dart';
 import 'package:caraqueprod/view/pages/my_home_page/compornents/main_screen/main_screen.dart';
 
 import 'package:flutter/material.dart';
@@ -25,7 +22,7 @@ class OrderCompleteScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _orderCompleteTitle(),
-            _maillCheckButton(),
+            _homeButton(),
           ],
         ),
       ),
@@ -44,8 +41,7 @@ class OrderCompleteScreen extends StatelessWidget {
 
 
 
-  Widget _maillCheckButton() {
-    final authController = AuthController.to;
+  Widget _homeButton() {
     return ElevatedButton(
       onPressed: () {
      Get.toNamed(MainScreen.path);
