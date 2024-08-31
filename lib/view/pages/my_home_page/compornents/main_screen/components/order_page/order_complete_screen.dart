@@ -38,9 +38,6 @@ class OrderCompleteScreen extends StatelessWidget {
       ),
     );
   }
-  
-  
-
 
 
 
