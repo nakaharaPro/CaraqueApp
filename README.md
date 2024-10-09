@@ -19,3 +19,4 @@ firebase deploy --only functions
 
 画面遷移はrouterのget_pages.dartにも追記する
 
+
